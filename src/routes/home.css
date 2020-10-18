@@ -1,0 +1,25 @@
+.home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.home h1{
+    font-size: 150px;
+}
+
+.home ul{   
+    list-style-type: none;
+    padding: 0;
+}
+
+.home a{
+    list-style-type: none;
+    font-size: 50px;
+    text-decoration: none;
+    text-align: center;
+    width: 500px;
+    display: inline-block;
+}
