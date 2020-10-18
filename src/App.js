@@ -36,7 +36,7 @@ function App() {
     <div className="App">
       <header>
         { location !== '/'  && <HeaderButton  icon='arrow' />}
-        <HeaderButton icon='pause' />
+        { location === 'game' && <HeaderButton icon='pause' /> }
       </header>
 
       <Switch>
