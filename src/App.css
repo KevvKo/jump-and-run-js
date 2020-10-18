@@ -6,6 +6,13 @@
   }
 }
 
+.App{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -15,6 +22,26 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+header{
+  display: block;
+
+  padding: 10px;
+}
+
+.headerbutton{
+  display: inline-block;
+  margin: 5px;
+  padding: 15px;
+  border-radius: 100%;
+  background-color: #002640;
+
+}
+
+.material-icons{
+  color: white;
+  opacity: 0.8;
 }
 
 footer{

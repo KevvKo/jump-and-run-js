@@ -1,12 +1,13 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import './home.css'
 
 export default function Home(){
     return (
-        <div id='home'>
+        <div className='home'>
             <ul>
                 <li>
-                    <Link to="/game">Game</Link>
+                    <Link to="/game">Start</Link>
                 </li>
                 <li>
                     <Link to='/options'>Options</Link>
