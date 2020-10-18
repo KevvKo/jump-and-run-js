@@ -8,6 +8,16 @@
 
 .home h1{
     font-size: 150px;
+    background: -webkit-linear-gradient(#98B2C6, #3E637F);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@media only screen and (max-width: 1300px){
+    .home h1{
+        font-size: 100px;
+    }
+    
 }
 
 .home ul{   
@@ -22,4 +32,14 @@
     text-align: center;
     width: 500px;
     display: inline-block;
+
+    background: -webkit-linear-gradient(#98B2C6, #3E637F);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.home a:hover{
+    opacity: 0.7;
+    transition: 0.1s;
 }

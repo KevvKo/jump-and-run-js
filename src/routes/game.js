@@ -1,7 +1,8 @@
 import React from 'react'
+import './game.css'
 
 export default function Game(){
     return (
-        <div id='game'></div>
+        <div className='game'></div>
     )
 }

@@ -2,31 +2,16 @@ import React from 'react';
 import './App.css';
 import Home from './routes/home'
 import Game from './routes/game'
+import Options from './routes/options'
 import Credits from './routes/credits'
+import Background from './assets/components/background'
+
 import {
   useLocation,
   Switch,
+  Link,
   Route
 } from "react-router-dom";
-
-import backArrow from './assets/img/arrow_back-24px.svg'
-import pause from './assets/img/pause-24px.svg'
-
-
-function HeaderButton(props){
-
-  let icon = props.icon
-  let span
-
-  if(icon === 'arrow') span = <span className="material-icons">arrow_back</span>
-  else  span = <span className='material-icons'>pause</span> 
-
-  return (
-    <div className='headerbutton'>
-      {span}
-    </div>
-  )
-}
 
 function App() {
 
@@ -34,14 +19,31 @@ function App() {
 
   return (
     <div className="App">
+
+      <Background />
+
       <header>
-        { location !== '/'  && <HeaderButton  icon='arrow' />}
-        { location === 'game' && <HeaderButton icon='pause' /> }
+
+        { location !== '/'  &&
+          <div className='headerbutton'>
+            <Link to='/'>
+              <span className="material-icons">arrow_back</span>
+            </Link>
+          </div>
+        }
+
+        { location === '/game'  &&
+          <div className='headerbutton'>
+              <span className="material-icons">pause</span>
+          </div>
+        } 
+
       </header>
 
       <Switch>
         <Route exact path="/" children={<Home />} />
         <Route path="/game" children={<Game />} />
+        <Route path="/options" children={<Options />} />
         <Route path="/credits" children={<Credits />} />
       </Switch>
 

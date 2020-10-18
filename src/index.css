@@ -1,3 +1,14 @@
+:root{
+  --primary-bg-color: #4755a5;
+  --primary-txt-color: white;
+
+  --light-bg-color: #7981d7;
+  --light-txt-color: black;
+
+  --dark-bg-color: #072d76;
+  --dark-txt-color: white;
+}
+
 html, body, #root{
   height: 100%;
 }
@@ -14,3 +25,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
