@@ -4,4 +4,25 @@
     justify-content: center;
     align-items: center;
     flex-grow: 1;
+    text-align: center;
+    color: white;
+    
 }
+
+.credits h1,h2,p{
+    opacity: 0.6;
+}
+
+.credits h1{
+    font-size: 60px;
+}
+
+.credits h2{
+    font-size: 30px;
+}
+
+.credits p{
+    font-size: 20px;
+}
+
+

@@ -1,12 +1,11 @@
 import React from 'react'
 import './background.css'
 
-export default function Background(){
+export default function Background(props){
+    console.log(props.content)
     return(
-        <div className='background'>
-            <div id='stars'></div>
-            <div id='stars2'></div>
-            <div id='stars3'></div>
+        <div className="background">
+            {props.content}
         </div>
     )
 }

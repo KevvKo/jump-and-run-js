@@ -4,7 +4,7 @@ import Home from './routes/home'
 import Game from './routes/game'
 import Options from './routes/options'
 import Credits from './routes/credits'
-import Background from './assets/components/background'
+import StarBackground from './assets/components/starBackground'
 
 import {
   useLocation,
@@ -20,17 +20,16 @@ function App() {
   return (
     <div className="App">
 
-      <Background />
+      <StarBackground />
 
       <header>
 
         { location !== '/'  &&
-          <div className='headerbutton'>
-            <Link to='/'>
+    
+            <Link to='/' className='headerbutton'>
               <span className="material-icons">arrow_back</span>
             </Link>
-          </div>
-        }
+}
 
         { location === '/game'  &&
           <div className='headerbutton'>
