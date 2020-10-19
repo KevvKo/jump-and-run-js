@@ -4,4 +4,23 @@
     justify-content: center;
     align-items: center;
     flex-grow: 1;
+    text-align: center;
+    color: white;
+}
+
+
+.options h1,h2,p{
+    opacity: 0.6;
+}
+
+.options h1{
+    font-size: 60px;
+}
+
+.options h2{
+    font-size: 30px;
+}
+
+.options p{
+    font-size: 20px;
 }
