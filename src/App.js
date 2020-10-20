@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Home from './routes/home'
 import Game from './routes/game'
 import Options from './routes/options'
 import Credits from './routes/credits'
 import StarBackground from './assets/components/starBackground'
+import file from './assets/sound/sappheiros-embrace.mp3'
 
 import {
   useLocation,
@@ -21,7 +22,7 @@ function App() {
     <div className="App">
 
       <StarBackground />
-
+             
       <header>
 
         { location !== '/'  &&

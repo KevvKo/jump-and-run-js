@@ -4,7 +4,8 @@ import './home.css'
 
 export default function Home(){
     return (
-        <div className='home'>
+        <div className='home'>         
+
             <h1>Sticky Jump</h1>
             <ul>
                 <li>
