@@ -15,6 +15,9 @@ export default function Home(){
                     <Link to='/options'>Options</Link>
                 </li>
                 <li>
+                    <Link to="/guide">Guide</Link>
+                </li>
+                <li>
                     <Link to="/credits">Credits</Link>
                 </li>
             </ul>

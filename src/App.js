@@ -4,6 +4,7 @@ import Home from './routes/home'
 import Game from './routes/game'
 import Options from './routes/options'
 import Credits from './routes/credits'
+import Guide from './routes/guide'
 import StarBackground from './assets/components/starBackground'
 
 import {
@@ -68,6 +69,7 @@ function App() {
         <Route path="/game" children={<Game />} />
         <Route path="/options" children={<Options />} />
         <Route path="/credits" children={<Credits />} />
+        <Route path="/guide" children={<Guide />} />
       </Switch>
 
       <footer>
