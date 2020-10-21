@@ -11,7 +11,6 @@ export default function Game(){
     
     return (
         <div className='game'>
-            <audio src={require('../assets/sound/sappheiros-embrace.mp3')}></audio>
         </div>
     )
 }

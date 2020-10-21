@@ -37,6 +37,10 @@ header{
   background-image: linear-gradient(#98B2C6, #3E637F);
 }
 
+.pauseGame, .playMusic{
+  float: right;
+}
+
 .headerbutton:hover{
   cursor: pointer;
 }
