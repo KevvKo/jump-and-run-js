@@ -1,0 +1,83 @@
+{ "usecase": [
+
+        {"menu":[
+            {
+                "artist": "sappheiros",
+                "track":  "embrace"
+            },
+            {
+                "artist": "Known",
+                "track":  "Go Go Go"
+            },
+            {
+                "artist": "Patrick Patrikios",
+                "track":  "Ocean"
+            }, 
+            {
+                "artist": "Unicorn Heads",
+                "track":  "Polyphonic Congas"
+            }, 
+            {
+                "artist": "Unicorn Heads",
+                "track":  "Space Station Experience"
+            }, 
+            {
+                "artist": "The 129ers",
+                "track": "Sink Whole"
+            }   
+
+        ]},
+
+        {"drama":[
+            {
+                "artist": "Devon Church",
+                "track":  "A Fever"
+            },
+            {
+                "artist": "Devon Church",
+                "track":  "Weak Knight"
+            },
+            {
+                "artist": "Patrick Patrikios",
+                "track":  "Weak Knight"
+            },
+            {
+                "artist": "Patrick Patrikios",
+                "track":  "Forget Me Not"
+            }  
+        ]},
+
+        {"game":[
+            {
+                "artist": "Coyote Hearing",
+                "track":  "Disco Heart"
+            },
+            {
+                "artist": "Dan Hening",
+                "track":  "Arpy"
+            },
+            {
+                "artist": "Patrick Patrikios",
+                "track":  "Cover"
+            },
+            {
+                "artist": "Patrick Patrikios",
+                "track":  "Moons"
+            },   
+            {
+                "artist": "The 129ers",
+                "track":  "Numb Limb Lips"
+            },   
+            {
+                "artist": "Jeremy Black",
+                "track":  "Please Don't Go"
+            },
+            {
+                "artist": "The 129ers",
+                "track": "Sink Whole"
+            }   
+
+        ]
+        }
+    ]
+}
