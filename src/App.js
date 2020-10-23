@@ -40,7 +40,7 @@ function App() {
 
   return (
     <div className="App">
-      <audio src={require('./assets/sound/sappheiros-embrace.mp3')}></audio>
+      <audio src={require('./assets/sound/menu/sappheiros-embrace.mp3')}></audio>
       <StarBackground />
              
       <header>

@@ -20,6 +20,12 @@
     
 }
 
+@media only screen and (max-height: 600px){
+    .home h1{
+        margin: 30px;
+    }
+    
+}
 .home ul{   
     list-style-type: none;
     padding: 0;

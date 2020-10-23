@@ -11,7 +11,15 @@ export default function Credits(){
             <h2>Design</h2>
             <p>Kevin Klein</p>
             <h2>Music</h2>
-            <p></p>
+            <p>Sappheiros</p>
+            <p>Known</p>
+            <p>Patrick Patrikios</p>
+            <p>Unicorn Heads</p>
+            <p>The 129ers</p>
+            <p>Devon Church</p>
+            <p>Coyote Hearing</p>
+            <p>Dan Hening</p>
+            <p>Jeremy Black</p>
             <h2></h2>
             <p></p>
             <h2>Participants</h2>
