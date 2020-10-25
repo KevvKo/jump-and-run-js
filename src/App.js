@@ -5,9 +5,11 @@ import Game from './routes/game'
 import Options from './routes/options'
 import Credits from './routes/credits'
 import Guide from './routes/guide'
+
 import menuTrack1 from "./assets/sound/menu/sappheiros-embrace.mp3"
 
 import StarBackground from './assets/components/starBackground'
+import HeaderButton from './assets/components/headerButton'
 
 import {
   useLocation,
@@ -25,8 +27,7 @@ function App() {
   const toggleMusic = () => {
 
     let button = document.querySelector('.playMusic')
-    //let audioElement = document.querySelector('audio')
-
+    console.log(button)
     
     if(musicPlays){
 
@@ -51,20 +52,15 @@ function App() {
       <header>
 
         { location !== '/'  &&
-    
-            <Link to='/' className='headerbutton'>
-              <span className="material-icons">arrow_back</span>
+            <Link to='/' >
+                <HeaderButton icon="arrow_back" />
             </Link>
         }
         
-        <div className='headerbutton playMusic' onClick={() => toggleMusic()}>
-            <span className="material-icons">music_off</span>
-        </div>
+        <HeaderButton icon="music_off" className="playMusic" callback={toggleMusic} />
 
         { location === '/game'  &&
-          <div className='headerbutton pauseGame'>
-              <span className="material-icons">pause</span>
-          </div>
+          <HeaderButton icon="pause" />
         } 
 
       </header>
