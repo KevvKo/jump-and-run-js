@@ -5,6 +5,8 @@ import Game from './routes/game'
 import Options from './routes/options'
 import Credits from './routes/credits'
 import Guide from './routes/guide'
+import menuTrack1 from "./assets/sound/menu/sappheiros-embrace.mp3"
+
 import StarBackground from './assets/components/starBackground'
 
 import {
@@ -18,13 +20,16 @@ import {
 function App() {
 
   const [musicPlays, setMusicPlays] = useState(false)
+  const [audioElement] = useState(new Audio(menuTrack1))
 
   const toggleMusic = () => {
 
     let button = document.querySelector('.playMusic')
-    let audioElement = document.querySelector('audio')
+    //let audioElement = document.querySelector('audio')
 
+    
     if(musicPlays){
+
       audioElement.pause()
       button.children[0].innerText = 'music_off'
       setMusicPlays(false)
@@ -40,7 +45,7 @@ function App() {
 
   return (
     <div className="App">
-      <audio src={require('./assets/sound/menu/sappheiros-embrace.mp3')}></audio>
+
       <StarBackground />
              
       <header>
