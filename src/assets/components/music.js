@@ -20,7 +20,7 @@ import gameTrack5 from "../sound/game/Numb Limb Lips - The 129ers.mp3"
 import gameTrack6 from "../sound/game/Please Don't Go - Jeremy Black.mp3"
 import gameTrack7 from "../sound/game/Sink Whole Dream - The 129ers.mp3"
 
-function drameMusic(){
+export function useDrameMusic(){
     
     const dramaTracks = [
         {
@@ -45,7 +45,7 @@ function drameMusic(){
         },
     ]
 }
-function gameMusic(){
+export function useGameMusic(){
 
     const gameMusic = [
         {
@@ -88,7 +88,7 @@ function gameMusic(){
     return gameMusic
 }
 
-export default function menuMusic(){
+export function useMenuMusic(){
 
     const menuMusic = [
         {

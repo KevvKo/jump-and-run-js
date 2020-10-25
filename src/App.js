@@ -8,7 +8,7 @@ import Guide from './routes/guide'
 
 import StarBackground from './assets/components/starBackground'
 import HeaderButton from './assets/components/headerButton'
-import menuMusic from './assets/components/music'
+import {useMenuMusic} from './assets/components/music'
 
 import {
   useLocation,
@@ -21,7 +21,7 @@ import {
 function App() {
 
   const [musicPlays, setMusicPlays] = useState(false)
-  const sounds = menuMusic()
+  const sounds = useMenuMusic()
   let index = 0
   const [audioElement] = useState(new Audio(sounds[index].file))
 
