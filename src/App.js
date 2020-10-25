@@ -6,10 +6,9 @@ import Options from './routes/options'
 import Credits from './routes/credits'
 import Guide from './routes/guide'
 
-import menuTrack1 from "./assets/sound/menu/sappheiros-embrace.mp3"
-
 import StarBackground from './assets/components/starBackground'
 import HeaderButton from './assets/components/headerButton'
+import menuMusic from './assets/components/music'
 
 import {
   useLocation,
@@ -22,12 +21,21 @@ import {
 function App() {
 
   const [musicPlays, setMusicPlays] = useState(false)
-  const [audioElement] = useState(new Audio(menuTrack1))
+  const sounds = menuMusic()
+  let index = 0
+  const [audioElement] = useState(new Audio(sounds[index].file))
 
-  const toggleMusic = () => {
+  audioElement.onended = () =>{
+
+    index < sounds.length ? index += 1 : index = 0 
+
+    audioElement.src = sounds[index].file
+    audioElement.play()
+  }
+
+  const toggleMenuMusic = () => {
 
     let button = document.querySelector('.playMusic')
-    console.log(button)
     
     if(musicPlays){
 
@@ -57,7 +65,7 @@ function App() {
             </Link>
         }
         
-        <HeaderButton icon="music_off" className="playMusic" callback={toggleMusic} />
+        <HeaderButton icon="music_off" className="playMusic" callback={toggleMenuMusic} />
 
         { location === '/game'  &&
           <HeaderButton icon="pause" />
