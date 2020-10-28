@@ -8,6 +8,7 @@ import Guide from './routes/guide'
 
 import StarBackground from './assets/components/starBackground'
 import HeaderButton from './assets/components/headerButton'
+import SoundtrackDisplay from './assets/components/soundtrackDisplay'
 import {useMenuMusic} from './assets/components/music'
 
 import {
@@ -22,6 +23,9 @@ function App() {
 
   const [musicPlays, setMusicPlays] = useState(false)
   const sounds = useMenuMusic()
+  const [artist, setArtist] = useState('')
+  const [title, setTitle] = useState('')
+
   let index = 0
   const [audioElement] = useState(new Audio(sounds[index].file))
 
@@ -31,6 +35,9 @@ function App() {
 
     audioElement.src = sounds[index].file
     audioElement.play()
+
+    setArtist(sounds[index].artist)
+    setTitle(sounds[index].track)
   }
 
   const toggleMenuMusic = () => {
@@ -44,9 +51,13 @@ function App() {
       setMusicPlays(false)
   
     }else{
+      
       audioElement.play()
       button.children[0].innerText = 'music_note'
+
       setMusicPlays(true)
+      setArtist(sounds[index].artist)
+      setTitle(sounds[index].track)
     }
   }
   
@@ -83,6 +94,7 @@ function App() {
 
       <footer>
           <a href='https://github.com/KevvKo/jump-and-run-js'>@KevvKo</a>
+          <SoundtrackDisplay artist={artist} title={title} />
         </footer>
     </div>
   );

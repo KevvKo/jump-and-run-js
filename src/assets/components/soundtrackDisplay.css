@@ -1,0 +1,26 @@
+.soundtrackDisplay{
+    float: right;
+    color: white;
+    opacity: 0.6;
+    margin-right: 10px;
+    width: 100px;
+    overflow: hidden;
+    
+}
+
+.soundtrackDisplay div{
+
+    width: max-content;
+    animation: musicDisplay 8s linear infinite;
+    transform:translateX(-100%);
+
+}
+
+@keyframes musicDisplay{
+    from {
+        transform: translateX( -100%);
+    }
+    to {
+        transform: translateX(100%);
+      }
+}
