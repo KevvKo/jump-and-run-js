@@ -6,7 +6,7 @@ export default function Home(){
     return (
         <div className='home'>         
 
-            <h1>Sticky Jump</h1>
+            <h1>A tiny story...</h1>
             <ul>
                 <li>
                     <Link to="/game">Start</Link>
