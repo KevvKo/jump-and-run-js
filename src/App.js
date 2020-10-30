@@ -94,7 +94,7 @@ function App() {
 
       <footer>
           <a href='https://github.com/KevvKo/jump-and-run-js'>@KevvKo</a>
-          <SoundtrackDisplay artist={artist} title={title} />
+          <SoundtrackDisplay artist={artist} title={title} musicPlays={musicPlays}/>
         </footer>
     </div>
   );
