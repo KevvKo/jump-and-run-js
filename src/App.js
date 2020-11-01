@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Home from './routes/home'
 import Game from './routes/game'
@@ -62,6 +62,12 @@ function App() {
   }
   
   let location = useLocation()['pathname']
+
+  useEffect(()=>{
+    if(location === '/game' && !musicPlays){
+      toggleMenuMusic()
+    }
+  })
 
   return (
     <div className="App">
