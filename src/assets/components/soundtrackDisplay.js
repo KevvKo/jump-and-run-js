@@ -6,8 +6,9 @@ import './soundtrackDisplay.css'
 export default function SoundtrackDisplay(props){
 
     return(
+
         <div className="soundtrackDisplay">
-            {props.musicPlays && <div>{props.artist + ' - ' + props.title}</div> }
+            {!props.audio.paused && <div>{props.artist + ' - ' + props.title}</div> }
         </div>  
     )
 }

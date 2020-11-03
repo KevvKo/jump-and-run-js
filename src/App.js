@@ -21,8 +21,8 @@ import {
 
 function App() {
 
-  const [musicPlays, setMusicPlays] = useState(false)
   const sounds = useMenuMusic()
+  const [musicPlays, setMusicPlays] = useState(false)
   const [artist, setArtist] = useState('')
   const [title, setTitle] = useState('')
 
@@ -43,11 +43,12 @@ function App() {
   const toggleMenuMusic = () => {
 
     let button = document.querySelector('.playMusic')
-    
-    if(musicPlays){
+
+    if(!audioElement.paused){
 
       audioElement.pause()
       button.children[0].innerText = 'music_off'
+
       setMusicPlays(false)
   
     }else{
@@ -63,11 +64,12 @@ function App() {
   
   let location = useLocation()['pathname']
 
-  useEffect(()=>{
-    if(location === '/game' && !musicPlays){
-      toggleMenuMusic()
-    }
-  })
+  // useEffect(()=>{
+
+  //   if(location === '/game' && !musicPlays){
+  //     toggleMenuMusic()
+  //   }
+  // }, [location])
 
   return (
     <div className="App">
@@ -92,7 +94,7 @@ function App() {
 
       <Switch>
         <Route exact path="/" children={<Home />} />
-        <Route path="/game" children={<Game />} />
+        <Route path="/game" children={<Game m={musicPlays}/>} />
         <Route path="/options" children={<Options />} />
         <Route path="/credits" children={<Credits />} />
         <Route path="/guide" children={<Guide />} />
@@ -100,7 +102,7 @@ function App() {
 
       <footer>
           <a href='https://github.com/KevvKo/jump-and-run-js'>@KevvKo</a>
-          <SoundtrackDisplay artist={artist} title={title} musicPlays={musicPlays}/>
+          <SoundtrackDisplay artist={artist} title={title} audio={audioElement}/>
         </footer>
     </div>
   );

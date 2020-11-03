@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 import menuTrack1 from "../sound/menu/sappheiros-embrace.mp3"
 import menuTrack2 from "../sound/menu/Go Go Go - Kwon.mp3"
 import menuTrack3 from "../sound/menu/Ocean View - Patrick Patrikios.mp3"
