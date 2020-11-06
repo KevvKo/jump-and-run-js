@@ -9,7 +9,7 @@ export default function Home(){
             <h1>A tiny story...</h1>
             <ul>
                 <li>
-                    <Link to="/game">Start</Link>
+                    <Link to="/levelSelection">Start</Link>
                 </li>
                 <li>
                     <Link to='/options'>Options</Link>
