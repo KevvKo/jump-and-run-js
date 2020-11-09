@@ -1,6 +1,8 @@
 .levelSelection{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 3;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
