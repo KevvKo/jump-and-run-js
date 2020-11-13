@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react'
 import './play.css'
 
+import {game} from '../assets/js/game'
+
 export default function Play(){
 
 
     useEffect(() => {
 
         scaleCanvas()
+        game.init()
     });
     
     const scaleCanvas = () => {
