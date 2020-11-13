@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Home from './routes/home'
 import LevelSelection from './routes/levelSelection'
-import Game from './routes/game'
+import Play from './routes/play'
 import Options from './routes/options'
 import Credits from './routes/credits'
 import Guide from './routes/guide'
@@ -72,7 +72,7 @@ function App() {
              
       <header>
 
-        { location !== '/' && location !== '/game' &&
+        { location !== '/' && location !== '/play' &&
             <Link to='/' >
                 <HeaderButton icon="arrow_back" />
             </Link>
@@ -92,7 +92,7 @@ function App() {
 
         <HeaderButton icon="music_off" className="playMusic" callback={toggleMenuMusic} />
 
-        { location === '/game'  &&
+        { location === '/play'  &&
           <HeaderButton icon="pause" />
         } 
 
@@ -101,7 +101,7 @@ function App() {
       <Switch>
         <Route exact path="/" children={<Home />} />
         <Route path="/levelSelection" children={<LevelSelection />} />
-        <Route path="/game" children={<Game />} />
+        <Route path="/play" children={<Play />} />
         <Route path="/options" children={<Options />} />
         <Route path="/credits" children={<Credits />} />
         <Route path="/guide" children={<Guide />} />

@@ -1,11 +1,16 @@
 import React, { useEffect } from 'react'
-import './game.css'
+import './play.css'
 
-export default function Game(){
+export default function Play(){
 
 
     useEffect(() => {
 
+        scaleCanvas()
+    });
+    
+    const scaleCanvas = () => {
+        
         const canvas = document.getElementById('gameBoard')
         const width = window.innerWidth
         const height = window.innerHeight
@@ -13,12 +18,11 @@ export default function Game(){
         
         canvas.width = width
         canvas.height = height - header.offsetHeight - 6
-    })
-    
+    };
 
     return (
-        <div className='game'>
-            <canvas id="gameBoard"></canvas>
+        <div className='play'>
+            <canvas id='gameBoard'></canvas>
         </div>
     )
 }

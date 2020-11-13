@@ -6,7 +6,7 @@ import './level.css'
 export default function Level(props){
 
     return(
-        <Link to='/game'>
+        <Link to='/play'>
             <div className="level">
                 <img src={props.src} alt={props.alt}></img>
             </div>
