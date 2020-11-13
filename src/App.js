@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Home from './routes/home'
 import LevelSelection from './routes/levelSelection'
+import Game from './routes/game'
 import Options from './routes/options'
 import Credits from './routes/credits'
 import Guide from './routes/guide'
@@ -88,6 +89,7 @@ function App() {
       <Switch>
         <Route exact path="/" children={<Home />} />
         <Route path="/levelSelection" children={<LevelSelection />} />
+        <Route path="/game" children={<Game />} />
         <Route path="/options" children={<Options />} />
         <Route path="/credits" children={<Credits />} />
         <Route path="/guide" children={<Guide />} />

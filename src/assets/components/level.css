@@ -1,12 +1,10 @@
 .level{
-    width: 200px;
-    height: 150px;
+    width: 320px;
+    height: 250px;
     background-color: black;
     margin: 10px;
 }
 
 .level:hover{
     cursor: pointer;
-    width: 198px;
-    height: 148px;
 }
