@@ -29,6 +29,12 @@
 .home ul{   
     list-style-type: none;
     padding: 0;
+    width: 200px;
+}
+
+.home li{
+    display: flex;
+    justify-content: center;
 }
 
 .home a{
@@ -36,13 +42,10 @@
     font-size: 50px;
     text-decoration: none;
     text-align: center;
-    width: 500px;
     display: inline-block;
-
     background: -webkit-linear-gradient(#98B2C6, #3E637F);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
 }
 
 .home a:hover{
