@@ -2,7 +2,7 @@
 .headerbutton{
     display: inline-block;
     margin: 5px;
-    padding: 15px;
+    padding: 10px;
     border-radius: 100%;
     background-image: linear-gradient(#98B2C6, #3E637F);
   }

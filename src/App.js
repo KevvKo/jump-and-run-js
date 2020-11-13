@@ -72,12 +72,24 @@ function App() {
              
       <header>
 
-        { location !== '/'  &&
+        { location !== '/' && location !== '/game' &&
             <Link to='/' >
                 <HeaderButton icon="arrow_back" />
             </Link>
         }
-        
+
+        { location !== '/' && location !== '/levelSelection' &&
+            <Link to='/levelSelection' >
+                <HeaderButton icon="arrow_back" />
+            </Link>
+        }
+
+        { location !== '/' && location !== '/levelSelection' &&
+            <Link to='/' >
+              <HeaderButton icon="home" />
+            </Link>
+        }
+
         <HeaderButton icon="music_off" className="playMusic" callback={toggleMenuMusic} />
 
         { location === '/game'  &&
