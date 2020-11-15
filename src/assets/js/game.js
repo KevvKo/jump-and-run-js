@@ -3,16 +3,31 @@ class Game{
     constructor(){}
 
     init(){
+
         this.canvas = document.getElementById('gameBoard')
         this.context = this.canvas.getContext('2d')
-        this.draw()
+        
+        console.log("Game initialized.")
+        this.start()
+    }   
+
+    start(){
+        this.loop = window.requestAnimationFrame(() => this.update())
     }
 
-    start(){}
+    update(){
+ 
+        this.draw()
+        this.loop = window.requestAnimationFrame(() => this.update())
+    }
 
-    update(){}
+    stop(){
+        window.cancelAnimationFrame(this.loop)
+    }
+    draw(){
+    
+    }
 
-    draw(){}
 }
 const game = new Game()
 export {game}

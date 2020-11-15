@@ -10,6 +10,10 @@ export default function Play(){
 
         scaleCanvas()
         game.init()
+
+        return () => {
+            game.stop()
+        }
     });
     
     const scaleCanvas = () => {
