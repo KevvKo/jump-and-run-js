@@ -3,6 +3,8 @@ import './play.css'
 
 import {game} from '../assets/js/game'
 
+import spaceship from '../assets/img/spaceship.png'
+
 export default function Play(){
 
 
@@ -29,6 +31,7 @@ export default function Play(){
 
     return (
         <div className='play'>
+            <img src={spaceship} alt="spaceship" />
             <canvas id='gameBoard'></canvas>
         </div>
     )
