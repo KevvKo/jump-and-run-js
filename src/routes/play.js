@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import './play.css'
 
-import {game} from '../assets/js/game'
+import {game} from '../assets/scripts/game'
 
 import spaceship from '../assets/img/spaceship.png'
 

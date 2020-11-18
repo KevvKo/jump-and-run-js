@@ -3,6 +3,7 @@
     height: 250px;
     background-color: black;
     margin: 10px;
+    border-radius: 10px;
 }
 
 .level:hover{
