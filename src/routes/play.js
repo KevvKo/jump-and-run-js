@@ -3,10 +3,12 @@ import './play.css'
 
 import {game} from '../assets/scripts/game'
 
-import spaceship from '../assets/img/spaceship.png'
+import spaceship1 from '../assets/img/spaceship1.png'
+import spaceship2 from '../assets/img/spaceship2.png'
+import spaceship3 from '../assets/img/spaceship3.png'
+import spaceship4 from '../assets/img/spaceship4.png'
 
 export default function Play(){
-
 
     useEffect(() => {
         
@@ -19,6 +21,8 @@ export default function Play(){
             
             canvas.width = width
             canvas.height = height - header.offsetHeight - 6
+            console.log('canvas-width: ' + width)
+            console.log('canvas-height: ' + height)
         };
 
         rescaleCanvas()
@@ -35,7 +39,7 @@ export default function Play(){
 
     return (
         <div className='play' >
-            <img src={spaceship} alt="spaceship" />
+            <img src={spaceship1} alt="spaceship" />
             <canvas id='gameBoard'></canvas>
         </div>
     )

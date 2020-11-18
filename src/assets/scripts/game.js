@@ -1,6 +1,9 @@
+import Spaceship from './models/spaceship'
 class Game{
 
-    constructor(){}
+    constructor(){
+        this.spaceship = new Spaceship()
+    }
 
     init(){
 
@@ -11,7 +14,6 @@ class Game{
     start(){
         this.canvas = document.getElementById('gameBoard')
         this.context = this.canvas.getContext('2d')
-        this.image = document.querySelector('img')
 
         this.loop = window.requestAnimationFrame(() => this.update())
     }
@@ -27,6 +29,8 @@ class Game{
     }
 
     draw(){
+        
+        this.image = document.querySelector('img')
         this.context.drawImage(this.image, 0, 0)
     }
 
