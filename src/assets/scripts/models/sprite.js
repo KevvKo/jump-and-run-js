@@ -8,8 +8,10 @@ export default class Sprite{
     #spriteHeight
     #x
     #y
+    #minWidth
+    #maxWidth
 
-    constructor(img, clippingX, clippingY, spriteWidth, spriteHeight, x, y ){
+    constructor(img, clippingX, clippingY, spriteWidth, spriteHeight, x, y, minWidth, maxWidth ){
         
         this.#img = img
         this.#clippingX = clippingX
@@ -18,11 +20,15 @@ export default class Sprite{
         this.#spriteHeight = spriteHeight
         this.#x = x
         this.#y = y
+        this.#minWidth = minWidth
+        this.#maxWidth = maxWidth
     }
 
     draw(){
+
         const canvas = document.querySelector('canvas')
         const context = canvas.getContext('2d')
+
         context.drawImage(
             this.#img,
             this.#clippingX,
@@ -35,6 +41,15 @@ export default class Sprite{
             this.#spriteHeight
 
         )
+        this.clippingSprite()
+    }
+
+    clippingSprite(){
+        this.#clippingX += this. #minWidth
+        console.log(this.#clippingX)
+        if(this.#clippingX >= this.#maxWidth){
+            this.#clippingX = this.#minWidth
+        }
     }
     
 }
