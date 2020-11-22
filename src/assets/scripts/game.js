@@ -29,9 +29,9 @@ class Game{
     }
 
     draw(){
-        
+
         this.image = document.querySelector('img')
-        this.context.drawImage(this.image, 0, 0)
+        this.context.drawImage(this.image, 0, 0, 100, 100, 0, 0, 100, 100)
     }
 
 }
