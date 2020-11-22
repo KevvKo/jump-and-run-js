@@ -37,7 +37,7 @@ export default function Play(){
 
     return (
         <div className='play' >
-            <img src={spaceship} alt="spaceship" />
+            <img id = 'spaceship' src={spaceship} alt='spaceship' />
             <canvas id='gameBoard'></canvas>
         </div>
     )

@@ -1,13 +1,10 @@
-import Spaceship from './models/spaceship'
+import Sprite from './models/sprite'
 class Game{
-
-    constructor(){
-        this.spaceship = new Spaceship()
-    }
 
     init(){
 
         console.log("Game initialized.")
+        this.createSprites()
         this.start()
     }   
 
@@ -28,10 +25,14 @@ class Game{
         window.cancelAnimationFrame(this.loop)
     }
 
+    createSprites(){
+        const spaceshipImg = document.getElementById('spaceship')
+        this.spaceship = new Sprite(spaceshipImg, 0, 0, 100, 100, 10, 10)
+    }
+
     draw(){
 
-        this.image = document.querySelector('img')
-        this.context.drawImage(this.image, 0, 0, 100, 100, 0, 0, 100, 100)
+        this.spaceship.draw()
     }
 
 }
