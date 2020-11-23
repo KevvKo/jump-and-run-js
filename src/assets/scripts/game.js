@@ -16,7 +16,8 @@ class Game{
     }
 
     update(){
-  
+
+        this.clear()
         this.draw()
         this.loop = window.requestAnimationFrame(() => this.update())
     }
@@ -27,13 +28,17 @@ class Game{
 
     createSprites(){
         const spaceshipImg = document.getElementById('spaceship')
-        this.spaceship = new Sprite(spaceshipImg, 0, 0, 100, 100, 10, 10, 100, 400)
+        this.spaceship = new Sprite(spaceshipImg, 0, 0, 100, 100, 10, 10, 100, 300)
     }
 
     draw(){
-
-        this.spaceship.draw()
+        this.spaceship.render()
     }
+
+    clear(){
+        this.context.clearRect(0,0,875,504)
+    }
+
 
 }
 const game = new Game()

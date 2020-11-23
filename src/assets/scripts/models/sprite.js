@@ -10,6 +10,7 @@ export default class Sprite{
     #y
     #minWidth
     #maxWidth
+    #timestamp
 
     constructor(img, clippingX, clippingY, spriteWidth, spriteHeight, x, y, minWidth, maxWidth ){
         
@@ -22,6 +23,7 @@ export default class Sprite{
         this.#y = y
         this.#minWidth = minWidth
         this.#maxWidth = maxWidth
+        this.#timestamp = Date.now()
     }
 
     draw(){
@@ -41,15 +43,25 @@ export default class Sprite{
             this.#spriteHeight
 
         )
-        this.clippingSprite()
     }
 
-    clippingSprite(){
+    update(){
 
-        this.#clippingX += this.#minWidth
-        if(this.#clippingX > this.#maxWidth){
-            this.#clippingX = this.#minWidth
-        }
+        const difference = (Date.now() - this.#timestamp)/60
+
+        if(difference >= 1.2){
+
+            this.#timestamp = Date.now()
+            this.#clippingX += this.#minWidth
+            
+            if(this.#clippingX > this.#maxWidth) this.#clippingX = this.#minWidth
+    }
+    }
+
+    render(){
+
+        this.update()
+        this.draw()
     }
     
 }
