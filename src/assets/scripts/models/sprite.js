@@ -45,9 +45,9 @@ export default class Sprite{
     }
 
     clippingSprite(){
-        this.#clippingX += this. #minWidth
-        console.log(this.#clippingX)
-        if(this.#clippingX >= this.#maxWidth){
+
+        this.#clippingX += this.#minWidth
+        if(this.#clippingX > this.#maxWidth){
             this.#clippingX = this.#minWidth
         }
     }
