@@ -8,11 +8,11 @@ export default class Sprite{
     #spriteHeight
     #x
     #y
-    #minWidth
-    #maxWidth
-    #timestamp
+    #frames
+    #frameIndex
+    #lastTimeRendered
 
-    constructor(img, clippingX, clippingY, spriteWidth, spriteHeight, x, y, minWidth, maxWidth ){
+    constructor(img, clippingX, clippingY, spriteWidth, spriteHeight, x, y, frames ){
         
         this.#img = img
         this.#clippingX = clippingX
@@ -21,9 +21,9 @@ export default class Sprite{
         this.#spriteHeight = spriteHeight
         this.#x = x
         this.#y = y
-        this.#minWidth = minWidth
-        this.#maxWidth = maxWidth
-        this.#timestamp = Date.now()
+        this.#frames = frames
+        this.#frameIndex = 0
+        this.#lastTimeRendered = performance.now()
     }
 
     draw(){
@@ -47,15 +47,19 @@ export default class Sprite{
 
     update(){
 
-        const difference = (Date.now() - this.#timestamp)/60
+        const difference = (performance.now() - this.#lastTimeRendered)/60
 
-        if(difference >= 1.2){
+        if(difference >= 1.1){                  //1.1 -> smoothest time to animate
 
-            this.#timestamp = Date.now()
-            this.#clippingX += this.#minWidth
-            
-            if(this.#clippingX > this.#maxWidth) this.#clippingX = this.#minWidth
-    }
+            this.#lastTimeRendered = performance.now()            
+            this.#frameIndex += 1
+
+            if(this.#frameIndex > this.#frames.length - 1){
+                this.#frameIndex = 0
+            }
+
+            this.#clippingX = this.#frames[this.#frameIndex]
+        }
     }
 
     render(){

@@ -28,7 +28,12 @@ class Game{
 
     createSprites(){
         const spaceshipImg = document.getElementById('spaceship')
-        this.spaceship = new Sprite(spaceshipImg, 0, 0, 100, 100, 10, 10, 100, 300)
+        this.spaceship = new Sprite(
+            spaceshipImg,
+             0, 0,
+            100, 100, 
+            500, 200, 
+            [0, 100, 200, 300])
     }
 
     draw(){
