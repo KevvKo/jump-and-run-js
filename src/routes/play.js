@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import './play.css'
 
 import {game} from '../assets/scripts/game'
+import {store} from '../assets/store/store'
 
 import spaceship from '../assets/img/spaceship.png'
 
@@ -9,24 +10,15 @@ import spaceship from '../assets/img/spaceship.png'
 export default function Play(){
 
     useEffect(() => {
-        
-        const rescaleCanvas = () => {
-        
-            const canvas = document.getElementById('gameBoard')
-            const width = window.innerWidth
-            const height = window.innerHeight
-            const header = document.querySelector('header')
-            
-            canvas.width = width
-            canvas.height = height - header.offsetHeight - 6
-            console.log('canvas-width: ' + width)
-            console.log('canvas-height: ' + height)
-        };
-
-        rescaleCanvas()
+       
+        store.dispatch({type: 'canvas/scaleWidth'})
+        store.dispatch({type: 'canvas/scaleHeight'})
         game.init()
 
-        window.addEventListener('resize', rescaleCanvas)
+        window.addEventListener('resize', () => {
+            store.dispatch({type: 'canvas/scaleWidth'})
+            store.dispatch({type: 'canvas/scaleHeight'})
+        })
         
         return () => {
             game.stop()

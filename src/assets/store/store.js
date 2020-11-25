@@ -1,6 +1,6 @@
-import { createStore } from 'redux'
-import rootReducer from './reducer'
+import { configureStore} from "@reduxjs/toolkit";
+import canvasReducer  from './reducers/canvasReducer'
 
-const store = createStore(rootReducer)
+const store = configureStore({reducer: canvasReducer});
 
-export default store
+export {store};
