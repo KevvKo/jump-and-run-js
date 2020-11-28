@@ -20,6 +20,13 @@ import {
 } from "react-router-dom";
 
 
+/* TO DO'S: 
+  
+  implement ressource loading and availability
+  refactor store
+
+*/
+
 function App() {
 
   const sounds = useMenuMusic()

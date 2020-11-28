@@ -26,6 +26,23 @@ export default class Sprite{
         this.#lastTimeRendered = performance.now()
     }
 
+    get x(){
+        return this.#x
+    }
+
+    set x(val){
+        this.#x = val
+    }
+
+    get y(){
+        return this.#y
+    }
+
+    set y(val){
+   
+        this.#y = val
+    }
+
     draw(){
 
         const canvas = document.querySelector('canvas')

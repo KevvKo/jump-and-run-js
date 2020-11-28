@@ -3,7 +3,7 @@ class Game{
 
     init(){
 
-        console.log("Game initialized.")
+        console.log('Game initialized.')
         this.createSprites()
         this.start()
     }   

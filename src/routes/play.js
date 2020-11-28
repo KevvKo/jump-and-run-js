@@ -3,6 +3,7 @@ import './play.css'
 
 import {game} from '../assets/scripts/game'
 import {store} from '../assets/store/store'
+import {handleInput} from '../assets/scripts/inputHandler'
 
 import spaceship from '../assets/img/spaceship.png'
 
@@ -19,8 +20,12 @@ export default function Play(){
             store.dispatch({type: 'canvas/scaleWidth'})
             store.dispatch({type: 'canvas/scaleHeight'})
         })
-        
+
+        window.addEventListener('keydown', handleInput)
+
         return () => {
+
+            window.removeEventListener('keydown', handleInput)
             game.stop()
         }
     });
