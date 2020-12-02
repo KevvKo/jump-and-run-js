@@ -6,29 +6,23 @@ export default class Sprite{
     #clippingY
     #spriteWidth
     #spriteHeight
-    #velX
-    #velY
     #x
     #y
     #frames
     #frameIndex
-    #friction
     #lastTimeRendered
 
-    constructor(img, clippingX, clippingY, spriteWidth, spriteHeight, x, y, friction, frames ){
+    constructor(img, clippingX, clippingY, spriteWidth, spriteHeight, x, y, frames ){
         
         this.#img = img
         this.#clippingX = clippingX
         this.#clippingY = clippingY
         this.#spriteWidth = spriteWidth
         this.#spriteHeight = spriteHeight
-        this.#velX = x
-        this.#velY = y
         this.#x = x
         this.#y = y
         this.#frames = frames
         this.#frameIndex = 0
-        this.#friction = friction
         this.#lastTimeRendered = performance.now()
     }
 
@@ -47,26 +41,6 @@ export default class Sprite{
     set y(val){
    
         this.#y = val
-    }
-
-    get velX(){
-        return this.#velX
-    }
-
-    set velx(val){
-        this.#x = val
-    }
-
-    get velY(){
-        return this.#velY
-    }
-
-    set velY(val){
-        this.#velY = val
-    }
-
-    get friction(){
-        return this.#friction
     }
 
     draw(){

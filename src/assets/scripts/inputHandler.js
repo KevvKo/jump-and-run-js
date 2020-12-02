@@ -11,22 +11,22 @@ export function handleInput(e){
     // UP
 
     case 'w':
-        game.spaceship.velY -= 6
+        game.spaceship.vy -= 6
         break
 
     // DOWN
     case 's':
-        game.spaceship.velY += 6
+        game.spaceship.vy += 6
         break
 
     // LEFT
     case 'a':
-        game.spaceship.velX -= 6
+        game.spaceship.vx -= 6
         break
 
     // RIGHT
     case 'd':
-        game.spaceship.velX += 6
+        game.spaceship.vx += 6
         break
 
     default:

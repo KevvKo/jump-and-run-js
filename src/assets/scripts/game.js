@@ -1,4 +1,4 @@
-import Sprite from './models/sprite'
+import Spaceship from './models/spaceship-model'
 class Game{
 
     init(){
@@ -28,12 +28,7 @@ class Game{
 
     createSprites(){
         const spaceshipImg = document.getElementById('spaceship')
-        this.spaceship = new Sprite(
-            spaceshipImg,
-             0, 0,
-            100, 100, 
-            500, 200, 
-            [0, 100, 200, 300])
+        this.spaceship = new Spaceship(500, 200, spaceshipImg)
     }
 
     draw(){
