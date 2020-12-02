@@ -11,22 +11,26 @@ export function handleInput(e){
     // UP
 
     case 'w':
-        game.spaceship.y =  game.spaceship.y -6
+        game.spaceship.velY -= 6
         break
 
     // DOWN
     case 's':
-        game.spaceship.y =  game.spaceship.y +6
+        game.spaceship.velY += 6
         break
 
     // LEFT
     case 'a':
-        game.spaceship.x =  game.spaceship.x -6
+        game.spaceship.velX -= 6
         break
 
     // RIGHT
     case 'd':
-        game.spaceship.x =  game.spaceship.x +6
+        game.spaceship.velX += 6
+        break
+
+    default:
         break
     }
+
 }
