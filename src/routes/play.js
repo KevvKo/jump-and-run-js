@@ -10,6 +10,8 @@ import spaceship from '../assets/img/spaceship.png'
 
 export default function Play(){
 
+    const keys = []
+
     useEffect(() => {
        
         store.dispatch({type: 'canvas/scaleWidth'})
@@ -21,11 +23,13 @@ export default function Play(){
             store.dispatch({type: 'canvas/scaleHeight'})
         })
 
-        window.addEventListener('keydown', handleInput)
+        window.addEventListener('keydown', (e) => { keys[e.code] = true})
+        window.addEventListener('keydown', (e) => { keys[e.code] = false })
 
         return () => {
 
-            window.removeEventListener('keydown', handleInput)
+            window.removeEventListener('keydown')
+            window.removeEventListener('keyup')
             game.stop()
         }
     });

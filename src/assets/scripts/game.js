@@ -1,6 +1,9 @@
 import Spaceship from './models/spaceship-model'
 class Game{
 
+    constructor(){
+        this.keys = []
+    }
     init(){
 
         console.log('Game initialized.')
@@ -38,8 +41,6 @@ class Game{
     clear(){
         this.context.clearRect(0,0,875,504)
     }
-
-
 }
 const game = new Game()
 export {game}
