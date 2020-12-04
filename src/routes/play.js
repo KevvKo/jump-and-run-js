@@ -28,7 +28,7 @@ export default function Play(){
             store.dispatch({ type:'keys/KEY_IS_DOWN' , payload:  e.code } )     
         })
         window.addEventListener('keyup', (e) => {
-            store.dispatch({ type:'keys/KEY_IS_UP' , payload: e.code })     
+        
         })
 
         return () => {

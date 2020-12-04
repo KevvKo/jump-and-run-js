@@ -6,7 +6,6 @@ export default function keysReducer(state = initialState, action){
 
         const keys = {...state}
         keys[action.payload] = true
-        console.log(keys)
         return keys
     } 
 

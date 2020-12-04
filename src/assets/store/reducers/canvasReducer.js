@@ -9,25 +9,16 @@ function canvasReducer( state = initialState, action) {
 
         const canvas = document.getElementById('gameBoard')
         const width = window.innerWidth
-        canvas.width = width
-
-        return {
-            ...state,
-            width: width
-        }
-    }
-
-    if(action.type === 'canvas/scaleHeight'){
-
-        const canvas = document.getElementById('gameBoard')
         const height = window.innerHeight
         const header = document.querySelector('header')
 
+        canvas.width = width
         canvas.height = height - header.offsetHeight - 6
 
         return {
             ...state,
-            height: state.height
+            width: width,
+            height: height
         }
     }
 
