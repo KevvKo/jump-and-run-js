@@ -13,12 +13,11 @@ export default function Play(){
 
     const keys = useSelector (state => state.keys)
     
-    const canvasScaler = (e) => { store.dispatch({ type: 'canvas/Scale' }) }
-    const keyDownHandler = (e) => { store.dispatch({ type: 'keys/KEY_IS_DOWN' }) }
-    const keyUpHandler= (e) => { store.dispatch({ type: 'keys/KEY_IS_UP' }) }
+    const canvasScaler = () => { store.dispatch({ type: 'canvas/Scale' }) }
+    const keyDownHandler = (e) => { store.dispatch({ type: 'keys/KEY_IS_DOWN' , payload: e.code }) }
+    const keyUpHandler= (e) => { store.dispatch({ type: 'keys/KEY_IS_UP',  payload: e.code }) }
 
     useEffect(() => {
-       
         
         canvasScaler()
         game.init()
@@ -28,7 +27,6 @@ export default function Play(){
         window.addEventListener( 'keyup',  keyUpHandler )
 
         return () => {
-
             window.removeEventListener( 'keydown',  keyDownHandler )
             window.removeEventListener( 'keyup', keyUpHandler )
             window.removeEventListener( 'resize', canvasScaler )
