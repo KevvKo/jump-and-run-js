@@ -5,7 +5,7 @@ const initialState= {
 
 function canvasReducer( state = initialState, action) {
 
-    if(action.type === 'canvas/scaleWidth'){
+    if(action.type === 'canvas/Scale'){
 
         const canvas = document.getElementById('gameBoard')
         const width = window.innerWidth

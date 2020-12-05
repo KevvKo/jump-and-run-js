@@ -3,8 +3,8 @@ import {useSelector} from 'react-redux'
 
 import './play.css'
 
-import {game} from '../assets/scripts/game'
-import {store} from '../assets/store/store'
+import { game } from '../assets/scripts/game'
+import { store } from '../assets/store/store'
 
 import spaceship from '../assets/img/spaceship.png'
 
@@ -12,29 +12,26 @@ import spaceship from '../assets/img/spaceship.png'
 export default function Play(){
 
     const keys = useSelector (state => state.keys)
+    
+    const canvasScaler = (e) => { store.dispatch({ type: 'canvas/Scale' }) }
+    const keyDownHandler = (e) => { store.dispatch({ type: 'keys/KEY_IS_DOWN' }) }
+    const keyUpHandler= (e) => { store.dispatch({ type: 'keys/KEY_IS_UP' }) }
 
     useEffect(() => {
        
-        store.dispatch({ type: 'canvas/scaleWidth' })
-        store.dispatch({ type: 'canvas/scaleHeight' })
+        
+        canvasScaler()
         game.init()
 
-        window.addEventListener('resize', () => {
-            store.dispatch({ type: 'canvas/scaleWidth' })
-            store.dispatch({ type: 'canvas/scaleHeight' })
-        })
-
-        window.addEventListener('keydown', (e) => {
-            store.dispatch({ type:'keys/KEY_IS_DOWN' , payload:  e.code } )     
-        })
-        window.addEventListener('keyup', (e) => {
-        
-        })
+        window.addEventListener( 'resize', canvasScaler )
+        window.addEventListener( 'keydown', keyDownHandler )
+        window.addEventListener( 'keyup',  keyUpHandler )
 
         return () => {
 
-            // window.removeEventListener('keydown')
-            // window.removeEventListener('keyup')
+            window.removeEventListener( 'keydown',  keyDownHandler )
+            window.removeEventListener( 'keyup', keyUpHandler )
+            window.removeEventListener( 'resize', canvasScaler )
             game.stop()
         }
     }, []);
