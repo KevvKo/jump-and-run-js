@@ -2,7 +2,7 @@ import Spaceship from './models/spaceship-model'
 class Game{
 
     constructor(){
-        this.keys = []
+        this.keys = {}
     }
     init(){
 
@@ -12,6 +12,13 @@ class Game{
     }   
 
     start(){
+
+        this.keyDownHandler = (e) => { this.keys[e.code] = true }
+        this.keyUpHandler = (e) => { this.keys[e.code] = false }
+
+        window.addEventListener('keydown', this.keyDownHandler)
+        window.addEventListener('keyup', this.keyUpHandler)
+
         this.canvas = document.getElementById('gameBoard')
         this.context = this.canvas.getContext('2d')
 
@@ -19,13 +26,14 @@ class Game{
     }
 
     update(){
-
         this.clear()
         this.draw()
         this.loop = window.requestAnimationFrame(() => this.update())
     }
 
     stop(){
+        window.removeEventListener('keydown', this.keyDownHandler)
+        window.removeEventListener('keyUp', this.keyUpHandler)
         window.cancelAnimationFrame(this.loop)
     }
 

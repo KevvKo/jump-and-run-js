@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import {useSelector} from 'react-redux'
 
 import './play.css'
 
@@ -11,11 +10,8 @@ import spaceship from '../assets/img/spaceship.png'
 
 export default function Play(){
 
-    const keys = useSelector (state => state.keys)
     
     const canvasScaler = () => { store.dispatch({ type: 'canvas/Scale' }) }
-    const keyDownHandler = (e) => { store.dispatch({ type: 'keys/KEY_IS_DOWN' , payload: e.code }) }
-    const keyUpHandler= (e) => { store.dispatch({ type: 'keys/KEY_IS_UP',  payload: e.code }) }
 
     useEffect(() => {
         
@@ -23,12 +19,9 @@ export default function Play(){
         game.init()
 
         window.addEventListener( 'resize', canvasScaler )
-        window.addEventListener( 'keydown', keyDownHandler )
-        window.addEventListener( 'keyup',  keyUpHandler )
 
         return () => {
-            window.removeEventListener( 'keydown',  keyDownHandler )
-            window.removeEventListener( 'keyup', keyUpHandler )
+
             window.removeEventListener( 'resize', canvasScaler )
             game.stop()
         }
