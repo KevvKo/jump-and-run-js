@@ -11,6 +11,7 @@ export default class Sprite{
     #frames
     #frameIndex
     #lastTimeRendered
+    #r
 
     constructor(img, clippingX, clippingY, spriteWidth, spriteHeight, x, y, frames ){
         
@@ -24,6 +25,7 @@ export default class Sprite{
         this.#frames = frames
         this.#frameIndex = 0
         this.#lastTimeRendered = performance.now()
+        this.#r = 0
     }
 
     get x(){
@@ -43,10 +45,19 @@ export default class Sprite{
         this.#y = val
     }
 
+    get r(){
+        return this.#r 
+    }
+
+    set r(val){
+        this.#r = val
+    }
     draw(){
 
         const canvas = document.querySelector('canvas')
         const context = canvas.getContext('2d')
+        context.save()
+        context.rotate(this.#r * Math.PI / 180)
 
         context.drawImage(
             this.#img,

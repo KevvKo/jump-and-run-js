@@ -1,9 +1,6 @@
 import Spaceship from './models/spaceship-model'
 class Game{
 
-    constructor(){
-        this.keys = {}
-    }
     init(){
 
         console.log('Game initialized.')
@@ -13,8 +10,8 @@ class Game{
 
     start(){
 
-        this.keyDownHandler = (e) => { this.keys[e.code] = true }
-        this.keyUpHandler = (e) => { this.keys[e.code] = false }
+        this.keyDownHandler = (e) => { this.key = e.key }
+        this.keyUpHandler = (e) => { this.key = undefined }
 
         window.addEventListener('keydown', this.keyDownHandler)
         window.addEventListener('keyup', this.keyUpHandler)
@@ -26,6 +23,7 @@ class Game{
     }
 
     update(){
+        this.spaceship.move(this.key)
         this.clear()
         this.draw()
         this.loop = window.requestAnimationFrame(() => this.update())

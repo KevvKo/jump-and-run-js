@@ -1,7 +1,7 @@
 import Sprite from './sprite-model'
-
 export default class Spaceship{
 
+    #r  
     #vx
     #vy
     #ax
@@ -12,6 +12,7 @@ export default class Spaceship{
 
     constructor(x, y, spriteImg){
 
+        this.#r = 0 
         this.#vx = 0
         this.#vy = 0
         this.#ax = 0
@@ -26,7 +27,29 @@ export default class Spaceship{
             [0, 100, 200, 300])
     }
 
+    move(key){
+
+        if(key == 'w'){ 
+            this.#ax = Math.cos(this.#r) * 0.05
+            this.#ay = Math.sin(this.#r) * 0.05
+        }else {
+            this.#ax = this.#ay = 0
+        }
+
+        if(key == 'a') this.#r -= 0.05
+        if(key == 'd') this.#r += 0.05
+
+        this.#vx += this.#ax
+        this.#vy += this.#ay
+
+        this.#x += this.#vx
+        this.#y += this.#vy
+        this.#sprite.r = this.#r
+    }
+
     update(){
+        this.#sprite.x = this.#x
+        this.#sprite.y = this.#y
         this.#sprite.update()
     }
 
