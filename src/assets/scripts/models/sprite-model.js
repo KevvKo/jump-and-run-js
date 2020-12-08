@@ -57,7 +57,8 @@ export default class Sprite{
         const canvas = document.querySelector('canvas')
         const context = canvas.getContext('2d')
         context.save()
-        context.rotate(this.#r * Math.PI / 180)
+        context.translate(this.#x + this.#spriteWidth/2, this.#y + this.#spriteHeight/2)
+        context.rotate(this.#r * Math.PI / 3)
 
         context.drawImage(
             this.#img,
@@ -65,12 +66,13 @@ export default class Sprite{
             this.#clippingY,
             this.#spriteWidth,
             this.#spriteHeight,
-            this.#x,
-            this.#y,
+            -this.#spriteWidth/2,
+            -this.#spriteHeight/2,
             this.#spriteWidth,
             this.#spriteHeight
-
         )
+
+        context.restore()
     }
 
     update(){
