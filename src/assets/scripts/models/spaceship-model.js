@@ -12,7 +12,7 @@ export default class Spaceship{
 
     constructor(x, y, spriteImg){
 
-        this.#r = 0 
+        this.#r = 0
         this.#vx = 0
         this.#vy = 0
         this.#ax = 0
@@ -30,8 +30,8 @@ export default class Spaceship{
     move(key){
 
         if(key == 'w'){ 
-            this.#ax = Math.cos(this.#r) * 0.05
-            this.#ay = Math.sin(this.#r) * 0.05
+            this.#ax = Math.sin(this.#r) * 0.05
+            this.#ay = Math.cos(this.#r) * 0.05
         }else {
             this.#ax = this.#ay = 0
         }
@@ -43,7 +43,7 @@ export default class Spaceship{
         this.#vy += this.#ay
 
         this.#x += this.#vx
-        this.#y += this.#vy
+        this.#y -= this.#vy
         this.#sprite.r = this.#r
     }
 

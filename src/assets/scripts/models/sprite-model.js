@@ -58,7 +58,7 @@ export default class Sprite{
         const context = canvas.getContext('2d')
         context.save()
         context.translate(this.#x + this.#spriteWidth/2, this.#y + this.#spriteHeight/2)
-        context.rotate(this.#r * Math.PI / 3)
+        context.rotate(this.#r)
 
         context.drawImage(
             this.#img,
