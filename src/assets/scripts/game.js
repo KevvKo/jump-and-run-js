@@ -1,8 +1,9 @@
 import Spaceship from './models/spaceship-model'
+import {store} from '../store/store'
 class Game{
 
     init(){
-
+        
         console.log('Game initialized.')
         this.createSprites()
         this.start()
@@ -45,7 +46,10 @@ class Game{
     }
 
     clear(){
-        this.context.clearRect(0,0,875,504)
+        const width = store.getState().canvas.width
+        const height = store.getState().canvas.height
+
+        this.context.clearRect(0,0, width, height)
     }
 }
 const game = new Game()
