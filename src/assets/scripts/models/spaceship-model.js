@@ -8,6 +8,7 @@ export default class Spaceship{
     #ay
     #y
     #x
+    #friction
     #sprite
 
     constructor(x, y, spriteImg){
@@ -19,6 +20,7 @@ export default class Spaceship{
         this.#ay = 0
         this.#x = x
         this.#y = y
+        this.#friction = 0.99
         this.#sprite = new Sprite(
             spriteImg,
             0, 0,
@@ -41,6 +43,9 @@ export default class Spaceship{
 
         this.#vx += this.#ax
         this.#vy += this.#ay
+
+        this.#vx *= this.#friction
+        this.#vy *= this.#friction
 
         this.#x += this.#vx
         this.#y -= this.#vy
