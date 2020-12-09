@@ -18,10 +18,17 @@ export default function Play(){
         canvasScaler()
         game.init()
 
+        const handleKeyDown = (e) => { store.dispatch({type: 'keys/KeyDown', payload: e.code}) }
+        const handleKeyUp = (e) => { store.dispatch({type: 'keys/KeyUp', payload: e.code}) }
+
+        window.addEventListener( 'keydown', handleKeyDown )
+        window.addEventListener( 'keyup', handleKeyUp )
         window.addEventListener( 'resize', canvasScaler )
 
         return () => {
 
+            window.removeEventListener( 'keydown', handleKeyDown )
+            window.removeEventListener( 'keyup', handleKeyUp )
             window.removeEventListener( 'resize', canvasScaler )
             game.stop()
         }

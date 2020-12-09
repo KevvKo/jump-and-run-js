@@ -1,21 +1,18 @@
-const initialState= {
-    keys: {}
-}
+const initialState= {}
 
 function canvasReducer( state = initialState, action) {
 
     if(action.type === 'keys/KeyDown'){
-        const keys = {...state}
-        keys[action.key] = true
 
+        const keys = {...state}
+        keys[action.payload] = true
         return keys
     }
 
     if(action.type === 'keys/KeyUp'){
 
         const keys = {...state}
-        keys[action.key] = false
-
+        keys[action.payload] = false
         return keys
     }
 
