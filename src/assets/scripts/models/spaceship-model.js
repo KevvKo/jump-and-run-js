@@ -9,6 +9,7 @@ export default class Spaceship{
     #y
     #x
     #friction
+    #speed
     #sprite
 
     constructor(x, y, spriteImg){
@@ -20,7 +21,8 @@ export default class Spaceship{
         this.#ay = 0
         this.#x = x
         this.#y = y
-        this.#friction = 0.99
+        this.#friction = 0.98
+        this.#speed = 0.1
         this.#sprite = new Sprite(
             spriteImg,
             0, 0,
@@ -32,14 +34,14 @@ export default class Spaceship{
     move(key){
 
         if(key == 'w'){ 
-            this.#ax = Math.sin(this.#r) * 0.05
-            this.#ay = Math.cos(this.#r) * 0.05
+            this.#ax = Math.sin(this.#r) * this.#speed
+            this.#ay = Math.cos(this.#r) * this.#speed
         }else {
             this.#ax = this.#ay = 0
         }
 
-        if(key == 'a') this.#r -= 0.05
-        if(key == 'd') this.#r += 0.05
+        if(key == 'a') this.#r -= 0.07
+        if(key == 'd') this.#r += 0.07
 
         this.#vx += this.#ax
         this.#vy += this.#ay
@@ -59,7 +61,6 @@ export default class Spaceship{
     }
 
     render(){
-
         this.update()
         this.#sprite.draw()
     }
