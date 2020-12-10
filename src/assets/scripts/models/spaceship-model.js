@@ -64,10 +64,10 @@ export default class Spaceship{
         const width = store.getState().canvas.width
         const height = store.getState().canvas.height
 
-        if(this.#x + 101 < 0) this.#x = width
-        if(this.#x > width) this.#x = -100 
-        if(this.#y + 101 < 0) this.#y = height
-        if(this.#y > height) this.#y = -100 
+        if(this.#x + 100 <= 0) this.#x = width
+        if(this.#x >= width) this.#x = -100
+        if(this.#y + 100 <= 0) this.#y = height -100 
+        if(this.#y >= height) this.#y = -100
     
     }
 
