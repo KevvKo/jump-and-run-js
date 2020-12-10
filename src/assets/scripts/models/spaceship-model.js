@@ -35,16 +35,17 @@ export default class Spaceship{
     move(){
 
         const keys = store.getState().keys
-   
+        
         if(keys['KeyW']){ 
             this.#ax = Math.sin(this.#r) * this.#speed
             this.#ay = Math.cos(this.#r) * this.#speed
         }else {
             this.#ax = this.#ay = 0
         }
+    
 
-        if(keys['KeyA']) this.#r -= 0.07
-        if(keys['KeyD']) this.#r += 0.07
+        if(keys['KeyA']) this.#r -= 0.02
+        if(keys['KeyD']) this.#r += 0.02
 
         this.#vx += this.#ax
         this.#vy += this.#ay
@@ -58,8 +59,22 @@ export default class Spaceship{
         this.#sprite.r = this.#r
     }
 
+    checkBorderCollision(){
+
+        const width = store.getState().canvas.width
+        const height = store.getState().canvas.height
+
+        if(this.#x + 101 < 0) this.#x = width
+        if(this.#x > width) this.#x = -100 
+        if(this.#y + 101 < 0) this.#y = height
+        if(this.#y > height) this.#y = -100 
+    
+    }
+
     update(){
+
         this.move()
+        this.checkBorderCollision()
         this.#sprite.x = this.#x
         this.#sprite.y = this.#y
         this.#sprite.update()
