@@ -22,7 +22,7 @@ export default class Spaceship{
         this.#ay = 0
         this.#x = x
         this.#y = y
-        this.#friction = 0.98
+        this.#friction = 0.99
         this.#speed = 0.1
         this.#sprite = new Sprite(
             spriteImg,
@@ -54,11 +54,12 @@ export default class Spaceship{
 
         this.#x += this.#vx
         this.#y -= this.#vy
-        
+
         this.#sprite.r = this.#r
     }
 
     update(){
+        this.move()
         this.#sprite.x = this.#x
         this.#sprite.y = this.#y
         this.#sprite.update()

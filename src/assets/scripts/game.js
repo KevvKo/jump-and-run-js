@@ -24,8 +24,8 @@ class Game{
     }
 
     update(){
-        this.spaceship.move(this.key)
         this.clear()
+        this.spaceship.update()
         this.draw()
         this.loop = window.requestAnimationFrame(() => this.update())
     }
@@ -37,13 +37,15 @@ class Game{
     }
 
     createSprites(){
+
         const spaceshipImg = document.getElementById('spaceship')
-        this.spaceship = new Spaceship(500, 200, spaceshipImg)
+        const width = store.getState().canvas.width
+        const height = store.getState().canvas.height
+
+        this.spaceship = new Spaceship( (width / 2) - 50, (height / 2) - 50, spaceshipImg) //minus 50px -> half of width from the rendered sprite to center the image in the canvas
     }
 
-    draw(){
-        this.spaceship.render()
-    }
+    draw(){ this.spaceship.render() }
 
     clear(){
         const width = store.getState().canvas.width
