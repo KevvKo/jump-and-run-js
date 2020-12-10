@@ -1,4 +1,5 @@
 import Sprite from './sprite-model'
+import {store} from '../../store/store'
 export default class Spaceship{
 
     #r  
@@ -31,17 +32,19 @@ export default class Spaceship{
             [0, 100, 200, 300])
     }
 
-    move(key){
+    move(){
 
-        if(key == 'w'){ 
+        const keys = store.getState().keys
+   
+        if(keys['KeyW']){ 
             this.#ax = Math.sin(this.#r) * this.#speed
             this.#ay = Math.cos(this.#r) * this.#speed
         }else {
             this.#ax = this.#ay = 0
         }
 
-        if(key == 'a') this.#r -= 0.07
-        if(key == 'd') this.#r += 0.07
+        if(keys['KeyA']) this.#r -= 0.07
+        if(keys['KeyD']) this.#r += 0.07
 
         this.#vx += this.#ax
         this.#vy += this.#ay
@@ -51,6 +54,7 @@ export default class Spaceship{
 
         this.#x += this.#vx
         this.#y -= this.#vy
+        
         this.#sprite.r = this.#r
     }
 
