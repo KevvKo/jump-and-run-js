@@ -1,5 +1,5 @@
 import Spaceship from './models/spaceship-model'
-import {store} from '../store/store'
+import { store } from '../store/store'
 class Game{
 
     init(){
@@ -19,15 +19,18 @@ class Game{
 
         this.canvas = document.getElementById('gameBoard')
         this.context = this.canvas.getContext('2d')
-
         this.loop = window.requestAnimationFrame(() => this.update())
     }
 
     update(){
+
+        const is = store.getState().game.gameIsPaused
+
         this.clear()
         this.spaceship.update()
         this.draw()
-        this.loop = window.requestAnimationFrame(() => this.update())
+        if(!is) this.loop = window.requestAnimationFrame(() => this.update())
+        
     }
 
     stop(){

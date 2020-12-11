@@ -10,7 +10,7 @@ import Guide from './routes/guide'
 import StarBackground from './assets/components/starBackground'
 import HeaderButton from './assets/components/headerButton'
 import SoundtrackDisplay from './assets/components/soundtrackDisplay'
-import {useMenuMusic} from './assets/components/music'
+import { useMenuMusic } from './assets/components/music'
 
 import {
   useLocation,
@@ -18,6 +18,9 @@ import {
   Link,
   Route
 } from "react-router-dom";
+import { store } from './assets/store/store';
+import { game } from './assets/scripts/game'
+
 
 
 /* TO DO'S: 
@@ -48,6 +51,7 @@ function App() {
     setTitle(sounds[index].track)
   }
 
+  // functions for the headbuttons
   const toggleMenuMusic = () => {
 
     let button = document.querySelector('.playMusic')
@@ -70,6 +74,19 @@ function App() {
     }
   }
   
+  const togglePauseGame = () => {
+
+    const gameIsPaused = store.getState().game.gameIsPaused
+
+    if(!gameIsPaused) store.dispatch({ type: 'game/PauseGame'})
+    else{
+
+      store.dispatch({ type: 'game/ContinueGame'})
+      game.update()
+
+    }
+  }
+
   let location = useLocation()['pathname']
 
   return (
@@ -97,10 +114,10 @@ function App() {
             </Link>
         }
 
-        <HeaderButton icon="music_off" className="playMusic" callback={toggleMenuMusic} />
+        <HeaderButton icon="music_off" className="playMusic" callback={ toggleMenuMusic } />
 
         { location === '/play'  &&
-          <HeaderButton icon="pause" />
+          <HeaderButton icon="pause" callback={ togglePauseGame }/>
         } 
 
       </header>
