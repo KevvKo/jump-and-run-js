@@ -36,7 +36,7 @@ export default class Spaceship{
 
         const keys = store.getState().keys
         
-        if(keys['KeyW']){ 
+        if(keys['KeyW'] || keys['ArrowUp']){ 
             this.#ax = Math.sin(this.#r) * this.#speed
             this.#ay = Math.cos(this.#r) * this.#speed
         }else {
@@ -44,8 +44,8 @@ export default class Spaceship{
         }
     
 
-        if(keys['KeyA']) this.#r -= 0.02
-        if(keys['KeyD']) this.#r += 0.02
+        if(keys['KeyA'] || keys['ArrowLeft']) this.#r -= 0.02
+        if(keys['KeyD'] || keys['ArrowRight']) this.#r += 0.02
 
         this.#vx += this.#ax
         this.#vy += this.#ay
