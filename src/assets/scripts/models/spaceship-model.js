@@ -65,9 +65,9 @@ export default class Spaceship{
         const height = store.getState().canvas.height
 
         if(this.#x + 100 <= 0) this.#x = width
-        if(this.#x >= width) this.#x = -100
-        if(this.#y + 100 <= 0) this.#y = height -100 
-        if(this.#y >= height) this.#y = -100
+        if(this.#x >= width + 2) this.#x = -100
+        if(this.#y + 100 <= 0) this.#y = height - 100 
+        if(this.#y >= height + 2) this.#y = -100
     
     }
 
