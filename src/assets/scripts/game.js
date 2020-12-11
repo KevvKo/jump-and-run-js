@@ -17,14 +17,26 @@ class Game{
     }
 
     update(){
-
-        const is = store.getState().game.gameIsPaused
-
+        
         this.clear()
         this.spaceship.update()
         this.draw()
-        if(!is) this.loop = window.requestAnimationFrame(() => this.update())
 
+        const gameIsPaused = store.getState().game.gameIsPaused
+        if(!gameIsPaused) this.loop = window.requestAnimationFrame(() => this.update())
+
+    }
+
+    togglePause(){
+
+        const gameIsPaused = store.getState().game.gameIsPaused
+        
+        if(!gameIsPaused) store.dispatch({ type: 'game/PauseGame'})
+        else {
+
+            if(gameIsPaused) store.dispatch({ type: 'game/ContinueGame'})
+            this.update()
+        }
     }
 
     stop(){ window.cancelAnimationFrame(this.loop) }

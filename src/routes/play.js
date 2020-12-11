@@ -20,14 +20,17 @@ export default function Play(){
 
         const handleKeyDown = (e) => { store.dispatch({type: 'keys/KeyDown', payload: e.code}) }
         const handleKeyUp = (e) => { store.dispatch({type: 'keys/KeyUp', payload: e.code}) }
+        const pauseGame = (e) => { if(e.code === "Space") game.togglePause() }
 
         window.addEventListener( 'keydown', handleKeyDown )
+        window.addEventListener( 'keydown', pauseGame )
         window.addEventListener( 'keyup', handleKeyUp )
         window.addEventListener( 'resize', canvasScaler )
 
         return () => {
 
             window.removeEventListener( 'keydown', handleKeyDown )
+            window.removeEventListener( 'keydown', pauseGame )
             window.removeEventListener( 'keyup', handleKeyUp )
             window.removeEventListener( 'resize', canvasScaler )
             game.stop()

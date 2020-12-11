@@ -75,18 +75,7 @@ function App() {
     }
   }
   
-  const togglePauseGame = () => {
-
-    const gameIsPaused = store.getState().game.gameIsPaused
-
-    if(!gameIsPaused) store.dispatch({ type: 'game/PauseGame'})
-    else{
-
-      store.dispatch({ type: 'game/ContinueGame'})
-      game.update()
-
-    }
-  }
+  const togglePauseGame = () => { game.togglePause() }
 
   let location = useLocation()['pathname']
 
