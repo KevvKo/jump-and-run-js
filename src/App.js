@@ -1,4 +1,11 @@
 import React, { useState } from 'react';
+import {
+  useLocation,
+  Switch,
+  Link,
+  Route
+} from "react-router-dom";
+
 import './App.css';
 import Home from './routes/home'
 import LevelSelection from './routes/levelSelection'
@@ -10,14 +17,8 @@ import Guide from './routes/guide'
 import StarBackground from './assets/components/starBackground'
 import HeaderButton from './assets/components/headerButton'
 import SoundtrackDisplay from './assets/components/soundtrackDisplay'
-import { useMenuMusic } from './assets/components/music'
 
-import {
-  useLocation,
-  Switch,
-  Link,
-  Route
-} from "react-router-dom";
+import { useMenuMusic } from './assets/components/music'
 import { store } from './assets/store/store';
 import { game } from './assets/scripts/game'
 
