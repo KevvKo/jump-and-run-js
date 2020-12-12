@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux'
 import {
   useLocation,
   Switch,
@@ -76,10 +77,12 @@ function App() {
   }
   
   const togglePauseGame = () => { game.togglePause() }
-
-  let location = useLocation()['pathname']
+  
+  const isPaused = useSelector( state => state.game.gameIsPaused)
+  const location = useLocation()['pathname']
 
   return (
+
     <div className="App">
 
       <StarBackground />
@@ -106,9 +109,10 @@ function App() {
 
         <HeaderButton icon="music_off" className="playMusic" callback={ toggleMenuMusic } />
 
-        { location === '/play'  &&
-          <HeaderButton icon="pause" callback={ togglePauseGame }/>
-        } 
+        { location === '/play'  && isPaused 
+          ? <HeaderButton icon="play_arrow" callback={ togglePauseGame }/>
+          : <HeaderButton icon="pause" callback={ togglePauseGame }/>
+        }
 
       </header>
 
