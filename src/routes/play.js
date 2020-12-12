@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
-
+import { useSelector } from 'react-redux'
 import './play.css'
+import PauseBanner from '../assets/components/pauseBanner'
 
 import { game } from '../assets/scripts/game'
 import { store } from '../assets/store/store'
@@ -36,12 +37,14 @@ export default function Play(){
             game.stop()
         }
     }, []);
-    
 
-
+    const gameIsPaused = useSelector ( state => state.game.gameIsPaused )
     return (
         <div className='play' >
-            <img id = 'spaceship' src={spaceship} alt='spaceship' />
+            <img id = 'spaceship' src={ spaceship } alt='spaceship' />
+            { gameIsPaused &&
+                <PauseBanner />
+            }
             <canvas id='gameBoard'></canvas>
         </div>
     )
