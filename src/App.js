@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { useSelector } from 'react-redux'
 import {
   useLocation,
@@ -20,7 +20,6 @@ import HeaderButton from './assets/components/headerButton'
 import SoundtrackDisplay from './assets/components/soundtrackDisplay'
 
 import { useMenuMusic } from './assets/components/music'
-import { store } from './assets/store/store';
 import { game } from './assets/scripts/game'
 
 
