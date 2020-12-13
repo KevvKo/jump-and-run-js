@@ -87,32 +87,34 @@ function App() {
       <StarBackground />
              
       <header>
+        <div>
+          { location !== '/' && location !== '/play' &&
+              <Link to='/' >
+                  <HeaderButton icon="arrow_back" />
+              </Link>
+          }
 
-        { location !== '/' && location !== '/play' &&
-            <Link to='/' >
-                <HeaderButton icon="arrow_back" />
-            </Link>
-        }
+          { location !== '/' && location !== '/levelSelection' &&
+              <Link to='/levelSelection' >
+                  <HeaderButton icon="arrow_back" />
+              </Link>
+          }
 
-        { location !== '/' && location !== '/levelSelection' &&
-            <Link to='/levelSelection' >
-                <HeaderButton icon="arrow_back" />
-            </Link>
-        }
+          { location !== '/' && location !== '/levelSelection' &&
+              <Link to='/' >
+                <HeaderButton icon="home" />
+              </Link>
+          }
 
-        { location !== '/' && location !== '/levelSelection' &&
-            <Link to='/' >
-              <HeaderButton icon="home" />
-            </Link>
-        }
+          { location === '/play'  && isPaused 
+            ? <HeaderButton icon="play_arrow" callback={ togglePauseGame }/>
+            : <HeaderButton icon="pause" callback={ togglePauseGame }/>
+          }
 
-        <HeaderButton icon="music_off" className="playMusic" callback={ toggleMenuMusic } />
-
-        { location === '/play'  && isPaused 
-          ? <HeaderButton icon="play_arrow" callback={ togglePauseGame }/>
-          : <HeaderButton icon="pause" callback={ togglePauseGame }/>
-        }
-
+ 
+            <HeaderButton icon="music_off" className="playMusic" callback={ toggleMenuMusic } />
+     
+        </div>
       </header>
 
       <Switch>

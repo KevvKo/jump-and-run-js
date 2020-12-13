@@ -25,14 +25,19 @@
 }
 
 header{
-  display: block;
+  position: absolute;
+  top: 0;
   padding: 10px;
+  z-index: 10;
+  width: 100%;
+}
+
+header > div{
+  display: flex;
 }
 
 
-.pauseGame, .playMusic{
-  float: right;
-}
+.playMusic{ float: right; }
 
 .headerbutton:hover{
   cursor: pointer;
