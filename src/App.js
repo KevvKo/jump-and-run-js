@@ -76,9 +76,11 @@ function App() {
   }
   
   const togglePauseGame = () => { game.togglePause() }
-  
-  const isPaused = useSelector( state => state.game.gameIsPaused)
   const location = useLocation()['pathname']
+  const isPaused = useSelector( state => state.game.gameIsPaused)
+  const showPause = isPaused && location === '/play'
+  const showContinue = !isPaused && location === '/play'
+  const showBackToHome = location !== '/' && location !== '/play'
 
   return (
 
@@ -88,31 +90,34 @@ function App() {
              
       <header>
         <div>
-          { location !== '/' && location !== '/play' &&
+
+          { showBackToHome &&
               <Link to='/' >
                   <HeaderButton icon="arrow_back" />
               </Link>
           }
 
-          { location !== '/' && location !== '/levelSelection' &&
+          { location === '/play' &&
               <Link to='/levelSelection' >
                   <HeaderButton icon="arrow_back" />
               </Link>
           }
 
-          { location !== '/' && location !== '/levelSelection' &&
+          { location === '/play' &&
               <Link to='/' >
                 <HeaderButton icon="home" />
               </Link>
           }
 
-          { location === '/play'  && isPaused 
-            ? <HeaderButton icon="play_arrow" callback={ togglePauseGame }/>
-            : <HeaderButton icon="pause" callback={ togglePauseGame }/>
+          { showPause &&
+             <HeaderButton icon="play_arrow" callback={ togglePauseGame }/>
+          }
+          
+          { showContinue && !isPaused &&
+            <HeaderButton icon="pause" callback={ togglePauseGame }/>
           }
 
- 
-            <HeaderButton icon="music_off" className="playMusic" callback={ toggleMenuMusic } />
+          <HeaderButton icon="music_off" className="playMusic" callback={ toggleMenuMusic } />
      
         </div>
       </header>
