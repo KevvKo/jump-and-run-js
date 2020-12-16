@@ -21,7 +21,7 @@ export default function Play(){
 
         const handleKeyDown = (e) => { store.dispatch({type: 'keys/KeyDown', payload: e.code}) }
         const handleKeyUp = (e) => { store.dispatch({type: 'keys/KeyUp', payload: e.code}) }
-        const pauseGame = (e) => { if(e.code === "Space") game.togglePause() }
+        const pauseGame = (e) => { if(e.code === "KeyP") game.togglePause() }
 
         window.addEventListener( 'keydown', handleKeyDown )
         window.addEventListener( 'keydown', pauseGame )

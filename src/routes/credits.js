@@ -3,6 +3,7 @@ import './credits.css'
 import Background from '../assets/components/background'
 
 export default function Credits(){
+    
     const content = 
         <div>
             <h1>Credits</h1>
