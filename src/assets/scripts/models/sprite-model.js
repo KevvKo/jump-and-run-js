@@ -13,6 +13,17 @@ export default class Sprite{
     #lastTimeRendered
     #r
 
+    /**
+     * 
+     * @param {Image} img 
+     * @param {Integer} clippingX 
+     * @param {Integer} clippingY 
+     * @param {Integer} spriteWidth 
+     * @param {Integer} spriteHeight 
+     * @param {Integer} x 
+     * @param {Integer} y 
+     * @param {Integer} frames 
+     */
     constructor(img, clippingX, clippingY, spriteWidth, spriteHeight, x, y, frames ){
         
         this.#img = img
@@ -52,6 +63,10 @@ export default class Sprite{
     set r(val){
         this.#r = val
     }
+    
+    /**
+     * @public
+     */
     draw(){
 
         const canvas = document.querySelector('canvas')
@@ -75,6 +90,9 @@ export default class Sprite{
         context.restore()
     }
 
+    /**
+     * @public
+     */
     update(){
 
         const difference = (performance.now() - this.#lastTimeRendered)/60
@@ -92,6 +110,9 @@ export default class Sprite{
         }
     }
 
+    /**
+     * @public
+     */
     render(){
 
         this.update()

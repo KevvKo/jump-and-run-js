@@ -2,6 +2,9 @@ import Sprite from './sprite-model'
 import {store} from '../../store/store'
 export default class Spaceship{
 
+    /**
+     * private
+     */
     #r  
     #vx
     #vy
@@ -13,6 +16,12 @@ export default class Spaceship{
     #speed
     #sprite
 
+    /**
+     * 
+     * @param {Integer} x 
+     * @param {Integer} y 
+     * @param {ImageData} spriteImg 
+     */
     constructor(x, y, spriteImg){
 
         this.#r = 0
@@ -32,6 +41,9 @@ export default class Spaceship{
             [0, 100, 200, 300])
     }
 
+    /**
+     * @public
+     */
     move(){
 
         const keys = store.getState().keys
@@ -58,7 +70,9 @@ export default class Spaceship{
 
         this.#sprite.r = this.#r
     }
-
+    /**
+     * @public
+     */
     checkBorderCollision(){
 
         const width = store.getState().canvas.width
@@ -71,6 +85,9 @@ export default class Spaceship{
     
     }
 
+    /**
+     * @public
+     */
     update(){
 
         this.move()
@@ -80,6 +97,9 @@ export default class Spaceship{
         this.#sprite.update()
     }
 
+    /**
+     * @public
+     */
     render(){
         this.update()
         this.#sprite.draw()

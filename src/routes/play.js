@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import './play.css'
 import PauseBanner from '../assets/components/pauseBanner'
 
-import { game } from '../assets/scripts/game'
+import { game } from '../assets/scripts/services/game'
 import { store } from '../assets/store/store'
 
 import spaceship from '../assets/img/spaceship.png'

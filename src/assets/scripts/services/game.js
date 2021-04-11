@@ -1,14 +1,20 @@
-import Spaceship from './models/spaceship-model'
-import { store } from '../store/store'
+import Spaceship from '../models/spaceship-model'
+import { store } from '../../store/store'
 class Game{
 
+    /**
+     * @public
+     */
     init(){
         
-        console.log('Game initialized.')
+        console.info('Game initialized.')
         this.createSprites()
         this.start()
-    }   
+    }  
 
+    /**
+     * @public
+     */
     start(){
 
         this.canvas = document.getElementById('gameBoard')
@@ -16,6 +22,9 @@ class Game{
         this.loop = window.requestAnimationFrame(() => this.update())
     }
 
+    /**
+     * @public
+     */
     update(){
         
         this.clear()
@@ -27,6 +36,9 @@ class Game{
 
     }
 
+    /**
+     * @public
+     */
     togglePause(){
 
         const gameIsPaused = store.getState().game.gameIsPaused
@@ -39,8 +51,14 @@ class Game{
         }
     }
 
+    /**
+     * @public
+     */
     stop(){ window.cancelAnimationFrame(this.loop) }
 
+    /**
+     * @public
+     */
     createSprites(){
 
         const spaceshipImg = document.getElementById('spaceship')
@@ -50,8 +68,14 @@ class Game{
         this.spaceship = new Spaceship( (width / 2) - 50, (height / 2) - 50, spaceshipImg) //minus 50px -> half of width from the rendered sprite to center the image in the canvas
     }
 
+    /**
+     * @public
+     */
     draw(){ this.spaceship.render() }
 
+    /**
+     * @public
+     */
     clear(){
         const width = store.getState().canvas.width
         const height = store.getState().canvas.height
