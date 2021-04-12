@@ -3,18 +3,15 @@ import { Link, useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux'
 import HeaderButton from './headerButton'
 import { useMenuMusic } from './music'
+import { store } from '../store/store';
 import { game } from '../scripts/services/game'
 import './header.css'
 
-function AppHeader(props) {
+function AppHeader() {
     
-    const sounds = useMenuMusic()
-    const [musicPlays, setMusicPlays] = useState(false)
-    const [artist, setArtist] = useState('')
-    const [title, setTitle] = useState('')
-  
     let index = 0
-    const [audioElement] = useState(new Audio(sounds[index].file))
+    const sounds = useMenuMusic()
+    const audioElement = new Audio(sounds[index].file)
   
     audioElement.onended = () =>{
   
@@ -23,8 +20,11 @@ function AppHeader(props) {
       audioElement.src = sounds[index].file
       audioElement.play()
   
-      setArtist(sounds[index].artist)
-      setTitle(sounds[index].track)
+      const artist = sounds[index].artist
+      const title = sounds[index].track
+
+      store.dispatch({type: 'music/changeArtist', payload: artist})
+      store.dispatch({type: 'music/changeTitle', payload: title})
     }
   
     // functions for the headbuttons
@@ -36,17 +36,17 @@ function AppHeader(props) {
   
         audioElement.pause()
         button.children[0].innerText = 'music_off'
-  
-        setMusicPlays(false)
+        store.dispatch({type: 'music/changeMusicPlays', payload: false})
     
       }else{
-        
+        const artist = sounds[index].artist
+        const title = sounds[index].track
+
         audioElement.play()
         button.children[0].innerText = 'music_note'
-  
-        setMusicPlays(true)
-        setArtist(sounds[index].artist)
-        setTitle(sounds[index].track)
+        store.dispatch({type: 'music/changeArtist', payload: artist})
+        store.dispatch({type: 'music/changeTitle', payload: title})
+        store.dispatch({type: 'music/changeMusicPlays', payload: true})
       }
     }
 
@@ -87,5 +87,4 @@ function AppHeader(props) {
 
     )
 }
-
 export default AppHeader

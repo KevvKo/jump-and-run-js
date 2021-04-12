@@ -18,7 +18,7 @@ function App() {
     <div className="App">
       <AppHeader />
       <AppMain />
-      {/* <AppFooter artist={artist} title={title} audio={audioElement}/> */}
+      <AppFooter />
     </div>
   );
 }

@@ -1,11 +1,18 @@
+import { useSelector } from 'react-redux'
 import './footer.css'
-import SoundtrackDisplay from './soundtrackDisplay'
 
-function AppFooter(props){
+function AppFooter(){
+
+    const artist = useSelector (state => state.music.artist)
+    const title = useSelector (state => state.music.title)
+    const musicPlays = useSelector (state => state.music.musicPlays)
+
     return (
         <footer>
             <a href='https://github.com/KevvKo/jump-and-run-js'>@KevvKo</a>
-            <SoundtrackDisplay artist={props.artist} title={props.title} audio={props.audio}/>
+            <div className="soundtrackDisplay">
+                {musicPlays && <div>{artist + ' - ' + title}</div> }
+            </div>          
         </footer>
     )
 }
