@@ -6,23 +6,37 @@ const initialState= {
 
 export default function musicReducer( state = initialState, action) {
     
-    if(action.type === 'music/changeArtist'){
-        const musicState = {...state}
-        musicState.artist = action.payload
-        return musicState
-    }
+    switch(action.type){
 
-    if(action.type === 'music/changeTitle'){
-        const musicState = {...state}
-        musicState.title = action.payload
-        return musicState
-    }
+        case 'music/changeArtist':
 
-    if(action.type === 'music/changeMusicPlays'){
-        const musicState = {...state}
-        musicState.musicPlays = action.payload
-        return musicState
-    }
+            return {
+                ...state,
+                artist: action.payload
+            }
+    
+        case 'music/changeTitle':
+                
+            return {
+                ...state,
+                title: action.payload
+            }
+        
+        case 'music/stopMusic':
+        
+            return {
+                ...state,
+                musicPlays: action.payload
+            }  
+    
+        case 'music/playMusic':
+            
+            return {
+                ...state,
+                musicPlays: action.payload
+            }
 
-    return state;
+        default:
+            return state
+    }
 }

@@ -1,10 +1,15 @@
-import React, {  useState } from 'react';
+import React from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux'
 import HeaderButton from './headerButton'
 import { useMenuMusic } from './music'
 import { store } from '../store/store';
 import { game } from '../scripts/services/game'
+import { 
+    REPLACE_ARTIST_NAME, 
+    REPLACE_TITLE_NAME, 
+    PLAY_MUSIC, 
+    STOP_MUSIC } from '../store/actions/actions'
 import './header.css'
 
 function AppHeader() {
@@ -23,8 +28,8 @@ function AppHeader() {
       const artist = sounds[index].artist
       const title = sounds[index].track
 
-      store.dispatch({type: 'music/changeArtist', payload: artist})
-      store.dispatch({type: 'music/changeTitle', payload: title})
+      store.dispatch(REPLACE_ARTIST_NAME.payload = artist)
+      store.dispatch(REPLACE_TITLE_NAME.payload = title)
     }
   
     // functions for the headbuttons
@@ -36,7 +41,7 @@ function AppHeader() {
   
         audioElement.pause()
         button.children[0].innerText = 'music_off'
-        store.dispatch({type: 'music/changeMusicPlays', payload: false})
+        store.dispatch(STOP_MUSIC)
     
       }else{
         const artist = sounds[index].artist
@@ -44,9 +49,9 @@ function AppHeader() {
 
         audioElement.play()
         button.children[0].innerText = 'music_note'
-        store.dispatch({type: 'music/changeArtist', payload: artist})
-        store.dispatch({type: 'music/changeTitle', payload: title})
-        store.dispatch({type: 'music/changeMusicPlays', payload: true})
+        store.dispatch(REPLACE_ARTIST_NAME.payload = artist)
+        store.dispatch(REPLACE_TITLE_NAME.payload = title)
+        store.dispatch(PLAY_MUSIC)
       }
     }
 

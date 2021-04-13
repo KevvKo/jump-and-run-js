@@ -4,18 +4,19 @@ const initialState= {
 
 export default function gameReducer( state = initialState, action) {
     
-    if(action.type === 'game/PauseGame'){
-        return{
-            ...state,
-            gameIsPaused: true
-        }
-    }
+    switch(action.type){
 
-    if(action.type === 'game/ContinueGame'){
-        return{
-            ...state,
-            gameIsPaused: false
-        }
+        case 'game/PauseGame':
+            return{
+                ...state,
+                gameIsPaused: action.payload
+            }
+
+        case 'game/ContinueGame':
+            return{
+                ...state,
+                gameIsPaused: action.payload
+            }
     }
 
     return state;

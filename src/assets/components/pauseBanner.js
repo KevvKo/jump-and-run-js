@@ -1,7 +1,7 @@
 import React from 'react'
 import './pauseBanner.css'
 
-export default function PauseBanner(props){
+export default function PauseBanner(){
 
     return(
         <div className="pauseBanner">

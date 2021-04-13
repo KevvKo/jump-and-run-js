@@ -1,5 +1,6 @@
 import Spaceship from '../models/spaceship-model'
 import { store } from '../../store/store'
+import {CONTINUE_GAME, PAUSE_GAME } from '../../store/actions/actions'
 class Game{
 
     /**
@@ -43,10 +44,10 @@ class Game{
 
         const gameIsPaused = store.getState().game.gameIsPaused
         
-        if(!gameIsPaused) store.dispatch({ type: 'game/PauseGame'})
+        if(!gameIsPaused) store.dispatch(PAUSE_GAME)
         else {
 
-            if(gameIsPaused) store.dispatch({ type: 'game/ContinueGame'})
+            if(gameIsPaused) store.dispatch(PAUSE_GAME)
             this.update()
         }
     }

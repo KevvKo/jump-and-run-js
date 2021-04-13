@@ -5,7 +5,7 @@ import PauseBanner from '../assets/components/pauseBanner'
 
 import { game } from '../assets/scripts/services/game'
 import { store } from '../assets/store/store'
-
+import { addKeyDown, addKeyUp } from '../assets/store/actions/keyActions'
 import spaceship from '../assets/img/spaceship.png'
 
 
@@ -19,8 +19,8 @@ export default function Play(){
         canvasScaler()
         game.init()
 
-        const handleKeyDown = (e) => { store.dispatch({type: 'keys/KeyDown', payload: e.code}) }
-        const handleKeyUp = (e) => { store.dispatch({type: 'keys/KeyUp', payload: e.code}) }
+        const handleKeyDown = (e) => { store.dispatch( addKeyDown(e.code) )}
+        const handleKeyUp = (e) => { store.dispatch( addKeyUp(e.code) )}
         const pauseGame = (e) => { if(e.code === "KeyP") game.togglePause() }
 
         window.addEventListener( 'keydown', handleKeyDown )

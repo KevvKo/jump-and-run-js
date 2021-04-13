@@ -1,22 +1,24 @@
 const initialState= {}
 
 function canvasReducer( state = initialState, action) {
+    
+    const keys = {...state}
 
-    if(action.type === 'keys/KeyDown'){
+    switch(action.type)  {
+        
+        case 'keys/KeyDown':
 
-        const keys = {...state}
-        keys[action.payload] = true
-        return keys
+            keys[action.payload] = true
+            return keys
+
+        case 'keys/KeyUp':
+
+            keys[action.payload] = false
+            return keys
+    
+        default:
+            return state;
     }
-
-    if(action.type === 'keys/KeyUp'){
-
-        const keys = {...state}
-        keys[action.payload] = false
-        return keys
-    }
-
-    return state;
 }
 
 export default canvasReducer
