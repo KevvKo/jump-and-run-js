@@ -1,6 +1,6 @@
 import Spaceship from '../models/spaceship-model'
 import { store } from '../../store/store'
-import {CONTINUE_GAME, PAUSE_GAME } from '../../store/actions/actions'
+import {continueGame, pauseGame } from '../../store/actions/gameActions'
 class Game{
 
     /**
@@ -44,16 +44,16 @@ class Game{
 
         const gameIsPaused = store.getState().game.gameIsPaused
         
-        if(!gameIsPaused) store.dispatch(PAUSE_GAME)
+        if(!gameIsPaused) store.dispatch(pauseGame())
         else {
 
-            if(gameIsPaused) store.dispatch(PAUSE_GAME)
+            if(gameIsPaused) store.dispatch(continueGame())
             this.update()
         }
     }
 
     /**
-     * @public
+     * @public  
      */
     stop(){ window.cancelAnimationFrame(this.loop) }
 

@@ -6,13 +6,14 @@ import PauseBanner from '../assets/components/pauseBanner'
 import { game } from '../assets/scripts/services/game'
 import { store } from '../assets/store/store'
 import { addKeyDown, addKeyUp } from '../assets/store/actions/keyActions'
+import { scaleCanvas } from '../assets/store/actions/canvasActions'
 import spaceship from '../assets/img/spaceship.png'
 
 
 export default function Play(){
 
     
-    const canvasScaler = () => { store.dispatch({ type: 'canvas/Scale' }) }
+    const canvasScaler = () => { store.dispatch( scaleCanvas() ) }
 
     useEffect(() => {
         

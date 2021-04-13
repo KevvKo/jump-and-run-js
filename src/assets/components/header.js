@@ -6,10 +6,11 @@ import { useMenuMusic } from './music'
 import { store } from '../store/store';
 import { game } from '../scripts/services/game'
 import { 
-    REPLACE_ARTIST_NAME, 
-    REPLACE_TITLE_NAME, 
-    PLAY_MUSIC, 
-    STOP_MUSIC } from '../store/actions/actions'
+    replaceArtistName, 
+    replacTitleName, 
+    stopMusic, 
+    playMusic, 
+    replaceTitleName} from '../store/actions/musicActions'
 import './header.css'
 
 function AppHeader() {
@@ -28,8 +29,8 @@ function AppHeader() {
       const artist = sounds[index].artist
       const title = sounds[index].track
 
-      store.dispatch(REPLACE_ARTIST_NAME.payload = artist)
-      store.dispatch(REPLACE_TITLE_NAME.payload = title)
+      store.dispatch(replaceArtistName(artist))
+      store.dispatch(replaceTitleName(title))
     }
   
     // functions for the headbuttons
@@ -41,7 +42,7 @@ function AppHeader() {
   
         audioElement.pause()
         button.children[0].innerText = 'music_off'
-        store.dispatch(STOP_MUSIC)
+        store.dispatch(stopMusic())
     
       }else{
         const artist = sounds[index].artist
@@ -49,9 +50,9 @@ function AppHeader() {
 
         audioElement.play()
         button.children[0].innerText = 'music_note'
-        store.dispatch(REPLACE_ARTIST_NAME.payload = artist)
-        store.dispatch(REPLACE_TITLE_NAME.payload = title)
-        store.dispatch(PLAY_MUSIC)
+        store.dispatch(replaceArtistName(artist))
+        store.dispatch(replaceTitleName(title))
+        store.dispatch(playMusic())
       }
     }
 

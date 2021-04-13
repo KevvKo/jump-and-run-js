@@ -1,6 +1,6 @@
 import { SCALE_CANVAS} from './actionNames'
 
-export const SCALE_CANVAS = () => {
+export const scaleCanvas = () => {
     return{
         type: SCALE_CANVAS,
     }
