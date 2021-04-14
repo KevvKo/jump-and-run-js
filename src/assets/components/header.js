@@ -7,10 +7,10 @@ import { store } from '../store/store';
 import { game } from '../scripts/services/game'
 import { 
     replaceArtistName, 
-    replacTitleName, 
+    replaceTitleName, 
     stopMusic, 
-    playMusic, 
-    replaceTitleName} from '../store/actions/musicActions'
+    playMusic
+} from '../store/actions/musicActions'
 import './header.css'
 
 function AppHeader() {
@@ -90,7 +90,6 @@ function AppHeader() {
             <HeaderButton icon="music_off" className="playMusic" callback={ toggleMenuMusic } />
             </div>
         </header>
-
     )
 }
 export default AppHeader

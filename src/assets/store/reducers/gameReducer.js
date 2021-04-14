@@ -21,6 +21,4 @@ export default function gameReducer( state = initialState, action) {
             default:
                 return state
     }
-
-    return state;
 }

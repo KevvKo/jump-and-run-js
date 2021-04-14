@@ -1,4 +1,4 @@
-import { SCALE_CANVAS} from './actionNames'
+import { SCALE_CANVAS } from './actionNames'
 
 export const scaleCanvas = () => {
     return{
