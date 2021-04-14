@@ -18,7 +18,7 @@ function AppHeader() {
     let index = 0
     const sounds = useMenuMusic()
     const [audioElement] = useState( new Audio(sounds[index].file) )
-    console.log(2)
+
     audioElement.onended = () =>{
   
       index < sounds.length ? index += 1 : index = 0 

@@ -1,0 +1,8 @@
+{
+    "spaceship": {
+        "life": 100,
+        "friction": 0.99,
+        "speed": 0.1,
+        "damage": 1
+    }
+}
