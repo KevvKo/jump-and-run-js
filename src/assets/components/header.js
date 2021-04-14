@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux'
 import HeaderButton from './headerButton'
@@ -17,8 +17,8 @@ function AppHeader() {
     
     let index = 0
     const sounds = useMenuMusic()
-    const audioElement = new Audio(sounds[index].file)
-  
+    const [audioElement] = useState( new Audio(sounds[index].file) )
+    console.log(2)
     audioElement.onended = () =>{
   
       index < sounds.length ? index += 1 : index = 0 
