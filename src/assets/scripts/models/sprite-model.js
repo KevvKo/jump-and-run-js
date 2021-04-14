@@ -1,4 +1,3 @@
-
 export default class Sprite{
 
     #img
@@ -14,15 +13,15 @@ export default class Sprite{
     #r
 
     /**
-     * 
-     * @param {Image} img 
-     * @param {Integer} clippingX 
-     * @param {Integer} clippingY 
-     * @param {Integer} spriteWidth 
-     * @param {Integer} spriteHeight 
-     * @param {Integer} x 
-     * @param {Integer} y 
-     * @param {Integer} frames 
+     * @public
+     * @param {TexImageSource} img 
+     * @param {Number} clippingX 
+     * @param {Number} clippingY 
+     * @param {Number} spriteWidth 
+     * @param {Number} spriteHeight 
+     * @param {Number} x 
+     * @param {Number} y 
+     * @param {Number} frames 
      */
     constructor(img, clippingX, clippingY, spriteWidth, spriteHeight, x, y, frames ){
         
@@ -38,32 +37,33 @@ export default class Sprite{
         this.#lastTimeRendered = performance.now()
         this.#r = 0
     }
-
-    get x(){
-        return this.#x
-    }
-
-    set x(val){
-        this.#x = val
-    }
-
-    get y(){
-        return this.#y
-    }
-
-    set y(val){
-   
-        this.#y = val
-    }
-
-    get r(){
-        return this.#r 
-    }
-
-    set r(val){
-        this.#r = val
-    }
-    
+    /**
+     * @public
+     */
+    get x(){ return this.#x }
+    /**
+     * @public
+     * @param (Number) val
+     */
+    set x(val){ this.#x = val }
+    /**
+     * @public
+     */
+    get y(){ return this.#y }
+    /**
+     * @public
+     * @param (Number) val
+     */
+    set y(val){ this.#y = val }
+    /**
+     * @public
+     */
+    get r(){ return this.#r }
+    /**
+     * @public
+     * @param (Number) val
+     */
+    set r(val){ this.#r = val }
     /**
      * @public
      */
@@ -89,7 +89,6 @@ export default class Sprite{
 
         context.restore()
     }
-
     /**
      * @public
      */
@@ -109,7 +108,6 @@ export default class Sprite{
             this.#clippingX = this.#frames[this.#frameIndex]
         }
     }
-
     /**
      * @public
      */
