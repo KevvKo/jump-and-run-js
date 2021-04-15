@@ -37,5 +37,9 @@ export default class Spaceship extends Character{
      * @param (Number) val
      */
     set damage(val){ return this.#damage = val }
+    /**
+     * @public
+     */
+    shoot(){}
 
 }
