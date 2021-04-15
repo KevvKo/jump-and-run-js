@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux'
 import HeaderButton from './headerButton'
@@ -62,6 +62,14 @@ function AppHeader() {
     const showPause = isPaused && location === '/play'
     const showContinue = !isPaused && location === '/play'
     const showBackToHome = location !== '/' && location !== '/play'
+
+    useEffect(() => {
+        window.addEventListener('keydown', (e) => {
+            if(e.code === 'KeyS'){
+                toggleMenuMusic()
+            }
+        })
+    }, [])
 
     return(
         <header>
