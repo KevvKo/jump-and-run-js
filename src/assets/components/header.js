@@ -65,7 +65,7 @@ function AppHeader() {
 
     useEffect(() => {
         window.addEventListener('keydown', (e) => {
-            if(e.code === 'KeyS'){
+            if(e.code === 'KeyO'){
                 toggleMenuMusic()
             }
         })
