@@ -1,10 +1,6 @@
 import Character from '../interfaces/character'
-import data from '../../metadata/character-attributes.json'
+import data from '../../config/characters.json'
 export default class Spaceship extends Character{
-
-    /**
-     * private
-     */
 
     #life
     #damage
@@ -12,10 +8,10 @@ export default class Spaceship extends Character{
      * 
      * @param {Number} x 
      * @param {Number} y 
-     * @param {TexImageSource} spriteImg 
+     * @param {TexImageSource} spriteImage
      */
-    constructor(x, y, spriteImg){
-        super(x, y, spriteImg, data.spaceship.speed, data.spaceship.friction)
+    constructor(x, y, spriteImage){
+        super(x, y, spriteImage, data.spaceship.speed, data.spaceship.friction)
         this.#life = data.spaceship.life
         this.#damage = data.spaceship.damage
     }

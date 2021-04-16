@@ -4,5 +4,9 @@
         "friction": 0.99,
         "speed": 0.03,
         "damage": 1
+    },
+    "laserBeam": {
+        "speed": 0.05,
+        "friction": 0.99
     }
 }
