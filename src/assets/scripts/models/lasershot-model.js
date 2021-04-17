@@ -1,7 +1,7 @@
 import Character from "../interfaces/character";
 import data from '../../config/characters.json'
 
-export default class LaserBeam extends Character{
+export default class Lasershot extends Character{
 
     #damage
 
