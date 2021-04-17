@@ -6,7 +6,7 @@ export default function Home(){
     return (
         <div className='home'>         
 
-            <h1>A tiny story...</h1>
+            <h1>Final Space Wars</h1>
             <ul>
                 <li>
                     <Link to="/levelSelection">Start</Link>
