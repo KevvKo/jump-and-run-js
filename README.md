@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Final Space Wars
+Final Space Wars is a react based scifi-game, where you can play and control a spaceship to fight against random enemies. IT is inspired by the classic arcade game spaceinvaders. You can choose betwen a list of playable spaceships. 
+![alt text](examples/final-space-wars-example.png "Example")
 ## Available Scripts
 
 In the project directory, you can run:
