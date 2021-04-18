@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux'
 import HeaderButton from './headerButton'
-import { useMenuMusic } from './music'
+import { useMenuMusic } from '../scripts/services/music'
 import { store } from '../store/store';
 import { game } from '../scripts/services/game'
 import { 

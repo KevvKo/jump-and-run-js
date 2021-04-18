@@ -2,7 +2,7 @@
 import Lasershot from './lasershot-model'
 import lasershotImage from '../../img/laser.png'
 
-class Laserbeam {
+export default class Laserbeam {
 
     #x1
     #y1
