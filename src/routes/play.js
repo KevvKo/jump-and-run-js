@@ -7,8 +7,6 @@ import { game } from '../assets/scripts/services/game'
 import { store } from '../assets/store/store'
 import { addKeyDown, addKeyUp } from '../assets/store/actions/keyActions'
 import { scaleCanvas } from '../assets/store/actions/canvasActions'
-import spaceship from '../assets/img/spaceship.png'
-
 
 export default function Play(){
 
@@ -42,7 +40,6 @@ export default function Play(){
     const gameIsPaused = useSelector ( state => state.game.gameIsPaused )
     return (
         <div className='play' >
-            <img id = 'spaceship' src={ spaceship } alt='spaceship' />
             { gameIsPaused &&
                 <PauseBanner />
             }
