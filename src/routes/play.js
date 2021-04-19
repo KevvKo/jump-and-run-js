@@ -7,6 +7,7 @@ import { game } from '../assets/scripts/services/game'
 import { store } from '../assets/store/store'
 import { addKeyDown, addKeyUp } from '../assets/store/actions/keyActions'
 import { scaleCanvas } from '../assets/store/actions/canvasActions'
+import gameReducer from '../assets/store/reducers/gameReducer'
 
 export default function Play(){
 
@@ -20,9 +21,11 @@ export default function Play(){
 
         const handleKeyDown = (e) => { store.dispatch( addKeyDown(e.code) )}
         const handleKeyUp = (e) => { store.dispatch( addKeyUp(e.code) )}
-        const pauseGame = (e) => { if(e.code === "KeyP") game.togglePause() }
+        const pauseGame = (e) => { if(e.code === 'KeyP') game.togglePause() }
+        const handleShoot = (e) => { if(e.code === 'Space') game.drawShoot()}
 
         window.addEventListener( 'keydown', handleKeyDown )
+        window.addEventListener( 'keydown', handleShoot )
         window.addEventListener( 'keydown', pauseGame )
         window.addEventListener( 'keyup', handleKeyUp )
         window.addEventListener( 'resize', canvasScaler )
@@ -30,6 +33,7 @@ export default function Play(){
         return () => {
 
             window.removeEventListener( 'keydown', handleKeyDown )
+            window.removeEventListener( 'keydown', handleShoot )
             window.removeEventListener( 'keydown', pauseGame )
             window.removeEventListener( 'keyup', handleKeyUp )
             window.removeEventListener( 'resize', canvasScaler )

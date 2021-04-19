@@ -72,6 +72,12 @@ class Game{
     /**
      * @public
      */
+    drawShoot(){
+        this.spaceship.shoot()
+    }    
+    /**
+     * @public
+     */
     draw(){ this.spaceship.render() }
 
     /**

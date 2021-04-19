@@ -74,7 +74,6 @@ export default class Sprite{
         context.save()
         context.translate(this.#x + this.#spriteWidth/2, this.#y + this.#spriteHeight/2)
         context.rotate(this.#r)
-
         context.drawImage(
             this.#img,
             this.#clippingX,
