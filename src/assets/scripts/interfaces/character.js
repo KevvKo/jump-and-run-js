@@ -14,7 +14,7 @@ export default class character {
     #x
     #friction
     #speed
-    #sprite
+    sprite
 
     /**
      * 
@@ -35,7 +35,7 @@ export default class character {
         this.#friction = friction
         this.#speed = speed
 
-        this.#sprite = new Sprite(
+        this.sprite = new Sprite(
             spriteImg,
             0, 0,
             100, 100, 
@@ -69,7 +69,7 @@ export default class character {
         this.#x += this.#vx
         this.#y -= this.#vy
 
-        this.#sprite.r = this.#r
+        this.sprite.r = this.#r
     }
     /**
      * @public
@@ -91,15 +91,14 @@ export default class character {
     update(){
         this.move()
         this.checkBorderCollision()
-        this.#sprite.x = this.#x
-        this.#sprite.y = this.#y
-        this.#sprite.update()
+        this.sprite.x = this.#x
+        this.sprite.y = this.#y
+        this.sprite.update()
     }
+
     /**
-     * @public
+     * @abstract
+     * @override
      */
-    render(){
-        this.update()
-        this.#sprite.draw()
-    }
+    render(){}
 }

@@ -1,10 +1,12 @@
 import Character from '../interfaces/character'
-import Laserbeam from './laserbeam-model'
+import { laserBeam } from './laserbeam-model'
 import data from '../../config/characters.json'
 export default class Spaceship extends Character{
 
     #life
     #damage
+    #x
+    #y
     #laserBeam
     /**
      * 
@@ -14,9 +16,10 @@ export default class Spaceship extends Character{
      */
     constructor(x, y, spriteImage){
         super(x, y, spriteImage, data.spaceship.speed, data.spaceship.friction)
+        this.#x = x
+        this.#y = y
         this.#life = data.spaceship.life
         this.#damage = data.spaceship.damage
-        this.#laserBeam = new Laserbeam(30, 30, 100, 100)
     }
     /**
      * @public
@@ -40,6 +43,18 @@ export default class Spaceship extends Character{
      * @public
      */
     shoot(){
-        this.#laserBeam.renderLasershots()
+        const items = [
+            {x: this.#x - 43, y: this.#y - 50},
+            {x: this.#x + 35, y: this.#y - 50}
+        ]
+        laserBeam.addLaserItems(items)
+    }
+
+    /**
+     * @public
+     */
+    render(){
+        this.update()
+        this.sprite.drawSprite()
     }
 }

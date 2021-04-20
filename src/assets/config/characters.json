@@ -2,7 +2,7 @@
     "spaceship": {
         "life": 100,
         "friction": 0.99,
-        "speed": 0.03,
+        "speed": 0.5,
         "damage": 1
     },
     "laserBeam": {

@@ -1,4 +1,5 @@
 import Spaceship from '../models/spaceship-model'
+import { laserBeam } from '../models/laserbeam-model'
 import { store } from '../../store/store'
 import {continueGame, pauseGame } from '../../store/actions/gameActions'
 class Game{
@@ -29,14 +30,23 @@ class Game{
     update(){
         
         this.clear()
-        this.spaceship.update()
+        this.updateLaserItems()
         this.draw()
 
         const gameIsPaused = store.getState().game.gameIsPaused
         if(!gameIsPaused) this.loop = window.requestAnimationFrame(() => this.update())
 
     }
-
+    /**
+     * @public
+     */
+    updateLaserItems(){
+        if(laserBeam.items.length > 0){
+            laserBeam.items.forEach( (laser) => {
+                laser.update()
+            })
+        }
+    }
     /**
      * @public
      */
@@ -56,7 +66,6 @@ class Game{
      * @public  
      */
     stop(){ window.cancelAnimationFrame(this.loop) }
-
     /**
      * @public
      */
@@ -68,7 +77,6 @@ class Game{
 
         this.spaceship = new Spaceship( (width / 2) - 50, (height / 2) - 50, spaceshipImg) //minus 50px -> half of width from the rendered sprite to center the image in the canvas
     }
-
     /**
      * @public
      */
@@ -78,8 +86,10 @@ class Game{
     /**
      * @public
      */
-    draw(){ this.spaceship.render() }
+    draw(){ 
+        this.spaceship.render() 
 
+    }
     /**
      * @public
      */

@@ -5,7 +5,7 @@ export default class Sprite{
     #clippingY
     #spriteWidth
     #spriteHeight
-    #x
+    #_x
     #y
     #frames
     #frameIndex
@@ -30,7 +30,7 @@ export default class Sprite{
         this.#clippingY = clippingY
         this.#spriteWidth = spriteWidth
         this.#spriteHeight = spriteHeight
-        this.#x = x
+        this.#_x = x
         this.#y = y
         this.#frames = frames
         this.#frameIndex = 0
@@ -40,12 +40,12 @@ export default class Sprite{
     /**
      * @public
      */
-    get x(){ return this.#x }
+    get x(){ return this.#_x }
     /**
      * @public
      * @param (Number) val
      */
-    set x(val){ this.#x = val }
+    set x(val){ this.#_x = val }
     /**
      * @public
      */
@@ -67,12 +67,11 @@ export default class Sprite{
     /**
      * @public
      */
-    draw(){
-
+    drawSprite(){
         const canvas = document.querySelector('canvas')
         const context = canvas.getContext('2d')
         context.save()
-        context.translate(this.#x + this.#spriteWidth/2, this.#y + this.#spriteHeight/2)
+        context.translate(this.#_x + this.#spriteWidth/2, this.#y + this.#spriteHeight/2)
         context.rotate(this.#r)
         context.drawImage(
             this.#img,
@@ -86,6 +85,22 @@ export default class Sprite{
             this.#spriteHeight
         )
 
+        context.restore()
+    }
+    /**
+     * @public
+     */
+    drawImage(){
+        const canvas = document.querySelector('canvas')
+        const context = canvas.getContext('2d')
+        context.save()
+        context.translate(this.#_x + this.#spriteWidth/2, this.#y + this.#spriteHeight/2)
+        context.rotate(this.#r)
+        context.drawImage(
+            this.#img,
+            this.#clippingX,
+            this.#clippingY
+        )
         context.restore()
     }
     /**
@@ -107,13 +122,4 @@ export default class Sprite{
             this.#clippingX = this.#frames[this.#frameIndex]
         }
     }
-    /**
-     * @public
-     */
-    render(){
-
-        this.update()
-        this.draw()
-    }
-    
 }

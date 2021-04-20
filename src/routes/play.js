@@ -22,7 +22,7 @@ export default function Play(){
         const handleKeyDown = (e) => { store.dispatch( addKeyDown(e.code) )}
         const handleKeyUp = (e) => { store.dispatch( addKeyUp(e.code) )}
         const pauseGame = (e) => { if(e.code === 'KeyP') game.togglePause() }
-        const handleShoot = (e) => { if(e.code === 'Space') game.drawShoot()}
+        const handleShoot = (e) => { if(e.code === 'Space') game.spaceship.shoot()}
 
         window.addEventListener( 'keydown', handleKeyDown )
         window.addEventListener( 'keydown', handleShoot )
