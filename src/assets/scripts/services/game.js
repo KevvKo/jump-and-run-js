@@ -30,22 +30,11 @@ class Game{
     update(){
         
         this.clear()
-        this.updateLaserItems()
         this.draw()
 
         const gameIsPaused = store.getState().game.gameIsPaused
         if(!gameIsPaused) this.loop = window.requestAnimationFrame(() => this.update())
 
-    }
-    /**
-     * @public
-     */
-    updateLaserItems(){
-        if(laserBeam.items.length > 0){
-            laserBeam.items.forEach( (laser) => {
-                laser.update()
-            })
-        }
     }
     /**
      * @public
@@ -80,15 +69,15 @@ class Game{
     /**
      * @public
      */
-    drawShoot(){
+    toggleShoot(){
         this.spaceship.shoot()
     }    
     /**
      * @public
      */
     draw(){ 
+        laserBeam.render()
         this.spaceship.render() 
-
     }
     /**
      * @public

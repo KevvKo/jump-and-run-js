@@ -34,6 +34,33 @@ class Laserbeam {
             this.items.push( new Lasershot(item.x, item.y))
         })
     }
+    /**
+     * @public
+     */
+    update(){
+        if(this.items.length > 0){
+            this.items.forEach( (laser) => {
+                laser.update()
+            })
+        }
+    }
+    /**
+     * 
+     */
+    draw(){
+        if(this.items.length > 0){
+            this.items.forEach( (laser) => {
+                laser.draw()
+            })
+        }
+    }
+    /**
+     * @public
+     */
+    render(){
+        this.update()
+        this.draw()
+    }
 }
 
 export const laserBeam = new Laserbeam()

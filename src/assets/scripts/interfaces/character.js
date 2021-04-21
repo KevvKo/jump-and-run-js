@@ -40,7 +40,7 @@ export default class character {
             0, 0,
             100, 100, 
             x, y, 
-            [0, 100, 200, 300])
+            [0, 100, 200, 300]) //clipping sizes for a default sprite
     }
     /**
      * @public
@@ -95,10 +95,4 @@ export default class character {
         this.sprite.y = this.#y
         this.sprite.update()
     }
-
-    /**
-     * @abstract
-     * @override
-     */
-    render(){}
 }
