@@ -44,8 +44,8 @@ export default class Spaceship extends Character{
      */
     shoot(){
         const items = [
-            {x: this.#x - 43, y: this.#y - 50},
-            {x: this.#x + 35, y: this.#y - 50}
+            {x: this.#x + 7, y: this.#y },
+            {x: this.#x + 85, y: this.#y }
         ]
         laserBeam.addLaserItems(items)
     }

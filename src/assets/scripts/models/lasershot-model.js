@@ -33,8 +33,8 @@ export default class Lasershot{
      * 
      */
     update(){
-        this.#x += 1 
-        this.#y += 1
+        this.#x += 0
+        this.#y -= data.laser.speed
     }
     /**
      * @public
@@ -43,7 +43,6 @@ export default class Lasershot{
         const canvas = document.querySelector('canvas')
         const context = canvas.getContext('2d')
         context.save()
-        context.translate(this.#x + this.#width/2, this.#y + this.#height/2)
         context.drawImage(
             this.#image,
             this.#x,
