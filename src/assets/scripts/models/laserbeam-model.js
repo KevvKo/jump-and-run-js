@@ -35,11 +35,13 @@ class Laserbeam {
      */
     draw(){
         if(this.items.length > 0){
-
             this.items.forEach( (laser) => {
+                if(laser.outOfCanvas()){
+                    this.items.shift()
+                    return
+                }
                 laser.draw()
             })
-     
         }
     }
     /**
