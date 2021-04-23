@@ -30,13 +30,13 @@ export default class Spaceship extends Character{
 
         const x = this.getPosition().x
         const y = this.getPosition().y
+        const r = this.getRotation()
 
         const items = [
-            {x: x + 7, y: y },
-            {x: x + 85, y: y }]
+            {x: x + 7, y: y, r: r },
+            {x: x + 85, y: y, r: r }]
         laserBeam.addLaserItems(items)
     }
-
     /**
      * @public
      */
@@ -50,5 +50,12 @@ export default class Spaceship extends Character{
      */
     getPosition(){
         return {x: this.sprite.x, y: this.sprite.y}
+    }
+    /**
+     * @public
+     * @returns Number
+     */
+    getRotation(){
+        return this.sprite.r
     }
 }

@@ -15,7 +15,7 @@ class Laserbeam {
         const difference = (performance.now() - this.#lastTimeRendered)/60
         if(difference > 1){
             newItems.forEach((item)=>{
-                this.items.push( new Lasershot(item.x, item.y))
+                this.items.push( new Lasershot(item.x, item.y, item.r))
             })
             this.#lastTimeRendered = performance.now()
         }

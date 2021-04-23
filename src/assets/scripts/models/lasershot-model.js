@@ -3,17 +3,19 @@ export default class Lasershot{
 
     #x
     #y
+    #r
     #image
     #width
     #height
     #damage
 
-    constructor( x, y){
+    constructor( x, y, r){
         this.#image = document.getElementById('laser')
         this.#x = x
         this.#y = y
-        this.#width = 100
-        this.#height = 100
+        this.#r = r
+        this.#width = 6
+        this.#height = 17
         this.#damage = 5
     }
     /**
@@ -43,11 +45,15 @@ export default class Lasershot{
         const canvas = document.querySelector('canvas')
         const context = canvas.getContext('2d')
         context.save()
+        context.translate(this.#x + this.#width/2, this.#y + this.#height/2)
+        context.rotate(this.#r)
+        context.translate(-(this.#x + this.#width/2), -(this.#y + this.#height/2))
         context.drawImage(
             this.#image,
             this.#x,
             this.#y
         )
         context.restore()
+
     }
 }
