@@ -1,6 +1,8 @@
 import Character from '../interfaces/character'
-import { laserBeam } from './laserbeam-model'
 import data from '../../config/characters.json'
+
+import { laserBeam } from './laserbeam-model'
+import { store } from '../../store/store'
 export default class Spaceship extends Character{
 
     #life
@@ -41,6 +43,9 @@ export default class Spaceship extends Character{
      * @public
      */
     render(){
+        const keys = store.getState().keys
+
+        if(keys.Space) this.shoot()
         this.update()
         this.sprite.drawSprite()
     }
