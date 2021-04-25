@@ -57,8 +57,8 @@ export default class character {
         }
     
 
-        if(keys['KeyA'] || keys['ArrowLeft']) this.#r -= 0.02
-        if(keys['KeyD'] || keys['ArrowRight']) this.#r += 0.02
+        if(keys['KeyA'] || keys['ArrowLeft']) this.#r -= 1 * Math.PI / 300;
+        if(keys['KeyD'] || keys['ArrowRight']) this.#r += 1 * Math.PI / 300;
 
         this.#vx += this.#ax
         this.#vy += this.#ay
