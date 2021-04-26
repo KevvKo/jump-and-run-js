@@ -29,18 +29,13 @@ export default class Spaceship extends Character{
      * @public
      */
     shoot(){
-
-        const x = this.getPosition().x 
-        const y = this.getPosition().y
+        const t = this.getRotatedPosition(-50 , -50)
+        const e = this.getRotatedPosition(50, -50)
         const r = this.getRotation()
 
-
-        const xr = ((x) *Math.cos(r)) - ((y-50) * Math.sin(r)) 
-        const yr = ((x) *Math.sin(r)) + ((y-50) * Math.cos(r)) 
-
         const items = [
-            {x: xr , y: yr, r: r },
-            {x: xr , y: yr, r: r }]
+            {x: t.x, y: t.y , r: r },
+            {x: e.x, y: e.y , r: r }]
         laserBeam.addLaserItems(items)
     }
     /**
@@ -66,5 +61,22 @@ export default class Spaceship extends Character{
      */
     getRotation(){
         return this.sprite.r
+    }
+    /**
+     * 
+     * @param {Number} cx 
+     * @param {Number} cy 
+     * @returns Object
+     */
+    getRotatedPosition(cx, cy){
+        const x = this.getPosition().x  + 50
+        const y = this.getPosition().y  + 50
+        const r = this.getRotation()
+        const c = Math.cos(r);
+        const s = Math.sin(r);
+        const rx = (cx * c) - (cy * s) + x
+        const ry = (cx * s) + (cy * c) + y
+
+        return {x: rx, y: ry}
     }
 }
