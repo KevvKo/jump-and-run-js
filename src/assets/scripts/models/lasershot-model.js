@@ -36,8 +36,8 @@ export default class Lasershot{
      * 
      */
     update(){
-        this.#x += 0
-        this.#y -= data.laser.speed
+        this.#x += Math.sin(this.#r) * data.laser.speed
+        this.#y -= Math.cos(this.#r) * data.laser.speed
     }
     /**
      * @public
