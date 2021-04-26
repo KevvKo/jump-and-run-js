@@ -29,8 +29,8 @@ export default class Spaceship extends Character{
      * @public
      */
     shoot(){
-        const t = this.getRotatedPosition(-50 , -50)
-        const e = this.getRotatedPosition(50, -50)
+        const t = this.getRotatedPosition(-37 , -32)
+        const e = this.getRotatedPosition(42, -32)
         const r = this.getRotation()
 
         const items = [
@@ -69,11 +69,11 @@ export default class Spaceship extends Character{
      * @returns Object
      */
     getRotatedPosition(cx, cy){
-        const x = this.getPosition().x  + 50
-        const y = this.getPosition().y  + 50
+        const x = this.getPosition().x + 43
+        const y = this.getPosition().y + 40
         const r = this.getRotation()
-        const c = Math.cos(r);
-        const s = Math.sin(r);
+        const c = Math.cos(r)
+        const s = Math.sin(r)
         const rx = (cx * c) - (cy * s) + x
         const ry = (cx * s) + (cy * c) + y
 
