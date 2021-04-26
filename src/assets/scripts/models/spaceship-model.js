@@ -30,13 +30,17 @@ export default class Spaceship extends Character{
      */
     shoot(){
 
-        const x = this.getPosition().x
+        const x = this.getPosition().x 
         const y = this.getPosition().y
         const r = this.getRotation()
 
+
+        const xr = ((x) *Math.cos(r)) - ((y-50) * Math.sin(r)) 
+        const yr = ((x) *Math.sin(r)) + ((y-50) * Math.cos(r)) 
+
         const items = [
-            {x: x + 7, y: y, r: r },
-            {x: x + 85, y: y, r: r }]
+            {x: xr , y: yr, r: r },
+            {x: xr , y: yr, r: r }]
         laserBeam.addLaserItems(items)
     }
     /**

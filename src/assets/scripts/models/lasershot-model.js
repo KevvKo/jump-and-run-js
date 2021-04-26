@@ -45,16 +45,17 @@ export default class Lasershot{
     draw(){
         const canvas = document.querySelector('canvas')
         const context = canvas.getContext('2d')
-        context.save()
-        context.translate(this.#x + this.#width/2, this.#y + this.#height/2)
-        context.rotate(this.#r)
-        context.translate(-(this.#x + this.#width/2), -(this.#y + this.#height/2))
+
+        // context.save()
+        // context.translate(this.#x + this.#width/2, this.#y + this.#height/2)
+        // context.rotate(this.#r)
+        // context.translate(-(this.#x + this.#width/2), -(this.#y + this.#height/2))
         context.drawImage(
             this.#image,
             this.#x,
             this.#y
         )
-        context.restore()
+        // context.restore()
     }
     /**
      * @public

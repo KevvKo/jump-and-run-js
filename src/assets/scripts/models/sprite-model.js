@@ -70,22 +70,46 @@ export default class Sprite{
     drawSprite(){
         const canvas = document.querySelector('canvas')
         const context = canvas.getContext('2d')
+        context.strokeStyle = '#FF0000';
+
         context.save()
         context.translate(this.#x + this.#spriteWidth/2, this.#y + this.#spriteHeight/2)
         context.rotate(this.#r)
-        context.drawImage(
-            this.#img,
-            this.#clippingX,
-            this.#clippingY,
-            this.#spriteWidth,
-            this.#spriteHeight,
-            -this.#spriteWidth/2,
-            -this.#spriteHeight/2,
-            this.#spriteWidth,
-            this.#spriteHeight
-        )
+        context.translate(-(this.#x + this.#spriteWidth/2), -(this.#y + this.#spriteHeight/2))
 
+        context.beginPath();
+        context.fillRect(this.#x, this.#y, 100, 100);
+        context.stroke();
+        // context.drawImage(
+        //     this.#img,
+        //     this.#clippingX,
+        //     this.#clippingY,
+        //     this.#spriteWidth,
+        //     this.#spriteHeight,
+        //     -this.#spriteWidth/2,
+        //     -this.#spriteHeight/2,
+        //     this.#spriteWidth,
+        //     this.#spriteHeight
+        // )
+
+        const x = this.#x + 50
+        const y = this.#y + 50
+        const w = 50
+        const c = Math.cos(this.#r);
+        const s = Math.sin(this.#r);
+        const r1x = (w * c) - (w * s);
+        const r1y = (w * s) + (w * c);
+        const xr = r1x + x
+        const yr = r1y + y
+
+        context.beginPath();
+        context.arc(xr, yr,2, 0, 2 * Math.PI, false);
+        context.lineWidth = 3;
+        context.stroke();
         context.restore()
+
+
+
     }
     /**
      * @public
