@@ -10,7 +10,6 @@ import Options from '../routes/options'
 import Credits from '../routes/credits'
 import Guide from '../routes/guide'
 import StarBackground from './starBackground'
-import './main.css'
 
 function AppMain(){
     return(

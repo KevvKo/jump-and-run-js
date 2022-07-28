@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import './play.css'
 import PauseBanner from '../components/pauseBanner'
 
 import { game } from '../scripts/services/game'
@@ -8,9 +7,8 @@ import { store } from '../store/store'
 import { addKeyDown, addKeyUp } from '../store/actions/keyActions'
 import { scaleCanvas } from '../store/actions/canvasActions'
 
-export default function Play(){
+const Play = () => {
 
-    
     const canvasScaler = () => { store.dispatch( scaleCanvas() ) }
 
     useEffect(() => {
@@ -39,7 +37,7 @@ export default function Play(){
 
     const gameIsPaused = useSelector ( state => state.game.gameIsPaused )
     return (
-        <div className='play' >
+        <div className='play flex justify-center flex-col items-center' >
             { gameIsPaused &&
                 <PauseBanner />
             }
@@ -47,3 +45,5 @@ export default function Play(){
         </div>
     )
 }
+
+export default Play;
