@@ -1,5 +1,5 @@
 import {
-    Switch,
+    Routes,
     Route
 } from "react-router-dom";
 
@@ -16,14 +16,14 @@ function AppMain(){
     return(
         <div className="main">
             <StarBackground />
-            <Switch>
-                <Route exact path="/" children={<Home />} />
-                <Route path="/levelSelection" children={<LevelSelection />} />
-                <Route path="/play" children={<Play />} />
-                <Route path="/options" children={<Options />} />
-                <Route path="/credits" children={<Credits />} />
-                <Route path="/guide" children={<Guide />} />
-            </Switch>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/levelSelection" element={<LevelSelection />} />
+                <Route path="/play" element={<Play />} />
+                <Route path="/options" element={<Options />} />
+                <Route path="/credits" element={<Credits />} />
+                <Route path="/guide" element={<Guide />} />
+            </Routes>
         </div>
     )
 }
