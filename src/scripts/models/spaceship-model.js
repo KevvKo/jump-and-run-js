@@ -1,8 +1,8 @@
 import Character from '../interfaces/character'
-import data from '../../config/characters.json'
-
+import data from '../../assets/config/characters.json'
 import { laserBeam } from './laserbeam-model'
 import { store } from '../../store/store'
+
 export default class Spaceship extends Character{
 
     #life

@@ -3,12 +3,12 @@ import {
     Route
 } from "react-router-dom";
 
-import Home from '../../routes/home'
-import LevelSelection from '../../routes/levelSelection'
-import Play from '../../routes/play'
-import Options from '../../routes/options'
-import Credits from '../../routes/credits'
-import Guide from '../../routes/guide'
+import Home from '../routes/home'
+import LevelSelection from '../routes/levelSelection'
+import Play from '../routes/play'
+import Options from '../routes/options'
+import Credits from '../routes/credits'
+import Guide from '../routes/guide'
 import StarBackground from './starBackground'
 import './main.css'
 

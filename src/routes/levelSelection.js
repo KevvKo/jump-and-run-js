@@ -1,8 +1,6 @@
 import React from 'react'
-
+import Level from '../components/level'
 import './levelSelection.css'
-
-import Level from '../assets/components/level'
 
 export default function LevelSelection(props){
     return(

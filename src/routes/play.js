@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import './play.css'
-import PauseBanner from '../assets/components/pauseBanner'
+import PauseBanner from '../components/pauseBanner'
 
-import { game } from '../assets/scripts/services/game'
-import { store } from '../assets/store/store'
-import { addKeyDown, addKeyUp } from '../assets/store/actions/keyActions'
-import { scaleCanvas } from '../assets/store/actions/canvasActions'
+import { game } from '../scripts/services/game'
+import { store } from '../store/store'
+import { addKeyDown, addKeyUp } from '../store/actions/keyActions'
+import { scaleCanvas } from '../store/actions/canvasActions'
 
 export default function Play(){
 

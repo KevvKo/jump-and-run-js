@@ -1,6 +1,6 @@
 import React from 'react'
+import Background from '../components/background'
 import './options.css'
-import Background from '../assets/components/background'
 
 export default function Options(){
 

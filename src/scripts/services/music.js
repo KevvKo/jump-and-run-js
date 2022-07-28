@@ -1,22 +1,22 @@
-import menuTrack1 from "../../sound/menu/sappheiros-embrace.mp3"
-import menuTrack2 from "../../sound/menu/Go Go Go - Kwon.mp3"
-import menuTrack3 from "../../sound/menu/Ocean View - Patrick Patrikios.mp3"
-import menuTrack4 from "../../sound/menu/Polyphonic Congas - Unicorn Heads.mp3"
-import menuTrack5 from "../../sound/menu/Space Station Experience - Unicorn Heads.mp3"
+import menuTrack1 from "../../assets/sound/menu/sappheiros-embrace.mp3"
+import menuTrack2 from "../../assets/sound/menu/Go Go Go - Kwon.mp3"
+import menuTrack3 from "../../assets/sound/menu/Ocean View - Patrick Patrikios.mp3"
+import menuTrack4 from "../../assets/sound/menu/Polyphonic Congas - Unicorn Heads.mp3"
+import menuTrack5 from "../../assets/sound/menu/Space Station Experience - Unicorn Heads.mp3"
 
-import dramaTrack1 from "../../sound/drama/A Fever - Devon Church.mp3"
-import dramaTrack2 from "../../sound/drama/Average - Patrick Patrikios.mp3"
-import dramaTrack3 from "../../sound/drama/Forget Me Not - Patrick Patrikios.mp3"
-import dramaTrack4 from "../../sound/drama/Weak Knight - Devon Church.mp3"
+import dramaTrack1 from "../../assets/sound/drama/A Fever - Devon Church.mp3"
+import dramaTrack2 from "../../assets/sound/drama/Average - Patrick Patrikios.mp3"
+import dramaTrack3 from "../../assets/sound/drama/Forget Me Not - Patrick Patrikios.mp3"
+import dramaTrack4 from "../../assets/sound/drama/Weak Knight - Devon Church.mp3"
 
 
-import gameTrack1 from "../../sound/game/Arpy - Dan Henig.mp3"
-import gameTrack2 from "../../sound/game/Cover - Patrick Patrikios.mp3"
-import gameTrack3 from "../../sound/game/Disco Heart - Coyote Hearing.mp3"
-import gameTrack4 from "../../sound/game/Moons - Patrick Patrikios.mp3"
-import gameTrack5 from "../../sound/game/Numb Limb Lips - The 129ers.mp3"
-import gameTrack6 from "../../sound/game/Please Don't Go - Jeremy Black.mp3"
-import gameTrack7 from "../../sound/game/Sink Whole Dream - The 129ers.mp3"
+import gameTrack1 from "../../assets/sound/game/Arpy - Dan Henig.mp3"
+import gameTrack2 from "../../assets/sound/game/Cover - Patrick Patrikios.mp3"
+import gameTrack3 from "../../assets/sound/game/Disco Heart - Coyote Hearing.mp3"
+import gameTrack4 from "../../assets/sound/game/Moons - Patrick Patrikios.mp3"
+import gameTrack5 from "../../assets/sound/game/Numb Limb Lips - The 129ers.mp3"
+import gameTrack6 from "../../assets/sound/game/Please Don't Go - Jeremy Black.mp3"
+import gameTrack7 from "../../assets/sound/game/Sink Whole Dream - The 129ers.mp3"
 
 export function useDrameMusic(){
     

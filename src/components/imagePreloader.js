@@ -1,5 +1,5 @@
-import spaceship from '../img/spaceship.png'
-import laser from '../img/laser.png'
+import spaceship from '../assets/img/spaceship.png'
+import laser from '../assets/img/laser.png'
 import './imagePreloader.css'
 
 export default function ImagePreloader(){

@@ -1,8 +1,8 @@
 import React from 'react';
-import ImagePreloader from './assets/components/imagePreloader'
-import AppHeader from './assets/components/header'
-import AppMain from './assets/components/main'
-import AppFooter from './assets/components/footer' 
+import ImagePreloader from './components/imagePreloader'
+import AppHeader from './components/header'
+import AppMain from './components/main'
+import AppFooter from './components/footer' 
 import './App.css';
 
 

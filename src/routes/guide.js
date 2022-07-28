@@ -1,7 +1,7 @@
 import React from 'react'
 import './guide.css'
 
-import Background from '../assets/components/background'
+import Background from '../components/background'
 
 export default function Guide(){
 
