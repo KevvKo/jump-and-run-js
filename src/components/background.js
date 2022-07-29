@@ -12,7 +12,7 @@ export default function Background(props){
     }
 
     return(
-        <div className="background" style={ size }>
+        <div className="background rounded-lg overflow-y-scroll" style={ size }>
             {props.content}
         </div>
     )

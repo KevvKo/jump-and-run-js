@@ -1,35 +1,4 @@
-footer{
-    display: block;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    padding: 5px;
-  }
-  
-  footer a{
-    text-decoration: none;
-    color: white;
-    opacity: 0.6
-  }
-  
-  footer a:hover{
-    text-decoration-line: underline;
-  
-  }
-
-  .soundtrackDisplay{
-    float: right;
-    color: white;
-    opacity: 0.6;
-    margin-right: 10px;
-    width: 100px;
-    overflow: hidden;
-    
-}
-
 .soundtrackDisplay div{
-
-    width: max-content;
     animation: musicDisplay 8s linear infinite;
     transform:translateX(-100%);
 

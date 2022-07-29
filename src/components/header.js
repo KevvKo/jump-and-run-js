@@ -72,30 +72,30 @@ function AppHeader() {
     }, [])
 
     return(
-        <header>
-            <div>
+        <header className='absolute top-0 p-2.5 z-10 w-full'>
+            <div className='flex'>
             { showBackToHome &&
                 <Link to='/' >
-                    <HeaderButton icon="arrow_back" />
+                    <HeaderButton className='hover:cursor-pointer' icon="arrow_back" />
                 </Link>
             }
             { location === '/play' &&
                 <Link to='/levelSelection' >
-                    <HeaderButton icon="arrow_back" />
+                    <HeaderButton className='hover:cursor-pointer' icon="arrow_back" />
                 </Link>
             }
             { location === '/play' &&
                 <Link to='/' >
-                    <HeaderButton icon="home" />
+                    <HeaderButton className='hover:cursor-pointer' icon="home" />
                 </Link>
             }
             { showPause &&
-                <HeaderButton icon="play_arrow" callback={ togglePauseGame }/>
+                <HeaderButton className='hover:cursor-pointer' icon="play_arrow" callback={ togglePauseGame }/>
             }
             { showContinue && !isPaused &&
-                <HeaderButton icon="pause" callback={ togglePauseGame }/>
+                <HeaderButton className='hover:cursor-pointer' icon="pause" callback={ togglePauseGame }/>
             }
-            <HeaderButton icon="music_off" className="playMusic" callback={ toggleMenuMusic } />
+            <HeaderButton icon="music_off" className="playMusic float-right hover:cursor-pointer" callback={ toggleMenuMusic } />
             </div>
         </header>
     )

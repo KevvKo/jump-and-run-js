@@ -1,24 +1,7 @@
-header{
-    position: absolute;
-    top: 0;
-    padding: 10px;
-    z-index: 10;
-    width: 100%;
-  }
-  
-  header > div{
-    display: flex;
-  }
-  
-  .playMusic{ float: right; }
-  
-  .headerbutton:hover{
-    cursor: pointer;
-  }
-  .material-icons{
-    color: white;
-    opacity: 0.8;
-  }
+.material-icons{
+  color: white;
+  opacity: 0.8;
+}
   
   
   
