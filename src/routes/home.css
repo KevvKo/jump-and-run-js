@@ -1,13 +1,4 @@
-.home{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-}
-
 .home h1{
-    font-size: 150px;
     background: -webkit-linear-gradient(#98B2C6, #3E637F);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -26,29 +17,9 @@
     }
     
 }
-.home ul{   
-    list-style-type: none;
-    padding: 0;
-    width: 200px;
-}
-
-.home li{
-    display: flex;
-    justify-content: center;
-}
 
 .home a{
-    list-style-type: none;
-    font-size: 50px;
-    text-decoration: none;
-    text-align: center;
-    display: inline-block;
     background: -webkit-linear-gradient(#98B2C6, #3E637F);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
-
-.home a:hover{
-    opacity: 0.7;
-    transition: 0.1s;
 }

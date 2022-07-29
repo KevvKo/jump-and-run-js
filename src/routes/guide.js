@@ -1,6 +1,4 @@
 import React from 'react'
-import './guide.css'
-
 import Background from '../components/background'
 
 export default function Guide(){
@@ -8,7 +6,7 @@ export default function Guide(){
     const size = { width: "80%", height: "80%" }
 
     return(
-        <div className='guide'>
+        <div className='guide flex flex-col justify-center items-center text-center text-white'>
             <Background size= { size } />
         </div>
     )
