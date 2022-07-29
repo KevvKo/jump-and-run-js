@@ -1,5 +1,5 @@
-import React from 'react'
-import './headerButton.css'
+import React from 'react';
+import './headerButton.css';
 
 export default function HeaderButton(props){
 
@@ -7,5 +7,5 @@ export default function HeaderButton(props){
         <div className={'headerbutton ' + props.className} onClick={props.callback}>
             <span className="material-icons">{props.icon}</span>
         </div>
-    )
+    );
 }

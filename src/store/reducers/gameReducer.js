@@ -1,6 +1,6 @@
 const initialState= {
     gameIsPaused: false
-}
+};
 
 export default function gameReducer( state = initialState, action) {
     
@@ -10,15 +10,15 @@ export default function gameReducer( state = initialState, action) {
             return{
                 ...state,
                 gameIsPaused: action.payload
-            }
+            };
 
         case 'game/continueGame':
             return{
                 ...state,
                 gameIsPaused: action.payload
-            }
+            };
 
             default:
-                return state
+                return state;
     }
 }

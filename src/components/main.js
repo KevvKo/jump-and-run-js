@@ -1,15 +1,16 @@
+import React from "react";
 import {
     Routes,
     Route
 } from "react-router-dom";
 
-import Home from '../routes/home'
-import LevelSelection from '../routes/levelSelection'
-import Play from '../routes/play'
-import Options from '../routes/options'
-import Credits from '../routes/credits'
-import Guide from '../routes/guide'
-import StarBackground from './starBackground'
+import Home from '../routes/home';
+import LevelSelection from '../routes/levelSelection';
+import Play from '../routes/play';
+import Options from '../routes/options';
+import Credits from '../routes/credits';
+import Guide from '../routes/guide';
+import StarBackground from './starBackground';
 
 function AppMain(){
     return(
@@ -24,7 +25,7 @@ function AppMain(){
                 <Route path="/guide" element={<Guide />} />
             </Routes>
         </div>
-    )
+    );
 }
 
-export default AppMain
+export default AppMain;

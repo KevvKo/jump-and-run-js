@@ -1,23 +1,25 @@
 
-import Lasershot from './lasershot-model'
+import Lasershot from './lasershot-model';
+
 class Laserbeam {
 
-    #lastTimeRendered
+    #lastTimeRendered;
+
     constructor(){
-        this.items = []
-        this.#lastTimeRendered = performance.now()
+        this.items = [];
+        this.#lastTimeRendered = performance.now();
     }
     /**
      * 
      * @param {Array} newItems 
      */
     addLaserItems(newItems){
-        const difference = (performance.now() - this.#lastTimeRendered)/60
+        const difference = (performance.now() - this.#lastTimeRendered)/60;
         if(difference > 1){
             newItems.forEach((item)=>{
-                this.items.push( new Lasershot(item.x, item.y, item.r))
-            })
-            this.#lastTimeRendered = performance.now()
+                this.items.push( new Lasershot(item.x, item.y, item.r));
+            });
+            this.#lastTimeRendered = performance.now();
         }
     }
     /**
@@ -26,8 +28,8 @@ class Laserbeam {
     update(){
         if(this.items.length > 0){
             this.items.forEach( (laser) => {
-                laser.update()
-            })
+                laser.update();
+            });
         }
     }
     /**
@@ -37,20 +39,20 @@ class Laserbeam {
         if(this.items.length > 0){
             this.items.forEach( (laser) => {
                 if(laser.outOfCanvas()){
-                    this.items.shift()
-                    return
+                    this.items.shift();
+                    return;
                 }
-                laser.draw()
-            })
+                laser.draw();
+            });
         }
     }
     /**
      * @public
      */
     render(){
-        this.update()
-        this.draw()
+        this.update();
+        this.draw();
     }
 }
 
-export const laserBeam = new Laserbeam()
+export const laserBeam = new Laserbeam();

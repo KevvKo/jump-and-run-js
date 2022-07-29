@@ -1,16 +1,16 @@
 export default class Sprite{
 
-    #img
-    #clippingX
-    #clippingY
-    #spriteWidth
-    #spriteHeight
-    #x
-    #y
-    #frames
-    #frameIndex
-    #lastTimeRendered
-    #r
+    #img;
+    #clippingX;
+    #clippingY;
+    #spriteWidth;
+    #spriteHeight;
+    #x;
+    #y;
+    #frames;
+    #frameIndex;
+    #lastTimeRendered;
+    #r;
 
     /**
      * @public
@@ -25,55 +25,55 @@ export default class Sprite{
      */
     constructor(img, clippingX, clippingY, spriteWidth, spriteHeight, x, y, frames ){
         
-        this.#img = img
-        this.#clippingX = clippingX
-        this.#clippingY = clippingY
-        this.#spriteWidth = spriteWidth
-        this.#spriteHeight = spriteHeight
-        this.#x = x
-        this.#y = y
-        this.#frames = frames
-        this.#frameIndex = 0
-        this.#lastTimeRendered = performance.now()
-        this.#r = 0
+        this.#img = img;
+        this.#clippingX = clippingX;
+        this.#clippingY = clippingY;
+        this.#spriteWidth = spriteWidth;
+        this.#spriteHeight = spriteHeight;
+        this.#x = x;
+        this.#y = y;
+        this.#frames = frames;
+        this.#frameIndex = 0;
+        this.#lastTimeRendered = performance.now();
+        this.#r = 0;
     }
     /**
      * @public
      */
-    get x(){ return this.#x }
+    get x(){ return this.#x; }
     /**
      * @public
      * @param (Number) val
      */
-    set x(val){ this.#x = val }
+    set x(val){ this.#x = val; }
     /**
      * @public
      */
-    get y(){ return this.#y }
-    /**
-     * @public
-     * @param (Number) val
-     */
-    set y(val){ this.#y = val }
-    /**
-     * @public
-     */
-    get r(){ return this.#r }
+    get y(){ return this.#y; }
     /**
      * @public
      * @param (Number) val
      */
-    set r(val){ this.#r = val }
+    set y(val){ this.#y = val; }
+    /**
+     * @public
+     */
+    get r(){ return this.#r; }
+    /**
+     * @public
+     * @param (Number) val
+     */
+    set r(val){ this.#r = val; }
     /**
      * @public
      */
     drawSprite(){
-        const canvas = document.querySelector('canvas')
-        const context = canvas.getContext('2d')
+        const canvas = document.querySelector('canvas');
+        const context = canvas.getContext('2d');
 
-        context.save()
-        context.translate(this.#x + this.#spriteWidth/2, this.#y + this.#spriteHeight/2)
-        context.rotate(this.#r)
+        context.save();
+        context.translate(this.#x + this.#spriteWidth/2, this.#y + this.#spriteHeight/2);
+        context.rotate(this.#r);
         // context.translate(-(this.#x + this.#spriteWidth/2), -(this.#y + this.#spriteHeight/2))
         context.drawImage(
             this.#img,
@@ -85,26 +85,26 @@ export default class Sprite{
             -this.#spriteHeight/2,
             this.#spriteWidth,
             this.#spriteHeight
-        )
-        context.restore()
+        );
+        context.restore();
     }
     /**
      * @public
      */
     update(){
 
-        const difference = (performance.now() - this.#lastTimeRendered)/60
+        const difference = (performance.now() - this.#lastTimeRendered)/60;
 
         if(difference >= 1.1){                  //1.1 -> smoothest time to animate
 
-            this.#lastTimeRendered = performance.now()            
-            this.#frameIndex += 1
+            this.#lastTimeRendered = performance.now();      
+            this.#frameIndex += 1;
 
             if(this.#frameIndex > this.#frames.length - 1){
-                this.#frameIndex = 0
+                this.#frameIndex = 0;
             }
 
-            this.#clippingX = this.#frames[this.#frameIndex]
+            this.#clippingX = this.#frames[this.#frameIndex];
         }
     }
 }

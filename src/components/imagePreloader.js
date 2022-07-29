@@ -1,5 +1,6 @@
-import spaceship from '../assets/img/spaceship.png'
-import laser from '../assets/img/laser.png'
+import React from 'react';
+import spaceship from '../assets/img/spaceship.png';
+import laser from '../assets/img/laser.png';
 
 export default function ImagePreloader(){
     return(

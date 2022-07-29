@@ -1,11 +1,12 @@
-import { useSelector } from 'react-redux'
-import './footer.css'
+import React from 'react';
+import { useSelector } from 'react-redux';
+import './footer.css';
 
 function AppFooter(){
 
-    const artist = useSelector (state => state.music.artist)
-    const title = useSelector (state => state.music.title)
-    const musicPlays = useSelector (state => state.music.musicPlays)
+    const artist = useSelector (state => state.music.artist);
+    const title = useSelector (state => state.music.title);
+    const musicPlays = useSelector (state => state.music.musicPlays);
 
     return(
         <footer className='block w-full fixed bottom-0 p-1.5'>
@@ -16,7 +17,7 @@ function AppFooter(){
                 }
             </div>          
         </footer>
-    )
+    );
 }
 
 export default AppFooter;
