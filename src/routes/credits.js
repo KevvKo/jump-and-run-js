@@ -1,7 +1,7 @@
-import React from 'react'
-import Background from '../components/background'
+import React from 'react';
+import Background from '../components/background';
 
-export default function Credits(){
+const Credits = () =>{
     
     const content = 
         <div>
@@ -25,11 +25,13 @@ export default function Credits(){
             <h2 className='opacity-60 text-3xl'>Participants</h2>
             <p className='opacity-60 text-xl'>Benjamin Gypser</p>
             <p className='opacity-60 text-xl'>Marius Treichel</p>
-        </div>
+        </div>;
     
     return (
         <div className='credits flex flex-col justify-center items-center text-center text-white'>
             <Background content={content}/>
         </div>
-    )
-}
+    );
+};
+
+export default Credits;

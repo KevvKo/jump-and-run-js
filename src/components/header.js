@@ -69,7 +69,7 @@ function AppHeader() {
                 toggleMenuMusic()
             }
         })
-    }, [])
+    }, [toggleMenuMusic])
 
     return(
         <header className='absolute top-0 p-2.5 z-10 w-full'>

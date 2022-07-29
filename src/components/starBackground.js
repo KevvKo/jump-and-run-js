@@ -1,5 +1,5 @@
-import React from 'react'
-import './starBackground.css'
+import React from 'react';
+import './starBackground.css';
 
 export default function StarBackground(){
     return(
@@ -8,5 +8,5 @@ export default function StarBackground(){
             <div id='stars2'></div>
             <div id='stars3'></div>
         </div>
-    )
+    );
 }

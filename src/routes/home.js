@@ -1,8 +1,8 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import './home.css'
+import React from 'react';
+import {Link} from 'react-router-dom';
+import './home.css';
 
-export default function Home(){
+const Home = () => {
     return (
         <div className='home flex flex-col justify-center items-center'>         
 
@@ -34,5 +34,7 @@ export default function Home(){
                 </li>
             </ul>
         </div>
-    )
-}
+    );
+};
+
+export default Home;
