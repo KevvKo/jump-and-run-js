@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 
 import Home from '../routes/home';
-import LevelSelection from '../routes/levelSelection';
+import ChooseDifficulty from '../routes/chooseDifficulty';
 import Play from '../routes/play';
 import Options from '../routes/options';
 import Credits from '../routes/credits';
@@ -18,7 +18,7 @@ function AppMain(){
             <StarBackground />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/levelSelection" element={<LevelSelection />} />
+                <Route path="/chooseDifficulty" element={<ChooseDifficulty />} />
                 <Route path="/play" element={<Play />} />
                 <Route path="/options" element={<Options />} />
                 <Route path="/credits" element={<Credits />} />

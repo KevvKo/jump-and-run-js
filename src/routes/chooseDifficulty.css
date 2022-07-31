@@ -1,0 +1,5 @@
+.chooseDifficulty li {
+    background: -webkit-linear-gradient(#98B2C6, #3E637F);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
