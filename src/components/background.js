@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './background.css';
 
-export default function Background(props){
+const Background = (props) => {
 
     //default style for the component
     let size = { width: '40%', height: '70vh' };
@@ -15,5 +17,12 @@ export default function Background(props){
         <div className="background rounded-lg overflow-y-scroll" style={ size }>
             {props.content}
         </div>
-    )
-}
+    );
+};
+
+Background.propTypes = {
+    size: PropTypes.string,
+    content: PropTypes.node
+};
+
+export default Background;
