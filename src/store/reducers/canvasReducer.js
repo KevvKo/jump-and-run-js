@@ -20,7 +20,7 @@ function canvasReducer( state = initialState, action) {
             height: height
         };
     }
-
+    
     return state;
 }
 

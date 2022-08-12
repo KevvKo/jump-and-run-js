@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import PauseBanner from '../components/pauseBanner';
-
 import { game } from '../scripts/services/game';
 import { store } from '../store/store';
 import { addKeyDown, addKeyUp } from '../store/actions/keyActions';
@@ -35,7 +34,9 @@ const Play = () => {
         };
     }, []);
 
+
     const gameIsPaused = useSelector ( state => state.game.gameIsPaused );
+    
     return (
         <div className='play flex justify-center flex-col items-center' >
             { gameIsPaused &&

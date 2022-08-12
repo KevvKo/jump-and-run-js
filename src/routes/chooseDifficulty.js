@@ -1,13 +1,16 @@
 import React from 'react';
+import { store } from '../store/store';
 import './chooseDifficulty.css';
 import { useNavigate } from "react-router-dom";
-
+import { addDifficulty } from '../store/actions/gameActions';
 const ChooseDifficulty = () => {
 
     const difficultys = ['easy', 'normal', 'hard'];
     const navigate = useNavigate();
-    const handleClick = (difficulty) => {
+    const handleClick = (index) => {
 
+        const difficulty = difficultys[index];
+        store.dispatch(addDifficulty(difficulty));
         navigate('../play');
     };
 

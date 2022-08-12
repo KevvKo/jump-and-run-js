@@ -4,6 +4,7 @@ export const ADD_KEYUP = 'keys/KeyUp';
 // game-actions
 export const PAUSE_GAME = 'game/pauseGame';
 export const CONTINUE_GAME = 'game/continueGame';
+export const ADD_DIFFICULTY = 'game/difficulty';
 // music-actions
 export const REPLACE_ARTIST_NAME = 'music/changeArtist';
 export const REPLACE_TITLE_NAME = 'music/changeTitle';

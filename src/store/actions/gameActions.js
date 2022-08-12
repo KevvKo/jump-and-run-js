@@ -1,6 +1,7 @@
 import {
     PAUSE_GAME,
-    CONTINUE_GAME
+    CONTINUE_GAME,
+    ADD_DIFFICULTY
 } from './actionNames';
 
 export const pauseGame = () => {
@@ -16,3 +17,10 @@ export const continueGame = () => {
         payload: false
     };
 };
+
+export const addDifficulty = (difficulty) => {
+    return {
+        type: ADD_DIFFICULTY,
+        payload: difficulty
+    }
+}
