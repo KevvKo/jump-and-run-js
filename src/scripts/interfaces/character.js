@@ -27,8 +27,6 @@ export default class character {
      */
     constructor(x, y, spriteImg, speed, friction){
         this.#r = 0;
-        this.#vx = 0;
-        this.#vy = 0;
         this.#ax = 0;
         this.#ay = 0;
         this.#x = x;
@@ -51,25 +49,16 @@ export default class character {
         const keys = store.getState().keys;
         const { maxVelocity } = data.spaceship;
 
-        if(keys['KeyW'] || keys['ArrowUp']){ 
-            this.#ay += this.#speed;
-        }else {
-            this.#ax = this.#ay = 0;
-        }
-    
-
-        if(keys['KeyA'] || keys['ArrowLeft']) this.#ax -= this.#speed;
-        if(keys['KeyD'] || keys['ArrowRight']) this.#ax += this.#speed;
+        if((keys['KeyW'] || keys['ArrowUp']) && this.#ay <= maxVelocity) this.#ay += this.#speed;
         if(keys['KeyS'] || keys['ArrowDown']) this.#ay -= this.#speed;
+        if(keys['KeyA'] || keys['ArrowLeft']) this.#ax -= this.#speed;
+        if((keys['KeyD'] || keys['ArrowRight']) && this.#ax <= maxVelocity) this.#ax += this.#speed;
 
-        if(this.#vx <= maxVelocity) this.#vx += this.#ax;
-        if(this.#vy <= maxVelocity) this.#vy += this.#ay;
+        this.#ax *= this.#friction;
+        this.#ay *= this.#friction;
 
-        this.#vx *= this.#friction;
-        this.#vy *= this.#friction;
-
-        this.#x += this.#vx;
-        this.#y -= this.#vy;
+        this.#x += this.#ax;
+        this.#y -= this.#ay;
     }
     /**
      * @public
