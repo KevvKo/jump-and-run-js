@@ -35,7 +35,9 @@ export default class Spaceship extends Character{
 
         const items = [
             {x: t.x, y: t.y , r: r },
-            {x: e.x, y: e.y , r: r }];
+            {x: e.x, y: e.y , r: r }
+        ];
+
         laserBeam.addLaserItems(items);
     }
     /**

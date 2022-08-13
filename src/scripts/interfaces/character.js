@@ -1,5 +1,6 @@
 import Sprite from '../models/sprite-model';
 import { store } from '../../store/store';
+import data from '../../assets/config/characters.json';
 
 export default class character {
     /**
@@ -48,28 +49,27 @@ export default class character {
     move(){
 
         const keys = store.getState().keys;
-        
+        const { maxVelocity } = data.spaceship;
+
         if(keys['KeyW'] || keys['ArrowUp']){ 
-            this.#ax = Math.sin(this.#r) * this.#speed;
-            this.#ay = Math.cos(this.#r) * this.#speed;
+            this.#ay += this.#speed;
         }else {
             this.#ax = this.#ay = 0;
         }
     
 
-        if(keys['KeyA'] || keys['ArrowLeft']) this.#r -= 1 * Math.PI / 180;
-        if(keys['KeyD'] || keys['ArrowRight']) this.#r += 1 * Math.PI / 180;
+        if(keys['KeyA'] || keys['ArrowLeft']) this.#ax -= this.#speed;
+        if(keys['KeyD'] || keys['ArrowRight']) this.#ax += this.#speed;
+        if(keys['KeyS'] || keys['ArrowDown']) this.#ay -= this.#speed;
 
-        this.#vx += this.#ax;
-        this.#vy += this.#ay;
+        if(this.#vx <= maxVelocity) this.#vx += this.#ax;
+        if(this.#vy <= maxVelocity) this.#vy += this.#ay;
 
         this.#vx *= this.#friction;
         this.#vy *= this.#friction;
 
         this.#x += this.#vx;
         this.#y -= this.#vy;
-
-        this.sprite.r = this.#r;
     }
     /**
      * @public

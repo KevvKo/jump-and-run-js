@@ -1,7 +1,8 @@
 import Spaceship from '../models/spaceship-model';
 import { laserBeam } from '../models/laserbeam-model';
 import { store } from '../../store/store';
-import {continueGame, pauseGame } from '../../store/actions/gameActions';
+import { continueGame, pauseGame } from '../../store/actions/gameActions';
+
 class Game{
     /**
      * @public
