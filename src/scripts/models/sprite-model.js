@@ -68,25 +68,29 @@ export default class Sprite{
      * @public
      */
     drawSprite(){
-        const canvas = document.querySelector('canvas');
-        const context = canvas.getContext('2d');
 
-        context.save();
-        context.translate(this.#x + this.#spriteWidth/2, this.#y + this.#spriteHeight/2);
-        context.rotate(this.#r);
-        // context.translate(-(this.#x + this.#spriteWidth/2), -(this.#y + this.#spriteHeight/2))
-        context.drawImage(
-            this.#img,
-            this.#clippingX,
-            this.#clippingY,
-            this.#spriteWidth,
-            this.#spriteHeight,
-            -this.#spriteWidth/2,
-            -this.#spriteHeight/2,
-            this.#spriteWidth,
-            this.#spriteHeight
-        );
-        context.restore();
+        const canvas = document.querySelector('canvas');
+        
+        if(canvas) {
+            
+            const context = canvas.getContext('2d');
+
+            context.save();
+            context.translate(this.#x + this.#spriteWidth/2, this.#y + this.#spriteHeight/2);
+            context.rotate(this.#r);
+            context.drawImage(
+                this.#img,
+                this.#clippingX,
+                this.#clippingY,
+                this.#spriteWidth,
+                this.#spriteHeight,
+                -this.#spriteWidth/2,
+                -this.#spriteHeight/2,
+                this.#spriteWidth,
+                this.#spriteHeight
+            );
+            context.restore();
+        }
     }
     /**
      * @public

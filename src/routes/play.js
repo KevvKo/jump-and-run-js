@@ -10,19 +10,22 @@ const Play = () => {
 
     const canvasScaler = () => { store.dispatch( scaleCanvas() ); };
 
+    const handleKeyDown = (e) => { store.dispatch( addKeyDown(e.code) ); };
+    const handleKeyUp = (e) => { store.dispatch( addKeyUp(e.code) ); };
+    const pauseGame = (e) => { if(e.code === 'KeyP') game.togglePause(); };
+
     useEffect(() => {
         canvasScaler();
         game.init();
-
-        const handleKeyDown = (e) => { store.dispatch( addKeyDown(e.code) ); };
-        const handleKeyUp = (e) => { store.dispatch( addKeyUp(e.code) ); };
-        const pauseGame = (e) => { if(e.code === 'KeyP') game.togglePause(); };
-
         window.addEventListener( 'keydown', handleKeyDown );
         window.addEventListener( 'keydown', pauseGame );
         window.addEventListener( 'keyup', handleKeyUp );
         window.addEventListener( 'resize', canvasScaler );
 
+    }, []);
+
+
+    useEffect(() => {
         return () => {
 
             window.removeEventListener( 'keydown', handleKeyDown );
@@ -31,8 +34,7 @@ const Play = () => {
             window.removeEventListener( 'resize', canvasScaler );
             game.stop();
         };
-    }, []);
-
+    });
 
     const gameIsPaused = useSelector ( state => state.game.gameIsPaused );
     
