@@ -1,3 +1,4 @@
+import Asteroid from '../models/asteroid-model';
 import Spaceship from '../models/spaceship-model';
 import { laserBeam } from '../models/laserbeam-model';
 import { store } from '../../store/store';
@@ -61,6 +62,7 @@ class Game{
         const width = store.getState().canvas.width;
         const height = store.getState().canvas.height;
 
+        this.asteroids = [ new Asteroid( 20, -20, spaceshipImg )];
         this.spaceship = new Spaceship( (width / 2) - 50, (height / 2) - 50, spaceshipImg); //minus 50px -> half of width from the rendered sprite to center the image in the canvas
     } 
     /**
