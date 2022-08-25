@@ -8,5 +8,10 @@
     },
     "laser": {
         "speed": 12
+    },
+    "asteroid": {
+        "life":  [100, 200, 300, 500],
+        "type:": ["small", "middle", "large", "gigantic"],
+        "damage": [10, 20, 30, 50]
     }
 }

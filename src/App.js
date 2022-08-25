@@ -5,14 +5,6 @@ import AppMain from './components/main';
 import AppFooter from './components/footer'; 
 import './App.css';
 
-
-/* TO DO'S: 
-  
-  implement ressource loading and availability
-  refactor store
-
-*/
-
 function App() {
   
   return (

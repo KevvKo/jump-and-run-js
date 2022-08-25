@@ -6,9 +6,6 @@ export default class character {
     /**
      * private
      */
-    #r;
-    #vx;
-    #vy;
     #ax;
     #ay;
     #y;
@@ -26,7 +23,6 @@ export default class character {
      * @param {Number} friction 
      */
     constructor(x, y, spriteImg, speed, friction){
-        this.#r = 0;
         this.#ax = 0;
         this.#ay = 0;
         this.#x = x;

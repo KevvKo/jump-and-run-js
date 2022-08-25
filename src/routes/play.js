@@ -11,7 +11,6 @@ const Play = () => {
     const canvasScaler = () => { store.dispatch( scaleCanvas() ); };
 
     useEffect(() => {
-        
         canvasScaler();
         game.init();
 

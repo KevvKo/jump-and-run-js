@@ -33,7 +33,6 @@ function AppHeader() {
       store.dispatch(replaceTitleName(title));
     };
   
-    // functions for the headbuttons
     const toggleMenuMusic = () => {
   
       let button = document.querySelector('.playMusic');
@@ -61,7 +60,6 @@ function AppHeader() {
     const isPaused = useSelector( state => state.game.gameIsPaused);
     const showPause = isPaused && location === '/play';
     const showContinue = !isPaused && location === '/play';
-    const showBackToHome = location !== '/' && location !== '/play';
 
     useEffect(() => {
         window.addEventListener('keydown', (e) => {
@@ -74,16 +72,9 @@ function AppHeader() {
     return(
         <header className='absolute top-0 p-2.5 z-10 w-full'>
             <div className='flex'>
-            { showBackToHome &&
                 <Link to='/' >
                     <HeaderButton className='hover:cursor-pointer' icon="arrow_back" />
                 </Link>
-            }
-            { location === '/play' &&
-                <Link to='/levelSelection' >
-                    <HeaderButton className='hover:cursor-pointer' icon="arrow_back" />
-                </Link>
-            }
             { location === '/play' &&
                 <Link to='/' >
                     <HeaderButton className='hover:cursor-pointer' icon="home" />
