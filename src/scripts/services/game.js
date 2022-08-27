@@ -71,6 +71,19 @@ class Game{
     draw(){ 
         laserBeam.render();
         this.spaceship.render();
+        this._renderAsteroids();
+    }
+    /**
+     * @private
+     */
+    _renderAsteroids(){
+        
+        const asteroids = this.asteroids;
+        if (asteroids.length && asteroids.length > 0){
+            for(let i = 0, l = asteroids.length; i < l; i++){
+                asteroids[i].render();
+            }
+        }
     }
     /**
      * @public
