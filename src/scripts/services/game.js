@@ -5,6 +5,9 @@ import { store } from '../../store/store';
 import { continueGame, pauseGame } from '../../store/actions/gameActions';
 import config from '../../assets/config/characters.json';
 
+
+const directions = ['right', 'left'];
+
 class Game{
     /**
      * @public
@@ -95,8 +98,10 @@ class Game{
         const spaceshipImg = document.getElementById('spaceship');
 
         for(let i = 0; i < asteroidCount; i++){
+            
             const randomX = Math.floor(Math.random() * ( width - 50 )) + 50;
-            this.asteroids.push(new Asteroid( randomX, -20, spaceshipImg ));
+            const directionOfRotation = directions[Math.floor(Math.random() * 2)];
+            this.asteroids.push(new Asteroid( randomX, -20, spaceshipImg, directionOfRotation ));
         }
     }
     /**

@@ -4,17 +4,20 @@ import { store } from '../../store/store';
 
 export default class Asteroid {
 
+    #directionOfRotation;
     #life;
     #speed;
     #x;
     #y;
+    #r;
     /**
      * 
      * @param {Number} x 
      * @param {Number} y 
      * @param {TexImageSource} spriteImage
      */
-    constructor(x, y, spriteImage){
+    constructor(x, y, spriteImage, directionOfRotation){
+        this.#directionOfRotation = directionOfRotation;
         this.#life = data.asteroid.life;
         this.#speed = data.asteroid.speed; 
         this.#x = x;
@@ -64,6 +67,9 @@ export default class Asteroid {
         this.checkBorderCollision();
         this.sprite.x = this.#x;
         this.sprite.y = this.#y;
+        this.#directionOfRotation === 'right'
+            ? this.sprite.r += 1 * Math.PI / 180
+            : this.sprite.r -= 1 * Math.PI / 180;
         this.sprite.update();
     }
     /**
