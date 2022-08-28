@@ -1,9 +1,13 @@
-import Character from '../interfaces/character';
 import data from '../../assets/config/characters.json';
+import Sprite from '../models/sprite-model';
+import { store } from '../../store/store';
 
-export default class Asteroid extends Character{
+export default class Asteroid {
 
     #life;
+    #speed;
+    #x;
+    #y;
     /**
      * 
      * @param {Number} x 
@@ -11,8 +15,16 @@ export default class Asteroid extends Character{
      * @param {TexImageSource} spriteImage
      */
     constructor(x, y, spriteImage){
-        super(x, y, spriteImage, data.asteroid.speed, data.asteroid.friction);
         this.#life = data.asteroid.life;
+        this.#speed = data.asteroid.speed; 
+        this.#x = x;
+        this.#y = y;
+        this.sprite = new Sprite(
+            spriteImage,
+            0, 0,
+            100, 100, 
+            x, y, 
+            [0, 100, 200, 300]); //clipping sizes for a default sprite
     }
     /**
      * @public
@@ -23,6 +35,37 @@ export default class Asteroid extends Character{
      * @param (Number) val
      */
     set life(val){ this.#life = val; }
+        /**
+     * @public
+     */
+    move(){
+  
+        this.#y += 1;
+    }
+    /**
+     * @public
+     */
+    checkBorderCollision(){
+
+        const width = store.getState().canvas.width;
+        const height = store.getState().canvas.height;
+
+        if(this.#x + 100 <= 0) this.#x = width;
+        if(this.#x >= width + 2) this.#x = -100;
+        if(this.#y + 100 <= 0) this.#y = height;
+        if(this.#y >= height + 2) this.#y = -100;
+    
+    }
+    /**
+     * @public
+     */
+    update(){
+        this.move();
+        this.checkBorderCollision();
+        this.sprite.x = this.#x;
+        this.sprite.y = this.#y;
+        this.sprite.update();
+    }
     /**
      * @public
      */

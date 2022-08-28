@@ -3,16 +3,17 @@ import Spaceship from '../models/spaceship-model';
 import { laserBeam } from '../models/laserbeam-model';
 import { store } from '../../store/store';
 import { continueGame, pauseGame } from '../../store/actions/gameActions';
+import config from '../../assets/config/characters.json';
 
 class Game{
     /**
      * @public
      */
     init(){
-        
-        console.info('Game initialized.');
+        this.asteroids = [];
         this.createSprites();
         this.start();
+        console.info('Game initialized.');
     }  
     /**
      * @public
@@ -62,8 +63,8 @@ class Game{
         const width = store.getState().canvas.width;
         const height = store.getState().canvas.height;
 
-        this.asteroids = [ new Asteroid( 20, -20, spaceshipImg )];
         this.spaceship = new Spaceship( (width / 2) - 50, (height / 2) - 50, spaceshipImg); //minus 50px -> half of width from the rendered sprite to center the image in the canvas
+        this._createAsteroids();
     } 
     /**
      * @public
@@ -83,6 +84,19 @@ class Game{
             for(let i = 0, l = asteroids.length; i < l; i++){
                 asteroids[i].render();
             }
+        }
+    }
+    /**
+     * @private
+     */
+    _createAsteroids(){
+        const width = store.getState().canvas.width - 50;
+        const { asteroidCount } = config.gameSettings;
+        const spaceshipImg = document.getElementById('spaceship');
+
+        for(let i = 0; i < asteroidCount; i++){
+            const randomX = Math.floor(Math.random() * ( width - 50 )) + 50;
+            this.asteroids.push(new Asteroid( randomX, -20, spaceshipImg ));
         }
     }
     /**

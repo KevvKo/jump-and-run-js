@@ -1,4 +1,7 @@
 {
+    "gameSettings": {
+        "asteroidCount": 10
+    },
     "spaceship": {
         "life": 100,
         "friction": 0.99,
