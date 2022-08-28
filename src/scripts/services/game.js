@@ -93,15 +93,17 @@ class Game{
      * @private
      */
     _createAsteroids(){
+
         const width = store.getState().canvas.width - 50;
-        const { asteroidCount } = config.gameSettings;
+        const { asteroidCount, asteroidMinDistance, asteroidMaxDistance } = config.gameSettings;
         const spaceshipImg = document.getElementById('spaceship');
 
         for(let i = 0; i < asteroidCount; i++){
             
             const randomX = Math.floor(Math.random() * ( width - 50 )) + 50;
+            const randomY = Math.floor(Math.random() * ( asteroidMaxDistance - asteroidMinDistance )) + asteroidMinDistance;
             const directionOfRotation = directions[Math.floor(Math.random() * 2)];
-            this.asteroids.push(new Asteroid( randomX, -20, spaceshipImg, directionOfRotation ));
+            this.asteroids.push(new Asteroid( randomX, -randomY, spaceshipImg, directionOfRotation ));
         }
     }
     /**

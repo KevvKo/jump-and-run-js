@@ -1,4 +1,4 @@
-import data from '../../assets/config/characters.json';
+import config from '../../assets/config/characters.json';
 import Sprite from '../models/sprite-model';
 import { store } from '../../store/store';
 
@@ -6,7 +6,8 @@ export default class Asteroid {
 
     #directionOfRotation;
     #life;
-    #speed;
+    #movementSpeed;
+    #rotationSpeed;
     #x;
     #y;
     #r;
@@ -17,9 +18,11 @@ export default class Asteroid {
      * @param {TexImageSource} spriteImage
      */
     constructor(x, y, spriteImage, directionOfRotation){
+
         this.#directionOfRotation = directionOfRotation;
-        this.#life = data.asteroid.life;
-        this.#speed = data.asteroid.speed; 
+        this.#life = config.asteroid.life;
+        this.#movementSpeed = config.asteroid.movementSpeed; 
+        this.#rotationSpeed = config.asteroid.rotationSpeed;
         this.#x = x;
         this.#y = y;
         this.sprite = new Sprite(
@@ -41,10 +44,7 @@ export default class Asteroid {
         /**
      * @public
      */
-    move(){
-  
-        this.#y += 1;
-    }
+    move(){ this.#y += this.#movementSpeed; }
     /**
      * @public
      */
@@ -56,20 +56,18 @@ export default class Asteroid {
         if(this.#x + 100 <= 0) this.#x = width;
         if(this.#x >= width + 2) this.#x = -100;
         if(this.#y + 100 <= 0) this.#y = height;
-        if(this.#y >= height + 2) this.#y = -100;
-    
+        if(this.#y >= height + 2) this.#y = -100; 
     }
     /**
      * @public
      */
     update(){
         this.move();
-        this.checkBorderCollision();
         this.sprite.x = this.#x;
         this.sprite.y = this.#y;
         this.#directionOfRotation === 'right'
-            ? this.sprite.r += 1 * Math.PI / 180
-            : this.sprite.r -= 1 * Math.PI / 180;
+            ? this.sprite.r += this.#rotationSpeed * Math.PI / 180
+            : this.sprite.r -= this.#rotationSpeed * Math.PI / 180;
         this.sprite.update();
     }
     /**

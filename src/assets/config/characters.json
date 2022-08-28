@@ -1,6 +1,8 @@
 {
     "gameSettings": {
-        "asteroidCount": 10
+        "asteroidCount": 20,
+        "asteroidMinDistance": 100,
+        "asteroidMaxDistance": 600
     },
     "spaceship": {
         "life": 100,
@@ -15,6 +17,8 @@
     "asteroid": {
         "life":  [100, 200, 300, 500],
         "type:": ["small", "middle", "large", "gigantic"],
-        "damage": [10, 20, 30, 50]
+        "damage": [10, 20, 30, 50],
+        "movementSpeed": 0.3,
+        "rotationSpeed": 0.2
     }
 }
