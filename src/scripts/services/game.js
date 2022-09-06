@@ -81,11 +81,19 @@ class Game{
      * @private
      */
     _renderAsteroids(){
-        
+        const indexes = [];
         const asteroids = this.asteroids;
         if (asteroids.length && asteroids.length > 0){
             for(let i = 0, l = asteroids.length; i < l; i++){
+                if(asteroids[i].isOffScreen()){
+                    indexes.push(i);
+                    continue;
+                }
                 asteroids[i].render();
+            }
+
+            for(let i = 0, l = indexes.length; i < l; i++){
+                asteroids.splice(i, 1);
             }
         }
     }

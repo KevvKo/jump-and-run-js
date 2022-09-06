@@ -45,7 +45,6 @@ export default class Spaceship extends Character{
      */
     render(){
         const keys = store.getState().keys;
-
         if(keys.Space) this.shoot();
         this.update();
         this.sprite.drawSprite();
