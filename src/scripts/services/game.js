@@ -77,12 +77,18 @@ class Game{
         this.spaceship.render();
         this._renderAsteroids();
     }
+
+    /**
+     * @TODO replace datastructure tu remove asteroids... maybe with a stack?
+     */
     /**
      * @private
      */
     _renderAsteroids(){
+        
         const indexes = [];
         const asteroids = this.asteroids;
+
         if (asteroids.length && asteroids.length > 0){
             for(let i = 0, l = asteroids.length; i < l; i++){
                 if(asteroids[i].isOffScreen()){
@@ -93,7 +99,8 @@ class Game{
             }
 
             for(let i = 0, l = indexes.length; i < l; i++){
-                asteroids.splice(i, 1);
+                const index = indexes[i];
+                this.asteroids.splice(index, 1);
             }
         }
     }

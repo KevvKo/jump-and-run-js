@@ -51,7 +51,7 @@ export default class Asteroid {
     isOffScreen(){
 
         const height = store.getState().canvas.height;
-        return this.#y >= height + 2
+        return this.#y > height + 2;
     }
     /**
      * @public
