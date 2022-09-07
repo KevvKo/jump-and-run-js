@@ -123,7 +123,7 @@ class Game{
 
         const width = store.getState().canvas.width - 50;
         const { asteroidCount, asteroidMinDistance, asteroidMaxDistance } = config.gameSettings;
-        const spaceshipImg = document.getElementById('spaceship');
+        const spaceshipImg = document.getElementById('asteroid1');
         const currentAsteroidsCount = this.asteroids.length;
 
         for(let i = currentAsteroidsCount; i < asteroidCount; i++){

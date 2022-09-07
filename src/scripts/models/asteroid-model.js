@@ -30,7 +30,7 @@ export default class Asteroid {
             0, 0,
             100, 100, 
             x, y, 
-            [0, 100, 200, 300]); //clipping sizes for a default sprite
+            [0, 0, 0, 0]); //clipping sizes for a default sprite
     }
     /**
      * @public
