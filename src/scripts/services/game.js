@@ -34,6 +34,7 @@ class Game{
         
         this.clear();
         this.draw();
+        this._checkAsteroidsCount();
 
         const gameIsPaused = store.getState().game.gameIsPaused;
         if(!gameIsPaused) this.loop = window.requestAnimationFrame(() => this.update());
@@ -69,6 +70,17 @@ class Game{
         this.spaceship = new Spaceship( (width / 2) - 50, (height / 2) - 50, spaceshipImg); //minus 50px -> half of width from the rendered sprite to center the image in the canvas
         this._createAsteroids();
     } 
+    /**
+     * private
+     */
+    _checkAsteroidsCount(){
+        const { asteroidCount } = config.gameSettings;
+        const currentAsteroidsCount = this.asteroids.length;
+        
+        if( currentAsteroidsCount < asteroidCount ){
+            this._createAsteroids();
+        }
+    }
     /**
      * @public
      */
@@ -112,8 +124,9 @@ class Game{
         const width = store.getState().canvas.width - 50;
         const { asteroidCount, asteroidMinDistance, asteroidMaxDistance } = config.gameSettings;
         const spaceshipImg = document.getElementById('spaceship');
+        const currentAsteroidsCount = this.asteroids.length;
 
-        for(let i = 0; i < asteroidCount; i++){
+        for(let i = currentAsteroidsCount; i < asteroidCount; i++){
             
             const randomX = Math.floor(Math.random() * ( width - 50 )) + 50;
             const randomY = Math.floor(Math.random() * ( asteroidMaxDistance - asteroidMinDistance )) + asteroidMinDistance;
