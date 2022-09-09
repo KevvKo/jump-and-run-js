@@ -2,7 +2,8 @@
     "gameSettings": {
         "asteroidCount": 20,
         "asteroidMinDistance": 100,
-        "asteroidMaxDistance": 600
+        "asteroidMaxDistance": 600,
+        "asteoidBorderDistance": 100
     },
     "spaceship": {
         "life": 100,

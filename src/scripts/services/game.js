@@ -122,14 +122,15 @@ class Game{
     _createAsteroids(){
 
         const width = store.getState().canvas.width - 50;
-        const { asteroidCount, asteroidMinDistance, asteroidMaxDistance } = config.gameSettings;
+        const { asteroidCount, asteroidMinDistance, asteroidMaxDistance, asteoidBorderDistance } = config.gameSettings;
         const spaceshipImg = document.getElementById('asteroid1');
         const currentAsteroidsCount = this.asteroids.length;
 
         for(let i = currentAsteroidsCount; i < asteroidCount; i++){
-            
-            const randomX = Math.floor(Math.random() * ( width - 50 )) + 50;
-            const randomY = Math.floor(Math.random() * ( asteroidMaxDistance - asteroidMinDistance )) + asteroidMinDistance;
+            const randomX = Math.floor(
+                Math.random() * ( (width - asteoidBorderDistance) - asteoidBorderDistance) + asteoidBorderDistance
+            );
+            const randomY = Math.floor(Math.random() * ( asteroidMaxDistance - asteroidMinDistance ) + asteroidMinDistance);
             const directionOfRotation = directions[Math.floor(Math.random() * 2)];
             this.asteroids.push(new Asteroid( randomX, -randomY, spaceshipImg, directionOfRotation ));
         }
