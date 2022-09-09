@@ -69,4 +69,10 @@ export default class Lasershot{
 
         return outOfXAxis || outOfYAxis;
     }
+    /**
+     * @public
+     */
+    checkCollisionWithAsteroid(asteroid){
+
+    }
 }

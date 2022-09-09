@@ -80,4 +80,12 @@ export default class Spaceship extends Character{
 
         return {x: rx, y: ry};
     }
+
+    /**
+     * 
+     * @param {} asteroid 
+     */
+    checkCollisionWithAsteroid(asteroid){
+
+    }
 }

@@ -126,7 +126,8 @@ class Game{
         const spaceshipImg = document.getElementById('asteroid1');
         const currentAsteroidsCount = this.asteroids.length;
 
-        for(let i = currentAsteroidsCount; i < asteroidCount; i++){
+        // for(let i = currentAsteroidsCount; i < asteroidCount; i++){
+        if( currentAsteroidsCount < asteroidCount){
             const randomX = Math.floor(
                 Math.random() * ( (width - asteoidBorderDistance) - asteoidBorderDistance) + asteoidBorderDistance
             );
@@ -134,6 +135,8 @@ class Game{
             const directionOfRotation = directions[Math.floor(Math.random() * 2)];
             this.asteroids.push(new Asteroid( randomX, -randomY, spaceshipImg, directionOfRotation ));
         }
+       
+        // }
     }
     /**
      * @public
@@ -141,7 +144,6 @@ class Game{
     clear(){
         const width = store.getState().canvas.width;
         const height = store.getState().canvas.height;
-
         this.context.clearRect(0,0, width, height);
     }
 }

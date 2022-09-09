@@ -1,6 +1,6 @@
 {
     "gameSettings": {
-        "asteroidCount": 20,
+        "asteroidCount": 40,
         "asteroidMinDistance": 100,
         "asteroidMaxDistance": 600,
         "asteoidBorderDistance": 100
