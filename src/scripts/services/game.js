@@ -85,7 +85,7 @@ class Game{
      * @public
      */
     draw(){ 
-        laserBeam.render();
+        laserBeam.render(this.asteroids);
         this.spaceship.render();
         this._renderAsteroids();
     }

@@ -15,10 +15,17 @@ class Laserbeam {
      */
     addLaserItems(newItems){
         const difference = (performance.now() - this.#lastTimeRendered)/60;
+        
         if(difference > 1){
-            newItems.forEach((item)=>{
-                this.items.push( new Lasershot(item.x, item.y, item.r));
-            });
+
+            const items = this.items;
+
+            for(let i = 0, l = newItems.length; i < l; i++){
+
+                const item = newItems[i];
+                items.push( new Lasershot(item.x, item.y, item.r));
+
+            }
             this.#lastTimeRendered = performance.now();
         }
     }
@@ -27,9 +34,14 @@ class Laserbeam {
      */
     update(){
         if(this.items.length > 0){
-            this.items.forEach( (laser) => {
-                laser.update();
-            });
+
+            const items = this.items;
+
+            for(let i = 0, l = items.length; i < l; i++){
+
+                const laserItem = items[i];
+                laserItem.update();
+            }
         }
     }
     /**
@@ -37,13 +49,18 @@ class Laserbeam {
      */
     draw(){
         if(this.items.length > 0){
-            this.items.forEach( (laser) => {
-                if(laser.outOfCanvas()){
-                    this.items.shift();
+
+            const items = this.items;
+
+            for(let i = 0, l = items.length; i < l; i++){
+                
+                const laserItem = items[i];
+                if(laserItem.outOfCanvas()){
+                    items.shift();
                     return;
                 }
-                laser.draw();
-            });
+                laserItem.draw();
+            }
         }
     }
     /**

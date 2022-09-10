@@ -73,6 +73,6 @@ export default class Lasershot{
      * @public
      */
     checkCollisionWithAsteroid(asteroid){
-
+        
     }
 }
