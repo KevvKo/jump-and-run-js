@@ -102,18 +102,23 @@ class Game{
         const asteroids = this.asteroids;
 
         if (asteroids.length && asteroids.length > 0){
-            for(let i = 0, l = asteroids.length; i < l; i++){
+            let i = 0, l = asteroids.length;
+            while(i < l){
                 if(asteroids[i].isOffScreen()){
                     indexes.push(i);
                     continue;
                 }
                 asteroids[i].render();
+                i++;
             }
 
-            for(let i = 0, l = indexes.length; i < l; i++){
-                const index = indexes[i];
-                this.asteroids.splice(index, 1);
+            let j = 0, k = indexes.length;
+            while(j < k){
+                const index = indexes[j];
+                this.asteroids.splice(index, j);
+                j++;
             }
+  
         }
     }
     /**
@@ -126,7 +131,6 @@ class Game{
         const spaceshipImg = document.getElementById('asteroid1');
         const currentAsteroidsCount = this.asteroids.length;
 
-        // for(let i = currentAsteroidsCount; i < asteroidCount; i++){
         if( currentAsteroidsCount < asteroidCount){
             const randomX = Math.floor(
                 Math.random() * ( (width - asteoidBorderDistance) - asteoidBorderDistance) + asteoidBorderDistance

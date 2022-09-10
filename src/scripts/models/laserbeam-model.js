@@ -19,28 +19,31 @@ class Laserbeam {
         if(difference > 1){
 
             const items = this.items;
-
-            for(let i = 0, l = newItems.length; i < l; i++){
-
+            let i = 0, l = newItems.length;
+            
+            while(i < l){
                 const item = newItems[i];
                 items.push( new Lasershot(item.x, item.y, item.r));
-
+                i++;
             }
+
             this.#lastTimeRendered = performance.now();
         }
     }
     /**
      * @public
+     * @param{array} asteroids 
      */
-    update(){
+    update(asteroids){
         if(this.items.length > 0){
 
             const items = this.items;
+            let i = 0, l = items.length;
 
-            for(let i = 0, l = items.length; i < l; i++){
-
+            while(i < l){
                 const laserItem = items[i];
-                laserItem.update();
+                laserItem.update(asteroids);
+                i++;
             }
         }
     }
@@ -51,23 +54,25 @@ class Laserbeam {
         if(this.items.length > 0){
 
             const items = this.items;
+            let i = 0, l = items.length;
 
-            for(let i = 0, l = items.length; i < l; i++){
-                
+            while(i < l){
                 const laserItem = items[i];
                 if(laserItem.outOfCanvas()){
                     items.shift();
                     return;
                 }
                 laserItem.draw();
+                i++;
             }
         }
     }
     /**
      * @public
+     * @param{array} asteroids 
      */
-    render(){
-        this.update();
+    render(asteroids){
+        this.update(asteroids);
         this.draw();
     }
 }

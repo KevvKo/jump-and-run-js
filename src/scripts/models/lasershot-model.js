@@ -33,11 +33,19 @@ export default class Lasershot{
         this.#damage = val;
     }
     /**
-     * 
+     * @public
+     * @param{array} asteroids 
      */
-    update(){
+    update(asteroids){
         this.#x += Math.sin(this.#r) * data.laser.speed;
         this.#y -= Math.cos(this.#r) * data.laser.speed;
+
+        let i = 0, l = asteroids.length;
+        while(i < l){
+            const asteroid = asteroids[i];
+            this.checkCollisionWithAsteroid(asteroid);
+            i++;
+        }
     }
     /**
      * @public
@@ -73,6 +81,6 @@ export default class Lasershot{
      * @public
      */
     checkCollisionWithAsteroid(asteroid){
-        
+
     }
 }
