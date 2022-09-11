@@ -1,5 +1,6 @@
 import data from '../../assets/config/characters.json';
 import { store } from '../../store/store';
+
 export default class Lasershot{
 
     #x;
@@ -82,5 +83,33 @@ export default class Lasershot{
      */
     checkCollisionWithAsteroid(asteroid){
 
+        const r = 50;
+        const cPosition = asteroid.getPosition();
+        const x1 = this.#x;
+        const y1 = this.#y;
+        const x2 = x1 + this.#width;
+        const y2 = y1 + this.#height;
+
+        return this.checkOverlap(r, cPosition.x + 50, cPosition.y + 50, x1, y1, x2, y2);
     }
+
+        /**
+     * @public
+     * @param {Number} R    radius of the given circle
+     * @param {Number} Xc   x-position of the given circle
+     * @param {Number} Yc   y-position of the given circle
+     * @param {Number} X1   x-position 1 of the given rectangle
+     * @param {Number} Y1   y-position 1 of the given rectangle
+     * @param {Number} X2   x-position 2 of the given rectangle
+     * @param {Number} Y2   y-position 2 of the given rectangle
+     * @returns 
+     */
+         checkOverlap(R, Xc, Yc, X1, Y1, X2, Y2){
+   
+            let Xn = Math.max(X1, Math.min(Xc, X2));
+            let Yn = Math.max(Y1, Math.min(Yc, Y2));
+            let Dx = Xn - Xc;
+            let Dy = Yn - Yc;
+            return (Dx * Dx + Dy * Dy) <= R * R;
+        }
 }
