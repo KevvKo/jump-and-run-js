@@ -13,7 +13,7 @@
         "maxVelocity": 13   
     },
     "laser": {
-        "speed": 12
+        "speed": 3
     },
     "asteroid": {
         "life":  [100, 200, 300, 500],

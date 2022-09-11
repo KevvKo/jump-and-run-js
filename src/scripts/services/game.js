@@ -106,8 +106,9 @@ class Game{
             while(i < l){
                 if(asteroids[i].isOffScreen()){
                     indexes.push(i);
+                    i++;
                     continue;
-                }
+                } 
                 asteroids[i].render();
                 i++;
             }
