@@ -1,5 +1,5 @@
 
-import Lasershot from './lasershot-model';
+import LaserItem from './laserItem-model';
 
 class Laserbeam {
 
@@ -23,7 +23,7 @@ class Laserbeam {
             
             while(i < l){
                 const item = newItems[i];
-                items.push( new Lasershot(item.x, item.y, item.r));
+                items.push( new LaserItem(item.x, item.y, item.r));
                 i++;
             }
 
@@ -59,9 +59,10 @@ class Laserbeam {
             }
 
             i = 0, l = indexes.length;
-            while( i < l){
+
+            while( i < l ){
                 const index = indexes[i];
-                this.items.splice(index, i);
+                this.items.splice(index, 1);
                 i++;
             }
         }
