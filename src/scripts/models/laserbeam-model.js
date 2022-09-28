@@ -39,10 +39,29 @@ class Laserbeam {
 
             const items = this.items;
             let i = 0, l = items.length;
+            const indexes = [];
 
             while(i < l){
                 const laserItem = items[i];
                 laserItem.update(asteroids);
+                i++;
+
+                let j = 0, k = asteroids.length;
+
+                while (j < k){
+                    const asteroid = asteroids[j];
+
+                    if(laserItem.checkCollisionWithAsteroid(asteroid)){
+                        indexes.push(i);
+                    }
+                    j++;
+                }
+            }
+
+            i = 0, l = indexes.length;
+            while( i < l){
+                const index = indexes[i];
+                this.items.splice(index, i);
                 i++;
             }
         }

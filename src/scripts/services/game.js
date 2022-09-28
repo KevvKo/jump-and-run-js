@@ -103,8 +103,9 @@ class Game{
 
         if (asteroids.length && asteroids.length > 0){
             let i = 0, l = asteroids.length;
+
             while(i < l){
-                if(asteroids[i].isOffScreen()){
+                if(asteroids[i].isOffScreen() || asteroids[i].life <= 0){
                     indexes.push(i);
                     i++;
                     continue;
@@ -139,9 +140,7 @@ class Game{
             const randomY = Math.floor(Math.random() * ( asteroidMaxDistance - asteroidMinDistance ) + asteroidMinDistance);
             const directionOfRotation = directions[Math.floor(Math.random() * 2)];
             this.asteroids.push(new Asteroid( randomX, -randomY, spaceshipImg, directionOfRotation ));
-        }
-       
-        // }
+        }       
     }
     /**
      * @public

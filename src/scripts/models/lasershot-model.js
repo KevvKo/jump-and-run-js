@@ -44,7 +44,10 @@ export default class Lasershot{
         let i = 0, l = asteroids.length;
         while(i < l){
             const asteroid = asteroids[i];
-            this.checkCollisionWithAsteroid(asteroid);
+            
+            if(this.checkCollisionWithAsteroid(asteroid)){
+                asteroid.decreaseLife(this.#damage);
+            }
             i++;
         }
     }
@@ -82,7 +85,7 @@ export default class Lasershot{
      * @public
      */
     checkCollisionWithAsteroid(asteroid){
-
+        
         const r = 50;
         const cPosition = asteroid.getPosition();
         const x1 = this.#x;
@@ -93,7 +96,7 @@ export default class Lasershot{
         return this.checkOverlap(r, cPosition.x + 50, cPosition.y + 50, x1, y1, x2, y2);
     }
 
-        /**
+    /**
      * @public
      * @param {Number} R    radius of the given circle
      * @param {Number} Xc   x-position of the given circle

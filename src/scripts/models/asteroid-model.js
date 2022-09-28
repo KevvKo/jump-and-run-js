@@ -18,9 +18,8 @@ export default class Asteroid {
      * @param {TexImageSource} spriteImage
      */
     constructor(x, y, spriteImage, directionOfRotation){
-
         this.#directionOfRotation = directionOfRotation;
-        this.#life = config.asteroid.life;
+        this.#life = config.asteroid.life[0];
         this.#movementSpeed = config.asteroid.movementSpeed; 
         this.#rotationSpeed = config.asteroid.rotationSpeed;
         this.#x = x;
@@ -102,5 +101,13 @@ export default class Asteroid {
         const ry = (cx * s) + (cy * c) + y;
 
         return {x: rx, y: ry};
+    }
+
+    /**
+     * 
+     * @param {Number} damageValue 
+     */
+    decreaseLife(damageValue){
+        this.#life -= damageValue;
     }
 }
