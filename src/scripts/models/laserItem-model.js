@@ -42,11 +42,13 @@ export default class LaserItem{
         this.#y -= Math.cos(this.#r) * data.laser.speed;
 
         let i = 0, l = asteroids.length;
+
         while(i < l){
             const asteroid = asteroids[i];
             
             if(this.checkCollisionWithAsteroid(asteroid)){
                 asteroid.decreaseLife(this.#damage);
+                return true
             }
             i++;
         }

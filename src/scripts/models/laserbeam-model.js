@@ -43,19 +43,10 @@ class Laserbeam {
 
             while(i < l){
                 const laserItem = items[i];
-                laserItem.update(asteroids);
+                const itemHasHitted = laserItem.update(asteroids);
+                
+                if(itemHasHitted) indexes.push(i);
                 i++;
-
-                let j = 0, k = asteroids.length;
-
-                while (j < k){
-                    const asteroid = asteroids[j];
-
-                    if(laserItem.checkCollisionWithAsteroid(asteroid)){
-                        indexes.push(i);
-                    }
-                    j++;
-                }
             }
 
             i = 0, l = indexes.length;
