@@ -117,7 +117,7 @@ class Game{
             let j = 0, k = indexes.length;
             while(j < k){
                 const index = indexes[j];
-                this.asteroids.splice(index, j);
+                this.asteroids.splice(index, 1);
                 j++;
             }
   
