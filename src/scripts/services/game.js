@@ -9,6 +9,9 @@ import config from '../../assets/config/characters.json';
 const directions = ['right', 'left'];
 
 class Game{
+
+    #gameIsOver;
+     
     /**
      * @public
      */
@@ -36,6 +39,11 @@ class Game{
         this.draw();
         this._checkAsteroidsCount();
 
+        if(this.spaceship.life <= 0) {
+            this.gameOver();
+            return;
+        }
+
         const gameIsPaused = store.getState().game.gameIsPaused;
         if(!gameIsPaused) this.loop = window.requestAnimationFrame(() => this.update());
 
@@ -53,6 +61,9 @@ class Game{
             if(gameIsPaused) store.dispatch(continueGame());
             this.update();
         }
+    }
+    gameOver(){
+        this.stop();
     }
     /**
      * @public  

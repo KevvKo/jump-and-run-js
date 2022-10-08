@@ -48,7 +48,7 @@ export default class LaserItem{
             
             if(this.checkCollisionWithAsteroid(asteroid)){
                 asteroid.decreaseLife(this.#damage);
-                return true
+                return true;
             }
             i++;
         }
@@ -109,12 +109,12 @@ export default class LaserItem{
      * @param {Number} Y2   y-position 2 of the given rectangle
      * @returns 
      */
-         checkOverlap(R, Xc, Yc, X1, Y1, X2, Y2){
-   
-            let Xn = Math.max(X1, Math.min(Xc, X2));
-            let Yn = Math.max(Y1, Math.min(Yc, Y2));
-            let Dx = Xn - Xc;
-            let Dy = Yn - Yc;
-            return (Dx * Dx + Dy * Dy) <= R * R;
-        }
+    checkOverlap(R, Xc, Yc, X1, Y1, X2, Y2){
+
+        let Xn = Math.max(X1, Math.min(Xc, X2));
+        let Yn = Math.max(Y1, Math.min(Yc, Y2));
+        let Dx = Xn - Xc;
+        let Dy = Yn - Yc;
+        return (Dx * Dx + Dy * Dy) <= R * R;
+    }
 }
