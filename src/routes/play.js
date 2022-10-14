@@ -35,7 +35,7 @@ const Play = () => {
             window.removeEventListener( 'resize', canvasScaler );
             game.stop();
         };
-    });
+    }, [window, game]);
 
     const gameIsPaused = useSelector ( state => state.game.gameIsPaused );
 
