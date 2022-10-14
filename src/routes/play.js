@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import PauseBanner from '../components/pauseBanner';
+import Dialog from '../components/dialog';
 import { game } from '../scripts/services/game';
 import { store } from '../store/store';
 import { addKeyDown, addKeyUp } from '../store/actions/keyActions';
@@ -8,6 +8,7 @@ import { scaleCanvas } from '../store/actions/canvasActions';
 
 const Play = () => {
 
+    const gameIsOver = false;
     const canvasScaler = () => { store.dispatch( scaleCanvas() ); };
 
     const handleKeyDown = (e) => { store.dispatch( addKeyDown(e.code) ); };
@@ -37,11 +38,16 @@ const Play = () => {
     });
 
     const gameIsPaused = useSelector ( state => state.game.gameIsPaused );
-    
+
     return (
         <div className='play flex justify-center flex-col items-center' >
             { gameIsPaused &&
-                <PauseBanner />
+                <Dialog>Paused</Dialog> 
+            }
+            { gameIsOver &&
+                <Dialog>
+                    Game Over
+                </Dialog>
             }
             <canvas id='gameBoard'></canvas>
         </div>

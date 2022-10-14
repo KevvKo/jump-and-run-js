@@ -45,7 +45,9 @@ class Game{
         }
 
         const gameIsPaused = store.getState().game.gameIsPaused;
+
         if(!gameIsPaused) this.loop = window.requestAnimationFrame(() => this.update());
+        
 
     }
     /**
