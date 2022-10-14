@@ -2,15 +2,13 @@ import Asteroid from '../models/asteroid-model';
 import Spaceship from '../models/spaceship-model';
 import { laserBeam } from '../models/laserbeam-model';
 import { store } from '../../store/store';
-import { continueGame, pauseGame } from '../../store/actions/gameActions';
+import { continueGame, pauseGame, gameOver} from '../../store/actions/gameActions';
 import config from '../../assets/config/characters.json';
 
 
 const directions = ['right', 'left'];
 
 class Game{
-
-    #gameIsOver;
      
     /**
      * @public
@@ -47,8 +45,6 @@ class Game{
         const gameIsPaused = store.getState().game.gameIsPaused;
 
         if(!gameIsPaused) this.loop = window.requestAnimationFrame(() => this.update());
-        
-
     }
     /**
      * @public
@@ -65,6 +61,7 @@ class Game{
         }
     }
     gameOver(){
+        store.dispatch(gameOver());
         this.stop();
     }
     /**

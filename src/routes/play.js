@@ -8,7 +8,6 @@ import { scaleCanvas } from '../store/actions/canvasActions';
 
 const Play = () => {
 
-    const gameIsOver = false;
     const canvasScaler = () => { store.dispatch( scaleCanvas() ); };
 
     const handleKeyDown = (e) => { store.dispatch( addKeyDown(e.code) ); };
@@ -38,6 +37,7 @@ const Play = () => {
     }, [window, game]);
 
     const gameIsPaused = useSelector ( state => state.game.gameIsPaused );
+    const gameIsOver =  useSelector ( state => state.game.gameIsOver );
 
     return (
         <div className='play flex justify-center flex-col items-center' >
@@ -45,9 +45,7 @@ const Play = () => {
                 <Dialog>Paused</Dialog> 
             }
             { gameIsOver &&
-                <Dialog>
-                    Game Over
-                </Dialog>
+                <Dialog>Game Over</Dialog>
             }
             <canvas id='gameBoard'></canvas>
         </div>

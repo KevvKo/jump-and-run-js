@@ -1,5 +1,6 @@
 const initialState= {
-    gameIsPaused: false
+    gameIsPaused: false,
+    gameIsOver: false
 };
 
 export default function gameReducer( state = initialState, action) {
@@ -23,7 +24,12 @@ export default function gameReducer( state = initialState, action) {
                 ...state,
                 difficulty: action.payload
             };
-            
+
+        case 'game/gameOver':
+            return {
+                ...state,
+                gameIsOver: action.payload
+            };
         default:
             return state;
     }

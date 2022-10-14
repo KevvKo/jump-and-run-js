@@ -5,6 +5,7 @@ export const ADD_KEYUP = 'keys/KeyUp';
 export const PAUSE_GAME = 'game/pauseGame';
 export const CONTINUE_GAME = 'game/continueGame';
 export const ADD_DIFFICULTY = 'game/difficulty';
+export const GAME_OVER = 'game/gameOver';
 // music-actions
 export const REPLACE_ARTIST_NAME = 'music/changeArtist';
 export const REPLACE_TITLE_NAME = 'music/changeTitle';
