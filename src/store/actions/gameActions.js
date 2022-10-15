@@ -2,7 +2,8 @@ import {
     PAUSE_GAME,
     CONTINUE_GAME,
     ADD_DIFFICULTY,
-    GAME_OVER
+    GAME_OVER,
+    RESET_GAME
 } from './actionNames';
 
 export const pauseGame = () => {
@@ -30,5 +31,12 @@ export const gameOver = () => {
     return {
         type: GAME_OVER,
         payload: true
+    };
+};
+
+export const resetGame = () => {
+    return {
+        type: RESET_GAME,
+        payload: false
     };
 };

@@ -30,6 +30,12 @@ export default function gameReducer( state = initialState, action) {
                 ...state,
                 gameIsOver: action.payload
             };
+        
+        case 'game/resetGame':
+            return {
+                ...state,
+                gameIsOver: action.payload
+            };
         default:
             return state;
     }

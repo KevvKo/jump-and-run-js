@@ -6,6 +6,7 @@ export const PAUSE_GAME = { type: 'game/pauseGame', payload: true };
 export const CONTINUE_GAME = { type: 'game/ContinueGame', payload: false };
 export const ADD_DIFFICULTY = { type:'game/difficulty', payload: String };
 export const GAME_OVER = { type: 'game/gameOver', payload: true };
+export const RESET_GAME = { type: 'game/resetGame', payload: false };
 
 // music-actions
 export const REPLACE_ARTIST_NAME = { type: 'music/changeArtist', payload: String };
