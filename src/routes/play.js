@@ -1,21 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import Dialog from '../components/dialog';
-import { game } from '../scripts/services/game';
 import { store } from '../store/store';
 import { addKeyDown, addKeyUp } from '../store/actions/keyActions';
 import { resetGame } from '../store/actions/gameActions';
 import { scaleCanvas } from '../store/actions/canvasActions';
-
+import GameContext from '../providers/GameProvider';
 const styles = {
     button: 'mr-3 bg-slate-900 py-2 px-4 active:bg-slate-600 hover:bg-slate-800 rounded',
     container: 'flex justify-center flex-col items-center',
     title: 'text-3xl text-center p-5'
 };
 
-const Play = () => {
+const Play = () => {    
 
+    const game = useContext(GameContext);
     const canvasScaler = () => { store.dispatch( scaleCanvas() ); };
     const navigate = useNavigate();
     const handleKeyDown = (e) => { store.dispatch( addKeyDown(e.code) ); };

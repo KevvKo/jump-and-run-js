@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import HeaderButton from './headerButton';
 import { useMenuMusic } from '../scripts/services/music';
 import { store } from '../store/store';
-import { game } from '../scripts/services/game';
 import { 
     replaceArtistName, 
     replaceTitleName, 
     stopMusic, 
     playMusic
 } from '../store/actions/musicActions';
+import GameContext from '../providers/GameProvider';
 import './header.css';
 
 function AppHeader() {
@@ -18,6 +18,7 @@ function AppHeader() {
     let index = 0;
     const sounds = useMenuMusic();
     const [audioElement] = useState( new Audio(sounds[index].file) );
+    const game = useContext(GameContext);
 
     audioElement.onended = () =>{
   

@@ -8,7 +8,7 @@ import config from '../../assets/config/characters.json';
 
 const directions = ['right', 'left'];
 
-class Game{
+class Game {
      
     /**
      * @public
@@ -161,5 +161,5 @@ class Game{
         this.context.clearRect(0,0, width, height);
     }
 }
-const game = new Game();
-export { game };
+
+export default Game;
