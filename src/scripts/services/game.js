@@ -13,6 +13,7 @@ class Game {
      * @public
      */
     init(){
+        this.difficulty = store.getState().game.difficulty;
         this.asteroids = [];
         this.createSprites();
         this.start();
