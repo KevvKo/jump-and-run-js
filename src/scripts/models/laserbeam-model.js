@@ -1,7 +1,7 @@
 
 import LaserItem from './laserItem-model';
 
-class Laserbeam {
+export default class Laserbeam {
 
     #lastTimeRendered;
 
@@ -87,5 +87,3 @@ class Laserbeam {
         this.draw();
     }
 }
-
-export const laserBeam = new Laserbeam();

@@ -1,6 +1,5 @@
 import Asteroid from '../models/asteroid-model';
 import Spaceship from '../models/spaceship-model';
-import { laserBeam } from '../models/laserbeam-model';
 import { store } from '../../store/store';
 import { continueGame, pauseGame, gameOver} from '../../store/actions/gameActions';
 import config from '../../assets/config/characters.json';
@@ -95,7 +94,6 @@ class Game {
      * @public
      */
     draw(){ 
-        laserBeam.render(this.asteroids);
         this.spaceship.render(this.asteroids);
         this._renderAsteroids();
     }

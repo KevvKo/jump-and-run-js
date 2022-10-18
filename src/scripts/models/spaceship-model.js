@@ -1,5 +1,5 @@
 import data from '../../assets/config/characters.json';
-import { laserBeam } from './laserbeam-model';
+import Laserbeam from './laserbeam-model';
 import { store } from '../../store/store';
 import Sprite from '../models/sprite-model';
 
@@ -29,6 +29,7 @@ export default class Spaceship{
      */
     constructor(x, y, spriteImage){
         this.#life = data.spaceship.life;
+        this.laserBeam = new Laserbeam();
         this.#ax = 0;
         this.#ay = 0;
         this.#x = x;
@@ -73,7 +74,7 @@ export default class Spaceship{
             {x: e.x, y: e.y , r: r }
         ];
 
-        laserBeam.addLaserItems(items);
+        this.laserBeam.addLaserItems(items);
     }
     /**
      * @public
@@ -83,6 +84,7 @@ export default class Spaceship{
         if(keys.Space) this.shoot();
         this.update(asteroids);
         this.sprite.drawSprite();
+        this.laserBeam.render(asteroids);
     }
     /**
      * @public

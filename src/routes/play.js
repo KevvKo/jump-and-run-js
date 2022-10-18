@@ -7,6 +7,8 @@ import { addKeyDown, addKeyUp } from '../store/actions/keyActions';
 import { resetGame } from '../store/actions/gameActions';
 import { scaleCanvas } from '../store/actions/canvasActions';
 import GameContext from '../providers/GameProvider';
+import Game from '../scripts/services/game';
+
 const styles = {
     button: 'mr-3 bg-slate-900 py-2 px-4 active:bg-slate-600 hover:bg-slate-800 rounded',
     container: 'flex justify-center flex-col items-center',
@@ -15,9 +17,10 @@ const styles = {
 
 const Play = () => {    
 
-    const game = useContext(GameContext);
-    const canvasScaler = () => { store.dispatch( scaleCanvas() ); };
+    const { game, setGame } = useContext(GameContext);
     const navigate = useNavigate();
+    
+    const canvasScaler = () => { store.dispatch( scaleCanvas() ); };
     const handleKeyDown = (e) => { store.dispatch( addKeyDown(e.code) ); };
     const handleKeyUp = (e) => { store.dispatch( addKeyUp(e.code) ); };
     const pauseGame = (e) => { if(e.code === 'KeyP') game.togglePause(); };
@@ -49,11 +52,13 @@ const Play = () => {
 
     const handleClickRestart = () => {
         store.dispatch(resetGame());
+        // setGame(new Game());
         game.init();
     };
 
     const handleClickGoHome = () => {
         store.dispatch(resetGame());
+        // setGame(new Game());
         navigate('/');
     };
 
