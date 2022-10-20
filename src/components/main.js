@@ -7,9 +7,7 @@ import {
 import Home from '../routes/home';
 import ChooseDifficulty from '../routes/chooseDifficulty';
 import Play from '../routes/play';
-import Options from '../routes/options';
 import Credits from '../routes/credits';
-import Guide from '../routes/guide';
 import StarBackground from './starBackground';
 
 function AppMain(){
@@ -20,9 +18,7 @@ function AppMain(){
                 <Route path="/" element={<Home />} />
                 <Route path="/chooseDifficulty" element={<ChooseDifficulty />} />
                 <Route path="/play" element={<Play />} />
-                <Route path="/options" element={<Options />} />
                 <Route path="/credits" element={<Credits />} />
-                <Route path="/guide" element={<Guide />} />
             </Routes>
         </div>
     );
