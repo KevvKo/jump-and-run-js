@@ -10,8 +10,10 @@ import GameContext from '../providers/GameProvider';
 
 const styles = {
     button: 'mr-3 bg-slate-900 py-2 px-4 active:bg-slate-600 hover:bg-slate-800 rounded',
+    highscore: 'text-center mb-5 text-2xl', 
     container: 'flex justify-center flex-col items-center',
-    title: 'text-3xl text-center p-5'
+    title: 'text-4xl text-center p-5',
+    buttonBar: 'mt-7'
 };
 
 const Play = () => {    
@@ -68,7 +70,8 @@ const Play = () => {
                 <Dialog>
                     <div>
                         <div className={styles.title}>Game Over</div>
-                        <div>
+                        <div className={styles.highscore}>Punkte: {game.highscore}</div>
+                        <div className={styles.buttonBar}>
                             <button  className={styles.button} onClick={handleClickGoHome}>
                                 Zur Startseite
                             </button>

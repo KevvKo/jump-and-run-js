@@ -9,16 +9,33 @@ const directions = ['right', 'left'];
 
 class Game {
      
+    #highscore;
+
     /**
      * @public
      */
     init(){
         this.difficulty = store.getState().game.difficulty;
         this.asteroids = [];
+        this.#highscore = 0;
         this.createSprites();
         this.start();
         console.info('Game initialized.');
     }  
+    /**
+     * @publi
+     */
+    get highscore(){
+        return this.#highscore;
+    }
+
+    /**
+     * 
+     * @param {Number} count 
+     */
+    increaseHighscore( count ){
+        this.#highscore += count;
+    }
     /**
      * @public
      */
@@ -60,6 +77,9 @@ class Game {
             this.update();
         }
     }
+    /**
+     * @public
+     */
     gameOver(){
         store.dispatch(gameOver());
         this.stop();
@@ -81,13 +101,16 @@ class Game {
         this._createAsteroids();
     } 
     /**
-     * private
+     * @private
      */
     _checkAsteroidsCount(){
         const { asteroidCount } = config.gameSettings;
         const currentAsteroidsCount = this.asteroids.length;
+        const pointsMultiplier = 10;
         
         if( currentAsteroidsCount < asteroidCount ){
+            const countDifference = asteroidCount - currentAsteroidsCount;
+            this.increaseHighscore(countDifference * pointsMultiplier);
             this._createAsteroids();
         }
     }
@@ -124,6 +147,7 @@ class Game {
             }
 
             let j = 0, k = indexes.length;
+
             while(j < k){
                 const index = indexes[j];
                 this.asteroids.splice(index, 1);
