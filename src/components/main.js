@@ -9,6 +9,7 @@ import ChooseDifficulty from '../routes/chooseDifficulty';
 import Play from '../routes/play';
 import Credits from '../routes/credits';
 import StarBackground from './starBackground';
+import Highscores from "../routes/highscores";
 
 function AppMain(){
     return(
@@ -16,6 +17,7 @@ function AppMain(){
             <StarBackground />
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/highscores" element={<Highscores />} />
                 <Route path="/chooseDifficulty" element={<ChooseDifficulty />} />
                 <Route path="/play" element={<Play />} />
                 <Route path="/credits" element={<Credits />} />

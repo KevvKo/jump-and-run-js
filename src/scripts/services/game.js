@@ -83,6 +83,7 @@ class Game {
     gameOver(){
         store.dispatch(gameOver());
         this.stop();
+        this._handleHighscores();
     }
     /**
      * @public  
@@ -182,6 +183,24 @@ class Game {
         const width = store.getState().canvas.width;
         const height = store.getState().canvas.height;
         this.context.clearRect(0,0, width, height);
+    }
+
+    /**
+     * @private
+     */
+    _handleHighscores(){
+        const gameScores = JSON.parse(localStorage.getItem('gameScores'));
+
+        if(!gameScores) {
+            const newGameScores = JSON.stringify( { highscore: this.#highscore, scores: [{ name: 'dummy', score: this.#highscore }]});
+            localStorage.setItem('gameScores', newGameScores);
+            return;
+        }
+
+        gameScores.highscore = this.#highscore > gameScores.highscore ? this.#highscore : gameScores.highscore;
+        gameScores.scores.push({name: 'dummy', score: this.#highscore });
+
+        localStorage.setItem('gameScores', JSON.stringify(gameScores));
     }
 }
 
