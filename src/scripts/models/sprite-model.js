@@ -48,6 +48,11 @@ export default class Sprite{
     set x(val){ this.#x = val; }
     /**
      * @public
+     * 
+     */
+    get spriteSize(){ return this.#spriteHeight; }
+    /**
+     * @public
      */
     get y(){ return this.#y; }
     /**

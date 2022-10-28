@@ -154,62 +154,78 @@ export default class Spaceship{
     /**
      * @public
      */
-            move(){
+    move(){
+        const { alphaWall } = data.gameSettings;
+        const x = this.#x;
+        const y = this.#y;
+        const width = store.getState().canvas.width;
+        const height = store.getState().canvas.height;
+        const spriteSize = this.sprite.spriteSize;
+        const keys = store.getState().keys;
 
-            const keys = store.getState().keys;
-            const { maxVelocity } = data.spaceship;
-
-            if((keys['KeyW'] || keys['ArrowUp']) && this.#ay <= maxVelocity) this.#ay += this.#speed;
-            if(keys['KeyS'] || keys['ArrowDown']) this.#ay -= this.#speed;
-            if(keys['KeyA'] || keys['ArrowLeft']) this.#ax -= this.#speed;
-            if((keys['KeyD'] || keys['ArrowRight']) && this.#ax <= maxVelocity) this.#ax += this.#speed;
-
-            this.#ax *= this.#friction;
-            this.#ay *= this.#friction;
-
-            this.#x += this.#ax;
-            this.#y -= this.#ay;
+        if(keys['KeyW'] || keys['ArrowUp']) {
+            this.#ay += this.#speed;
+            if(y <= alphaWall) this.#ay = 0;
         }
-        /**
-         * @public
-         */
-        checkBorderCollision(){
-
-            const width = store.getState().canvas.width;
-            const height = store.getState().canvas.height;
-
-            if(this.#x + 100 <= 0) this.#x = width;
-            if(this.#x >= width + 2) this.#x = -100;
-            if(this.#y + 100 <= 0) this.#y = height;
-            if(this.#y >= height + 2) this.#y = -100;
-        
+        if(keys['KeyS'] || keys['ArrowDown']){
+            this.#ay -= this.#speed;
+            if(y + spriteSize >= height - alphaWall) this.#ay = 0;
         }
-        /**
-         * @public
-         */
-        update(asteroids){
+        if(keys['KeyA'] || keys['ArrowLeft']){
+            this.#ax -= this.#speed;
+            if(x <= alphaWall ) this.#ax = 0;
+        } 
+        if(keys['KeyD'] || keys['ArrowRight']){
+            this.#ax += this.#speed;
+            if(x + spriteSize >= width - alphaWall) this.#ax = 0;
+        } 
 
+        this.#ax *= this.#friction;
+        this.#ay *= this.#friction;
+        this.#x += this.#ax;
+        this.#y -= this.#ay;
+    }
+    /**
+     * @public
+     */
+    collisionWithAlphaWall(){
+        const { alphaWall } = data.gameSettings;
+        const x = this.#x;
+        const y = this.#y;
+        const width = store.getState().canvas.width;
+        const height = store.getState().canvas.height;
+        const spriteSize = this.sprite.spriteSize;
+
+        if(y <= alphaWall || y + spriteSize >= height - alphaWall) this.#ay = 0;
+        if(x <= alphaWall || x + spriteSize >= width - alphaWall) this.#ax = 0;
+    }
+    /**
+     * @public
+     */
+    update(asteroids){
+
+        // if(!this.collisionWithBorders()){
             this.move();
+        // }
 
-            // if any asteroid is in the queue check for a collision
-            if(asteroids.length > 0){
-                let i = 0, l = asteroids.length;
+        // if any asteroid is in the queue check for a collision
+        if(asteroids.length > 0){
+            let i = 0, l = asteroids.length;
 
-                while(i < l){
-                    const asteroid = asteroids[i];
-                    const hasCollided = this.checkCollisionWithAsteroid(asteroid);
+            while(i < l){
+                const asteroid = asteroids[i];
+                const hasCollided = this.checkCollisionWithAsteroid(asteroid);
 
-                    if(hasCollided) {
-                        this.decreaseLife();
-                        break;
-                    }
-                    i++;
+                if(hasCollided) {
+                    this.decreaseLife();
+                    break;
                 }
+                i++;
             }
-            
-            this.checkBorderCollision();
-            this.sprite.x = this.#x;
-            this.sprite.y = this.#y;
-            this.sprite.update();
         }
+        
+        this.sprite.x = this.#x;
+        this.sprite.y = this.#y;
+        this.sprite.update();
+    }
 }

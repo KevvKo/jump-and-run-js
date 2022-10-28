@@ -7,7 +7,7 @@ import config from '../../assets/config/characters.json';
 
 const directions = ['right', 'left'];
 
-class Game {
+export default class Game {
      
     #highscore;
 
@@ -203,5 +203,3 @@ class Game {
         localStorage.setItem('gameScores', JSON.stringify(gameScores));
     }
 }
-
-export default Game;
