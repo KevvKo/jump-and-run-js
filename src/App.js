@@ -1,6 +1,6 @@
 import React from 'react';
 import ImagePreloader from './components/imagePreloader';
-import AppHeader from './components/header';
+import Header from './components/header';
 import AppMain from './components/main';
 import AppFooter from './components/footer'; 
 import GameContext from './providers/GameProvider';
@@ -13,7 +13,7 @@ function App() {
     <GameContext.Provider value={new Game()}>
       <div className="App">
         <ImagePreloader />
-        <AppHeader />
+        <Header />
         <AppMain />
         <AppFooter />
       </div>
