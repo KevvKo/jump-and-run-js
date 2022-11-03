@@ -1,6 +1,6 @@
 {
     "gameSettings": {
-        "alphaWall": 60,
+        "alphaWall": 30,
         "asteroidCount": 1,
         "asteroidMinDistance": 100,
         "asteroidMaxDistance": 100,

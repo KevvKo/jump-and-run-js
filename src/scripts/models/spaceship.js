@@ -1,7 +1,7 @@
 import data from '../../assets/config/characters.json';
-import Laserbeam from './laserbeam-model';
+import Laserbeam from './laserbeam';
 import { store } from '../../store/store';
-import Sprite from '../models/sprite-model';
+import Sprite from './sprite';
 
 export default class Spaceship{
 
@@ -155,35 +155,54 @@ export default class Spaceship{
      * @public
      */
     move(){
+
+        this.computeAcceleration();
+        this.checkAlphaWallCollision();
+        
+        this.#ax *= this.#friction;
+        this.#ay *= this.#friction;
+
+        this.#x += this.#ax;
+        this.#y += this.#ay;
+    }
+
+    /**
+     * @public
+     */
+    computeAcceleration(){
+
+        const keys = store.getState().keys;
+
+        if(keys['KeyW'] || keys['ArrowUp']) {
+            this.#ay -= this.#speed;
+        }
+        if(keys['KeyS'] || keys['ArrowDown']){
+            this.#ay += this.#speed;
+        }
+        if(keys['KeyA'] || keys['ArrowLeft']){
+            this.#ax -= this.#speed;
+        } 
+        if(keys['KeyD'] || keys['ArrowRight']){
+            this.#ax += this.#speed;
+        }
+    }
+    /**
+     * @publich
+     */
+    checkAlphaWallCollision(){
         const { alphaWall } = data.gameSettings;
         const x = this.#x;
         const y = this.#y;
         const width = store.getState().canvas.width;
         const height = store.getState().canvas.height;
         const spriteSize = this.sprite.spriteSize;
-        const keys = store.getState().keys;
+        const minimumAcceleration = 0.0005;
 
-        if(keys['KeyW'] || keys['ArrowUp']) {
-            this.#ay += this.#speed;
-            if(y <= alphaWall) this.#ay = 0;
-        }
-        if(keys['KeyS'] || keys['ArrowDown']){
-            this.#ay -= this.#speed;
-            if(y + spriteSize >= height - alphaWall) this.#ay = 0;
-        }
-        if(keys['KeyA'] || keys['ArrowLeft']){
-            this.#ax -= this.#speed;
-            if(x <= alphaWall ) this.#ax = 0;
-        } 
-        if(keys['KeyD'] || keys['ArrowRight']){
-            this.#ax += this.#speed;
-            if(x + spriteSize >= width - alphaWall) this.#ax = 0;
-        } 
+        if(this.#ax <= minimumAcceleration  && x <= alphaWall ) this.#ax = 0;
+        if(this.#ax >= minimumAcceleration  && x + spriteSize >= width - alphaWall ) this.#ax = 0;
+        if(this.#ay <= minimumAcceleration  && y <= alphaWall ) this.#ay = 0;
+        if(this.#ay >= minimumAcceleration  && y + spriteSize >= height - alphaWall ) this.#ay = 0;
 
-        this.#ax *= this.#friction;
-        this.#ay *= this.#friction;
-        this.#x += this.#ax;
-        this.#y -= this.#ay;
     }
     /**
      * @public

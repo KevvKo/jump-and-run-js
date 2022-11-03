@@ -1,5 +1,5 @@
 
-import LaserItem from './laserItem-model';
+import LaserItem from './laserItem';
 
 export default class Laserbeam {
 

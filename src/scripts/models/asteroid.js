@@ -1,5 +1,5 @@
 import config from '../../assets/config/characters.json';
-import Sprite from '../models/sprite-model';
+import Sprite from './sprite';
 import { store } from '../../store/store';
 
 export default class Asteroid {

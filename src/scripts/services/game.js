@@ -1,5 +1,5 @@
-import Asteroid from '../models/asteroid-model';
-import Spaceship from '../models/spaceship-model';
+import Asteroid from '../models/asteroid';
+import Spaceship from '../models/spaceship';
 import { store } from '../../store/store';
 import { continueGame, pauseGame, gameOver} from '../../store/actions/gameActions';
 import config from '../../assets/config/characters.json';
