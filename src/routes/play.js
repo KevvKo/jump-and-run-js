@@ -29,7 +29,8 @@ const Play = () => {
 
     const pauseGame = (e) => { 
         const pauseKeyIsPressed = e.code === 'KeyP' || e.code === 'Escape';
-        if(pauseKeyIsPressed && !gameIsOver)  game.togglePause();
+        const gameIsNotOver = !store.getState().game.gameIsOver;
+        if(pauseKeyIsPressed && gameIsNotOver) game.togglePause();
      };
 
     useEffect(() => {
@@ -45,16 +46,15 @@ const Play = () => {
 
     useEffect(() => {
         return () => {
-
             window.removeEventListener( 'keydown', handleKeyDown );
             window.removeEventListener( 'keydown', pauseGame );
             window.removeEventListener( 'keyup', handleKeyUp );
             window.removeEventListener( 'resize', canvasScaler );
             game.stop();
-
+        
             if(gameIsPaused) game.togglePause();
         };
-    }, [window, game, gameIsPaused]);
+    }, [window, game]);
 
     const handleClickRestart = () => {
         store.dispatch(resetGame());
@@ -69,7 +69,7 @@ const Play = () => {
 
     return (
         <div className={`play ${styles.container}`} >
-            { gameIsPaused && !gameIsOver &&
+            { gameIsPaused &&
                 <Dialog>
                     <h3 className={styles.title}>Game Paused</h3>
                     <Link className={styles.button} to='/'>Menu</Link>

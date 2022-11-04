@@ -69,7 +69,7 @@ export default class Game {
     togglePause(){
 
         const gameIsPaused = store.getState().game.gameIsPaused;
-        
+
         if(!gameIsPaused) store.dispatch(pauseGame());
         else {
 
