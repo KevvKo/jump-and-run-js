@@ -207,20 +207,6 @@ export default class Spaceship{
     /**
      * @public
      */
-    collisionWithAlphaWall(){
-        const { alphaWall } = data.gameSettings;
-        const x = this.#x;
-        const y = this.#y;
-        const width = store.getState().canvas.width;
-        const height = store.getState().canvas.height;
-        const spriteSize = this.sprite.spriteSize;
-
-        if(y <= alphaWall || y + spriteSize >= height - alphaWall) this.#ay = 0;
-        if(x <= alphaWall || x + spriteSize >= width - alphaWall) this.#ax = 0;
-    }
-    /**
-     * @public
-     */
     update(asteroids){
 
         // if(!this.collisionWithBorders()){

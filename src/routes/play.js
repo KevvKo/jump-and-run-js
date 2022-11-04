@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Dialog from '../components/dialog';
 import { store } from '../store/store';
 import { addKeyDown, addKeyUp } from '../store/actions/keyActions';
@@ -9,22 +9,28 @@ import { scaleCanvas } from '../store/actions/canvasActions';
 import GameContext from '../providers/GameProvider';
 
 const styles = {
-    button: 'mr-3 bg-slate-900 py-2 px-4 active:bg-slate-600 hover:bg-slate-800 rounded',
+    button: 'mr-3 mb-3 bg-slate-900 py-2 px-4 active:bg-slate-600 hover:bg-slate-800 rounded',
     highscore: 'text-center mb-5 text-2xl', 
     container: 'flex justify-center flex-col items-center',
     title: 'text-4xl text-center p-5',
-    buttonBar: 'mt-7'
+    buttonBar: 'mt-7',
 };
 
 const Play = () => {    
 
     const game = useContext(GameContext);
     const navigate = useNavigate();
-    
+    const gameIsPaused = useSelector ( state => state.game.gameIsPaused );
+    const gameIsOver =  useSelector ( state => state.game.gameIsOver );
+
     const canvasScaler = () => { store.dispatch( scaleCanvas() ); };
     const handleKeyDown = (e) => { store.dispatch( addKeyDown(e.code) ); };
     const handleKeyUp = (e) => { store.dispatch( addKeyUp(e.code) ); };
-    const pauseGame = (e) => { if(e.code === 'KeyP') game.togglePause(); };
+
+    const pauseGame = (e) => { 
+        const pauseKeyIsPressed = e.code === 'KeyP' || e.code === 'Escape';
+        if(pauseKeyIsPressed && !gameIsOver)  game.togglePause();
+     };
 
     useEffect(() => {
         canvasScaler();
@@ -45,14 +51,14 @@ const Play = () => {
             window.removeEventListener( 'keyup', handleKeyUp );
             window.removeEventListener( 'resize', canvasScaler );
             game.stop();
-        };
-    }, [window, game]);
 
-    const gameIsPaused = useSelector ( state => state.game.gameIsPaused );
-    const gameIsOver =  useSelector ( state => state.game.gameIsOver );
+            if(gameIsPaused) game.togglePause();
+        };
+    }, [window, game, gameIsPaused]);
 
     const handleClickRestart = () => {
         store.dispatch(resetGame());
+        if(gameIsPaused) game.togglePause();
         game.init();
     };
 
@@ -63,8 +69,13 @@ const Play = () => {
 
     return (
         <div className={`play ${styles.container}`} >
-            { gameIsPaused &&
-                <Dialog>Paused</Dialog> 
+            { gameIsPaused && !gameIsOver &&
+                <Dialog>
+                    <h3 className={styles.title}>Game Paused</h3>
+                    <Link className={styles.button} to='/'>Menu</Link>
+                    <Link className={styles.button} to='/chooseDifficulty'>Difficulty Selection</Link>
+                    <button className={styles.button} onClick={handleClickRestart}>Restart</button>
+                </Dialog> 
             }
             { gameIsOver &&
                 <Dialog>

@@ -23,7 +23,7 @@ export default class Game {
         console.info('Game initialized.');
     }  
     /**
-     * @publi
+     * @public
      */
     get highscore(){
         return this.#highscore;
