@@ -17,7 +17,7 @@ const styles = {
     buttonBar: 'mt-7',
     container: 'flex justify-center flex-col items-center',
     dialogContainer: 'mx-6 px-8 flex flex-col',
-    highscore: 'text-center mb-5 text-2xl', 
+    score: 'text-center mb-5 text-2xl', 
     title: 'text-4xl text-center p-5',
 };
 
@@ -25,10 +25,12 @@ const Play = () => {
 
     const navigate = useNavigate();
     const game = useContext(GameContext);
+    const [ musicPaused, toggleMenuMusic ] = useMusic();
+
     const gameIsPaused = useSelector ( state => state.game.gameIsPaused );
     const gameIsOver =  useSelector ( state => state.game.gameIsOver );
-    const [ musicPaused, toggleMenuMusic ] = useMusic();
-    const canvasScaler = () => { store.dispatch( scaleCanvas() ); };
+
+    const scalingCanvas = () => { store.dispatch( scaleCanvas() ); };
     const handleKeyDown = (e) => { store.dispatch( addKeyDown(e.code) ); };
     const handleKeyUp = (e) => { store.dispatch( addKeyUp(e.code) ); };
 
@@ -38,13 +40,24 @@ const Play = () => {
         if(pauseKeyIsPressed && gameIsNotOver) game.togglePause();
      };
 
+     const handleClickRestart = () => {
+        store.dispatch(resetGame());
+        if(gameIsPaused) game.togglePause();
+        game.init();
+    };
+
+    const handleClickGoHome = () => {
+        store.dispatch(resetGame());
+        navigate('/');
+    };
+
      useEffect(() => {
-        canvasScaler();
+        scalingCanvas();
         game.init();
         window.addEventListener( 'keydown', handleKeyDown );
         window.addEventListener( 'keydown', pauseGame );
         window.addEventListener( 'keyup', handleKeyUp );
-        window.addEventListener( 'resize', canvasScaler );
+        window.addEventListener( 'resize', scalingCanvas );
         window.addEventListener('keydown', (e) => {
             if(e.code === 'KeyO'){
                 toggleMenuMusic();
@@ -57,23 +70,12 @@ const Play = () => {
             window.removeEventListener( 'keydown', handleKeyDown );
             window.removeEventListener( 'keydown', pauseGame );
             window.removeEventListener( 'keyup', handleKeyUp );
-            window.removeEventListener( 'resize', canvasScaler );
+            window.removeEventListener( 'resize', scalingCanvas );
             game.stop();
         
             if(gameIsPaused) game.togglePause();
         };
     }, [window, game]);
-
-    const handleClickRestart = () => {
-        store.dispatch(resetGame());
-        if(gameIsPaused) game.togglePause();
-        game.init();
-    };
-
-    const handleClickGoHome = () => {
-        store.dispatch(resetGame());
-        navigate('/');
-    };
 
     return (
         <div className={`play ${styles.container}`} >
@@ -81,6 +83,7 @@ const Play = () => {
                 <Dialog>
                     <div className={styles.dialogContainer}>
                         <h3 className={styles.title}>Game Paused</h3>
+                        <h4 className={styles.score}>Score: {game.highscore}</h4>
                         <Link className={styles.button2} to='/'>Back to Menu</Link>
                         <Link className={styles.button2} to='/chooseDifficulty'>Difficulty Selection</Link>
                         <button className={styles.button2} onClick={handleClickRestart}>Restart Game</button>
@@ -92,7 +95,7 @@ const Play = () => {
                 <Dialog>
                     <div>
                         <div className={styles.title}>Game Over</div>
-                        <div className={styles.highscore}>Score: {game.highscore}</div>
+                        <div className={styles.score}>Score: {game.highscore}</div>
                         <div className={styles.buttonBar}>
                             <button  className={styles.button1} onClick={handleClickGoHome}>
                                 Back to main menu

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import './background.css';
 
 const Background = (props) => {
+    const { children } = props;
 
     //default style for the component
     let size = { width: '40%', height: '70vh' };
@@ -15,14 +16,14 @@ const Background = (props) => {
 
     return(
         <div className="background rounded-lg overflow-y-scroll" style={ size }>
-            {props.content}
+            {children}
         </div>
     );
 };
 
 Background.propTypes = {
+    children: PropTypes.node.isRequired,
     size: PropTypes.string,
-    content: PropTypes.node
 };
 
 export default Background;

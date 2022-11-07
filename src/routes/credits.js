@@ -3,33 +3,34 @@ import Background from '../components/background';
 
 const Credits = () =>{
     
-    const content = 
-        <div>
-            <h1 className='opacity-60 text-6xl'>Credits</h1>
-            <h2 className='opacity-60 text-3xl'>Development</h2>
-            <p className='opacity-60 text-xl'>Kevin Klein</p>
-            <h2 className='opacity-60 text-3xl'>Design</h2>
-            <p className='opacity-60 text-xl'>Kevin Klein</p>
-            <h2 className='opacity-60 text-3xl'>Music</h2>
-            <p className='opacity-60 text-xl'>Sappheiros</p>
-            <p className='opacity-60 text-xl'>Known</p>
-            <p className='opacity-60 text-xl'>Patrick Patrikios</p>
-            <p className='opacity-60 text-xl'>Unicorn Heads</p>
-            <p className='opacity-60 text-xl'>The 129ers</p>
-            <p className='opacity-60 text-xl'>Devon Church</p>
-            <p className='opacity-60 text-xl'>Coyote Hearing</p>
-            <p className='opacity-60 text-xl'>Dan Hening</p>
-            <p className='opacity-60 text-xl'>Jeremy Black</p>
-            <h2 className='opacity-60 text-3xl'></h2>
-            <p className='opacity-60 text-xl'></p>
-            <h2 className='opacity-60 text-3xl'>Participants</h2>
-            <p className='opacity-60 text-xl'>Benjamin Gypser</p>
-            <p className='opacity-60 text-xl'>Marius Treichel</p>
-        </div>;
-    
+    const styles =  {
+        container1: 'flex flex-col justify-center items-center text-center text-white',
+        text: 'opacity-60 text-xl mb-1',
+        title: 'opacity-60 text-6xl my-5',
+        subtitle: 'opacity-60 text-3xl mb-2 mt-3'
+    };      
+
     return (
-        <div className='credits flex flex-col justify-center items-center text-center text-white'>
-            <Background content={content}/>
+        <div className={styles.container1}>
+            <Background>
+                <h1 className={styles.title}>Credits</h1>
+                <h2 className={styles.subtitle}>Development</h2>
+                <p className={styles.text}>Kevin Klein</p>
+                <h2 className={styles.subtitle}>Design</h2>
+                <p className={styles.text}>Kevin Klein</p>
+                <h2 className={styles.subtitle}>Music</h2>
+                <p className={styles.text}>Sappheiros</p>
+                <p className={styles.text}>Known</p>
+                <p className={styles.text}>Patrick Patrikios</p>
+                <p className={styles.text}>Unicorn Heads</p>
+                <p className={styles.text}>The 129ers</p>
+                <p className={styles.text}>Devon Church</p>
+                <p className={styles.text}>Coyote Hearing</p>
+                <p className={styles.text}>Dan Hening</p>
+                <p className={styles.text}>Jeremy Black</p>
+                <h2 className={styles.subtitle}></h2>
+                <p className={styles.text}></p>
+            </Background>
         </div>
     );
 };
