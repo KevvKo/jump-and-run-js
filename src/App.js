@@ -4,7 +4,7 @@ import Header from './components/header';
 import AppMain from './components/main';
 import AppFooter from './components/footer'; 
 import GameContext from './providers/GameProvider';
-import Game from './scripts/services/game';
+import Game from './scripts/game';
 import './App.css';
 
 function App() {

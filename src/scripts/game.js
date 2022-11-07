@@ -1,8 +1,8 @@
-import Asteroid from '../models/asteroid';
-import Spaceship from '../models/spaceship';
-import { store } from '../../store/store';
-import { continueGame, pauseGame, gameOver} from '../../store/actions/gameActions';
-import config from '../../assets/config/characters.json';
+import Asteroid from './models/asteroid';
+import Spaceship from './models/spaceship';
+import { store } from '../store/store';
+import { continueGame, pauseGame, gameOver} from '../store/actions/gameActions';
+import config from '../assets/config/characters.json';
 
 
 const directions = ['right', 'left'];

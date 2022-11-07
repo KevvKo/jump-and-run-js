@@ -17,7 +17,7 @@ const Home = () => {
                 <li className='justify-center mt-1 p-1'>
                     <Link 
                         className='transition duration-100 ease-in-out hover:opacity-70 text-7xl text-center' 
-                        to="/highscore"
+                        to="/highscores"
                     >Highscores</Link>
                 </li>
                 <li className='flex justify-center mt-1 p-1'>

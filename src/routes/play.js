@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, Link } from "react-router-dom";
-import { useMusic } from '../scripts/services/music';
+import { useMusic } from '../hooks/music';
 import GameContext from '../providers/GameProvider';
 
 import Dialog from '../components/dialog';

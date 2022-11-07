@@ -15,7 +15,7 @@ const Background = (props) => {
     }
 
     return(
-        <div className="background rounded-lg overflow-y-scroll" style={ size }>
+        <div className="background rounded-lg overflow-y-scroll p-5" style={ size }>
             {children}
         </div>
     );
