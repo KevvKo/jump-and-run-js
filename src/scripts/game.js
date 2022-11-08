@@ -7,6 +7,19 @@ import config from '../assets/config/characters.json';
 
 const directions = ['right', 'left'];
 
+/**
+ * @private
+ * @param {Number} minimum 
+ * @param {Number} maximum 
+ * @returns {Array of Number}
+ */
+const computeStartPosition = (minimum, maximum) => {
+    const randomX = Math.floor( Math.random() * ( maximum - minimum ) + minimum );
+    const randomY = Math.floro( Math.random() * ( maximum - minimum ) + minimum );
+
+    return [randomX, randomY]
+};
+
 export default class Game {
      
     #highscore;
@@ -158,8 +171,8 @@ export default class Game {
      */
     _createAsteroids(){
 
-        const width = store.getState().canvas.width - 50;
-        const { asteroidCount, asteroidMinDistance, asteroidMaxDistance, asteoidBorderDistance } = config.gameSettings;
+        const width = store.getState().canvas.width;
+        const { asteroidCount, asteroidMinDistance, asteroidMaxDistance, asteoidBorderDistance, alphaWall } = config.gameSettings;
         const spaceshipImg = document.getElementById('asteroid1');
         const currentAsteroidsCount = this.asteroids.length;
 
@@ -167,6 +180,7 @@ export default class Game {
             const randomX = Math.floor(
                 Math.random() * ( (width - asteoidBorderDistance) - asteoidBorderDistance) + asteoidBorderDistance
             );
+            const startPosition = computeStartPosition
             const randomY = Math.floor(Math.random() * ( asteroidMaxDistance - asteroidMinDistance ) + asteroidMinDistance);
             const directionOfRotation = directions[Math.floor(Math.random() * 2)];
             this.asteroids.push(new Asteroid( randomX, -randomY, spaceshipImg, directionOfRotation ));
