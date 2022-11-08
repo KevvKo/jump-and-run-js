@@ -1,7 +1,11 @@
 {
     "gameSettings": {
         "alphaWall": 30,
-        "asteroidCount": 1,
+        "startAsteroidCount": {
+            "easy": 10,
+            "normal": 20,
+            "hard": 30
+        },
         "asteroidRadius": 50
     },
     "spaceship": {

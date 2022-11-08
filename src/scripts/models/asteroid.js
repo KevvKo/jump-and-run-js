@@ -1,4 +1,4 @@
-import config from '../../assets/config/characters.json';
+import config from '../../assets/config/configuration.json';
 import Sprite from './sprite';
 import { store } from '../../store/store';
 

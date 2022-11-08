@@ -2,7 +2,7 @@ import Asteroid from './models/asteroid';
 import Spaceship from './models/spaceship';
 import { store } from '../store/store';
 import { continueGame, pauseGame, gameOver} from '../store/actions/gameActions';
-import config from '../assets/config/characters.json';
+import config from '../assets/config/configuration.json';
 
 
 const directions = ['right', 'left'];
@@ -25,15 +25,22 @@ const computeStartPosition = (minimumX, maximumX, minimumY, maximumY) => {
 export default class Game {
      
     #highscore;
-
+    #asteroidLimit;
+    #limitIncreaseCounter;
     /**
      * @public
      */
     init(){
+
+        const { startAsteroidCount } = config.gameSettings;
+
         this.difficulty = store.getState().game.difficulty;
         this.asteroids = [];
         this.#highscore = 0;
+        this.#asteroidLimit = startAsteroidCount[this.difficulty] || 20;
+        this.#limitIncreaseCounter = 0;
         this.createSprites();
+        this._increaseAsteroidLimit();
         this.start();
         console.info('Game initialized.');
     }  
@@ -68,7 +75,6 @@ export default class Game {
         this.clear();
         this.draw();
         this._checkAsteroidsCount();
-
         if(this.spaceship.life <= 0) {
             this.gameOver();
             return;
@@ -120,12 +126,11 @@ export default class Game {
      * @private
      */
     _checkAsteroidsCount(){
-        const { asteroidCount } = config.gameSettings;
-        const currentAsteroidsCount = this.asteroids.length;
+        const currentAsteroidsLimit = this.asteroids.length + this.#limitIncreaseCounter;
         const pointsMultiplier = 10;
         
-        if( currentAsteroidsCount < asteroidCount ){
-            const countDifference = asteroidCount - currentAsteroidsCount;
+        if( currentAsteroidsLimit < this.#asteroidLimit ){
+            const countDifference = this.#asteroidLimit - currentAsteroidsLimit;
             this.increaseHighscore(countDifference * pointsMultiplier);
             this._createAsteroids();
         }
@@ -165,7 +170,6 @@ export default class Game {
                 this.asteroids.splice(index, 1);
                 j++;
             }
-  
         }
     }
     /**
@@ -175,11 +179,11 @@ export default class Game {
 
         const width = store.getState().canvas.width;
         const height = store.getState().canvas.height;
-        const { asteroidCount, asteroidRadius, alphaWall } = config.gameSettings;
+        const { asteroidRadius, alphaWall } = config.gameSettings;
         const spaceshipImg = document.getElementById('asteroid1');
         const currentAsteroidsCount = this.asteroids.length;
 
-        if( currentAsteroidsCount < asteroidCount){
+        if( currentAsteroidsCount < this.#asteroidLimit){
 
             const minimumWidth = alphaWall + asteroidRadius;
             const maximumWidth = width - alphaWall - asteroidRadius;
@@ -217,5 +221,16 @@ export default class Game {
         gameScores.scores.push({name: 'dummy', score: this.#highscore });
 
         localStorage.setItem('gameScores', JSON.stringify(gameScores));
+    }
+    /**
+     * @private
+     */
+    _increaseAsteroidLimit(){
+        const intervalForLimitIncrease = this.difficulty === 'hard' ?  3000 : this.difficulty === 'easy' ? 10000 : 5000;
+        const increaseCount = this.difficulty === 'hard' ? 3 : this.difficulty === 'easy' ? 1 : 2;
+
+        setInterval(() => {
+            this.#asteroidLimit += increaseCount;
+        }, intervalForLimitIncrease);
     }
 }

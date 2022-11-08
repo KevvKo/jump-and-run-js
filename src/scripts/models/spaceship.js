@@ -1,4 +1,4 @@
-import data from '../../assets/config/characters.json';
+import data from '../../assets/config/configuration.json';
 import Laserbeam from './laserbeam';
 import { store } from '../../store/store';
 import Sprite from './sprite';

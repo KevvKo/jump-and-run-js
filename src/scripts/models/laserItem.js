@@ -1,4 +1,4 @@
-import data from '../../assets/config/characters.json';
+import data from '../../assets/config/configuration.json';
 import { store } from '../../store/store';
 
 export default class LaserItem{
