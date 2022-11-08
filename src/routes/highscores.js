@@ -8,10 +8,10 @@ const styles = {
     container: 'flex flex-col justify-center items-center text-center text-white',
     listItem: 'opacity-60 text-xl mb-3',
     name: 'mr-5',
-    table: 'relative',
+    table: 'relative m-auto',
     tableCell: 'p-4',
     tableHeader: 'text-xl',
-    tableHeadCell: 'px-8 sticky top-0'
+    tableHeadCell: 'px-8'
 };
 
 const Highscores = () => {
