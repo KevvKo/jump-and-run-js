@@ -122,10 +122,6 @@ export default class Game {
         this.spaceship.render(this.asteroids);
         this._renderAsteroids();
     }
-
-    /**
-     * @TODO replace datastructure tu remove asteroids... maybe with a stack?
-     */
     /**
      * @private
      */
