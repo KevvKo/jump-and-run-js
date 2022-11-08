@@ -9,15 +9,17 @@ const directions = ['right', 'left'];
 
 /**
  * @private
- * @param {Number} minimum 
- * @param {Number} maximum 
- * @returns {Array of Number}
+ * @param {Number} minimumX 
+ * @param {Number} maximumX
+ * @param {Number} minimumY
+ * @param {Number} maximumY
+ * @returns {[x: Number, y: Number]} Startposition for an asteroid
  */
-const computeStartPosition = (minimum, maximum) => {
-    const randomX = Math.floor( Math.random() * ( maximum - minimum ) + minimum );
-    const randomY = Math.floro( Math.random() * ( maximum - minimum ) + minimum );
+const computeStartPosition = (minimumX, maximumX, minimumY, maximumY) => {
+    const randomX = Math.floor( Math.random() * ( maximumX - minimumX ) + minimumX );
+    const randomY = Math.floor( Math.random() * ( maximumY - minimumY ) + minimumY );
 
-    return [randomX, randomY]
+    return [randomX, randomY];
 };
 
 export default class Game {
@@ -172,18 +174,22 @@ export default class Game {
     _createAsteroids(){
 
         const width = store.getState().canvas.width;
-        const { asteroidCount, asteroidMinDistance, asteroidMaxDistance, asteoidBorderDistance, alphaWall } = config.gameSettings;
+        const height = store.getState().canvas.height;
+        const { asteroidCount, asteroidRadius, alphaWall } = config.gameSettings;
         const spaceshipImg = document.getElementById('asteroid1');
         const currentAsteroidsCount = this.asteroids.length;
 
         if( currentAsteroidsCount < asteroidCount){
-            const randomX = Math.floor(
-                Math.random() * ( (width - asteoidBorderDistance) - asteoidBorderDistance) + asteoidBorderDistance
-            );
-            const startPosition = computeStartPosition
-            const randomY = Math.floor(Math.random() * ( asteroidMaxDistance - asteroidMinDistance ) + asteroidMinDistance);
+
+            const minimumWidth = alphaWall + asteroidRadius;
+            const maximumWidth = width - alphaWall - asteroidRadius;
+            const minimumHeight = alphaWall + asteroidRadius;
+            const maximumHeight = height - alphaWall - asteroidRadius;
+
+            const startPosition = computeStartPosition(minimumWidth, maximumWidth, minimumHeight, maximumHeight);
+
             const directionOfRotation = directions[Math.floor(Math.random() * 2)];
-            this.asteroids.push(new Asteroid( randomX, -randomY, spaceshipImg, directionOfRotation ));
+            this.asteroids.push(new Asteroid( startPosition[0], -startPosition[1], spaceshipImg, directionOfRotation ));
         }       
     }
     /**

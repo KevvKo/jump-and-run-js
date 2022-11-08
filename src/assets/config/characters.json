@@ -2,9 +2,7 @@
     "gameSettings": {
         "alphaWall": 30,
         "asteroidCount": 1,
-        "asteroidMinDistance": 100,
-        "asteroidMaxDistance": 100,
-        "asteoidBorderDistance": 100
+        "asteroidRadius": 50
     },
     "spaceship": {
         "life": 100,
